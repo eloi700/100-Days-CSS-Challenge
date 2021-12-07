@@ -1,0 +1,70 @@
+* {
+  font-family: "Permanent Marker", cursive;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  font-size: 10px;
+  --primary-color: orangered;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.788);
+}
+
+#hdd {
+  display: flex;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.288);
+  border-radius: 50%;
+  border: 0.3rem solid var(--primary-color);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 90vmin;
+  height: 90vmin;
+  box-shadow: 1rem -1rem 8rem white, 1rem -3rem 8rem white;
+}
+
+.icon {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+}
+
+h1 {
+  font-size: 30vmin;
+  writing-mode: vertical-rl;
+  margin: 0;
+  padding: 0;
+  color: var(--primary-color);
+  text-shadow: 5px 5px 0 #e7e6e6, 8px 8px 0 #afaeae;
+}
+
+.days {
+  font-size: 10vmin;
+  margin: 0;
+  font-family: serif;
+  text-align: center;
+}
+
+.challenge {
+  font-size: 5vmin;
+  margin: 0;
+  font-family: serif;
+  text-align: center;
+}
+
+hr {
+  display: block;
+  height: 0.3rem;
+  border: 0;
+  border-top: 0.3rem solid var(--primary-color);
+  margin: 1vmin 0;
+  padding: 0;
+}
