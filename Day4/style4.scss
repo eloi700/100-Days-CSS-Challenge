@@ -1,0 +1,131 @@
+:root {
+  font-size: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  .circles {
+    position: relative;
+    width: 50rem;
+    height: 50rem;
+    background-color: rgba(0, 0, 0, 0.801);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+
+    .circle {
+      position: absolute;
+      overflow: hidden;
+
+      &.circle1 {
+        border: 0.3rem solid rgba(255, 255, 255, 0.863);
+        animation: small 4s infinite alternate;
+        z-index: 4;
+      }
+
+      &.circle2 {
+        border: 0.3rem solid rgba(220, 20, 60, 0.767);
+        animation: medium 4s infinite alternate;
+        z-index: 3;
+      }
+
+      &.circle3 {
+        border: 0.3rem solid yellow;
+        animation: large 4s infinite alternate;
+        z-index: 2;
+      }
+
+      &.circle4 {
+        border: 0.3rem solid rgb(3, 253, 3);
+        animation: xlarge 4s infinite alternate;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+@keyframes small {
+  0%,
+  75% {
+    transform: scale(0);
+    background-color: white;
+    border-radius: 5%;
+    opacity: 0.5;
+    height: 0;
+    width: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    border-radius: 50%;
+    opacity: 1;
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+@keyframes medium {
+  0%,
+  50% {
+    transform: scale(0);
+    border-radius: 5%;
+    background-color: crimson;
+    opacity: 0.5;
+    height: 0;
+    width: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    border-radius: 50%;
+    opacity: 1;
+    height: 10rem;
+    width: 10rem;
+  }
+}
+
+@keyframes large {
+  0%,
+  30% {
+    transform: scale(0);
+    border-radius: 5%;
+    background-color: yellow;
+    opacity: 0.5;
+    height: 0;
+    width: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    border-radius: 50%;
+    opacity: 1;
+    height: 15rem;
+    width: 15rem;
+  }
+}
+
+@keyframes xlarge {
+  0%,
+  10% {
+    transform: scale(0);
+    background-color: rgb(2, 241, 2);
+    border-radius: 5%;
+    opacity: 0.5;
+    height: 0;
+    width: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    border-radius: 50%;
+    opacity: 1;
+    height: 20rem;
+    width: 20rem;
+  }
+}
