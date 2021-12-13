@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/up/css/style7.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Day7 - Notifications, Search & Menu</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="frame">
+        <!-- Header Part -->
+        <div class="header">
+          <div class="menu-button">
+            <div class="menu-button_line"></div>
+          </div>
+          <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          <input type="search" class="search" placeholder="Search . . ." />
+          <span class="title">NOTIFICATIONS</span>
+        </div>
+        <!-- Alert Messages -->
+        <div class="alert-messages">
+          <div class="alert-messages-post">
+            <p class="post-time">10:35 AM</p>
+            <p class="post-message">
+              <b>Faith Gott </b>posted a photo on your wall.
+            </p>
+          </div>
+
+          <div class="alert-messages-comment">
+            <p class="comment-time">12.30 PM</p>
+            <p class="comment-message">
+              <b>Hope Gott </b>commented your last post.
+            </p>
+          </div>
+
+          <div class="alert-messages-add">
+            <p class="add-time">Yesterday</p>
+            <p class="add-message"><b>Joy Gott </b>added you as friend.</p>
+          </div>
+        </div>
+        <!-- Dropdown  Menu -->
+        <div class="dropdown-menu">
+          <div class="drop-menu dashboard">
+            <ion-icon name="bar-chart"></ion-icon>
+            <button>Dashboard</button>
+          </div>
+
+          <div class="drop-menu profile">
+            <ion-icon name="person"></ion-icon>
+            <button>Profile</button>
+          </div>
+
+          <div class="drop-menu notifications">
+            <ion-icon name="notifications"></ion-icon>
+            <button>Notifications</button>
+          </div>
+
+          <div class="drop-menu messages">
+            <ion-icon name="chatbox"></ion-icon>
+            <button>Messages</button>
+          </div>
+
+          <div class="drop-menu settings">
+            <ion-icon name="settings"></ion-icon>
+            <button>Settings</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app7.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
