@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+// $primary-color: teal;
+$secondary-color: black;
+$tertiary-color: white;
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame {
+  position: relative;
+  width: 35rem;
+  height: 35rem;
+  background: $tertiary-color;
+  filter: contrast(25);
+  box-shadow: 0.5rem -0.3rem 1rem rgba(0, 0, 0, 0.445),
+    -0.3rem -0.5rem 3rem rgba(0, 0, 0, 0.562);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 5rem;
+}
+
+.bubbles {
+  position: relative;
+  height: 9.5rem;
+  width: 9.5rem;
+  background: $secondary-color;
+  border-radius: 50%;
+  filter: blur(1.5rem);
+  transition: all 1s ease-in-out infinite;
+  transform: rotate(-180deg);
+  perspective: 5rem;
+}
+
+@for $x from 1 through 8 {
+  .bubble-#{$x} {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 5rem;
+    height: 5rem;
+    transform: rotate((random(300)) + deg);
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background: $secondary-color;
+      border-radius: 50%;
+      transform-origin: (60 - $x * 3) + px (60 - $x * 3) + px;
+      animation: rotate (4 + $x / 3) + s ease-in-out ($x / 3) + s infinite;
+      filter: blur(1rem);
+    }
+  }
+}
+
+@for $i from 1 through 10 {
+  .sparkling-#{$i} {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: (4 + $i) + px;
+    height: (4 + $i) + px;
+    transform: rotate((random(360)) + deg);
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: (6 + $i) + px;
+      height: (6 + $i) + px;
+      background: $secondary-color;
+      border-radius: 50%;
+      transform-origin: (60-$i * 2) + px (60 - $i * 2) + px;
+      animation: rotate (4 + $i / 3) + s ease-in-out ($i / 3) + s infinite;
+      filter: blur(0.1rem);
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotate(360deg) translate3d(0, 0, 0);
+  }
+}
