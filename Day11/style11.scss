@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root {
+  font-size: 10px;
+}
+
+$color: rgba(197, 100, 120, 0.897);
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
+
+  .frame {
+    position: relative;
+    width: 35rem;
+    height: 35rem;
+    background: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+
+    .walking-shoes {
+      animation: fade-in 0.8s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .tennis-shoes {
+      position: absolute;
+      top: 0;
+      left: 4rem;
+      width: 6rem;
+      height: 22rem;
+      transform-origin: 50% 0;
+    }
+
+    .shoe {
+      position: absolute;
+      width: 9rem;
+      height: 8rem;
+      left: 0;
+      bottom: 0;
+      background: url("https://svgshare.com/i/ctE.svg") center center no-repeat;
+
+      transform-origin: 0 95%;
+    }
+    .left {
+      animation: leg-swing 2s ease-in-out infinite;
+
+      .shoe {
+        animation: shoe-turn 2s ease-in-out infinite;
+      }
+    }
+    .right {
+      animation: leg-swing 2s ease-in-out 1s infinite;
+
+      .shoe {
+        animation: shoe-turn 2s ease-in-out 1s infinite;
+      }
+    }
+
+    @keyframes leg-swing {
+      0%,
+      100% {
+        transform: rotate(-5deg);
+      }
+      50% {
+        transform: rotate(10deg);
+      }
+    }
+    @keyframes shoe-turn {
+      0%,
+      100% {
+        transform: rotate(-10deg) translateY(-0.3rem) translateX(0.3rem);
+      }
+      25% {
+        transform: rotate(0deg) translateY(0) translateX(0);
+      }
+      50% {
+        transform: rotate(10deg) translateY(-1.5rem) translateX(0.3rem);
+      }
+      75% {
+        transform: rotate(0deg) translateY(-1.5rem) translateX(0);
+      }
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .foreground {
+      background: $color;
+      margin-top: 20rem;
+      width: 31.5%;
+      border-radius: 0 1rem 1rem 0;
+      height: 2rem;
+      filter: drop-shadow(2rem 2rem 0 $color) drop-shadow(7rem 5rem 0 $color)
+        drop-shadow(10rem 4rem 0 $color) drop-shadow(5rem 2rem 0 $color)
+        hue-rotate(360deg);
+    }
+  }
+}
