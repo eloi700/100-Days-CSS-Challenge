@@ -37,6 +37,7 @@
   margin: 4px 0 0 4px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  pointer-events: initial;
 
   & img {
     height: 100%;
@@ -175,7 +176,6 @@
       position: absolute;
       padding: 2rem;
       margin-left: -9rem;
-      pointer-events: initial;
       cursor: pointer;
 
       & .btn {
@@ -191,7 +191,6 @@
           color: white;
           border-left: 0.3rem solid yellow;
           border-radius: 50%;
-          pointer-events: none;
         }
 
         &:hover > .linkein {
