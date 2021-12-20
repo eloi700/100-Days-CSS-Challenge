@@ -36,7 +36,6 @@
   width: 194px;
   margin: 4px 0 0 4px;
   cursor: pointer;
-  pointer-events: auto;
   transition: all 0.5s ease-in-out;
 
   & img {
@@ -53,8 +52,7 @@
 
     &:hover ~ ion-icon.add {
       opacity: 1;
-      pointer-events: none;
-      transform: scale(1.75);
+      transform: scale(1);
     }
   }
 
@@ -65,24 +63,15 @@
   & ion-icon.add {
     position: absolute;
     opacity: 0;
-    scale: 0;
+    transform: scale(4);
     font-size: 4rem;
     top: 7rem;
     left: 7rem;
     border-radius: 50%;
     background-image: linear-gradient(135deg, #fdd819 10%, #e80505 100%);
     transition: all 0.5s ease-in-out;
+    pointer-events: none;
   }
-}
-
-.photo:active,
-.photo:focus {
-  opacity: 0;
-}
-
-.photo:active ~ .detail,
-.photo:focus ~ .detail {
-  opacity: 1;
 }
 
 .detail {
@@ -94,30 +83,60 @@
   bottom: 0;
   overflow: hidden;
   pointer-events: none;
-  background-image: linear-gradient(135deg, #fdd819 10%, #e80505 100%);
   opacity: 0;
+  transition: all 1.2s ease-in-out;
+
+  &.active {
+    opacity: 1;
+    pointer-events: initial;
+
+    & img.header,
+    & .image {
+      transform: translateY(0);
+    }
+
+    & .image {
+      transform: scale(1);
+    }
+
+    & .background,
+    & .info {
+      transform: translateY(0);
+    }
+  }
 
   & .close {
     position: absolute;
     top: 1rem;
     left: 33rem;
     z-index: 1;
+    pointer-events: initial;
+    cursor: pointer;
 
     & ion-icon {
       color: rgb(212, 209, 209);
-      font-size: 5rem;
-    }
-
-    &:active ~ *div {
-      opacity: 0;
+      font-size: 6rem;
+      pointer-events: none;
     }
   }
 
   .header {
-    transform: translate3d(0, 0, 0);
-    transition: all 0.6s ease-out;
-    top: 0;
-    bottom: 50%;
+    position: relative;
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.8s ease-out;
+    transform: translateY(-100%);
+  }
+
+  .background {
+    position: relative;
+    height: 50%;
+    width: 100%;
+    right: 0;
+    background-image: linear-gradient(135deg, #fdd819 10%, #e80505 100%);
+    transform: translateY(100%);
+    transition: all 0.8s ease-in-out;
   }
 
   .image {
@@ -130,8 +149,8 @@
     overflow: hidden;
     border-radius: 50%;
     box-shadow: 0 0 3rem black;
-    transform: translate3d(0, -250px, 0);
-    transition: all 0.6s ease-in 0.2;
+    transform: translateY(-100%) scale(0.2);
+    transition: all 1.2s ease-out 0.5s;
 
     & img {
       width: 100%;
@@ -143,6 +162,8 @@
     position: absolute;
     top: 65%;
     left: 36%;
+    transform: translateY(-100%);
+    transition: all 2s ease-out;
 
     & .name {
       font-size: 2rem;
@@ -154,6 +175,8 @@
       position: absolute;
       padding: 2rem;
       margin-left: -9rem;
+      pointer-events: initial;
+      cursor: pointer;
 
       & .btn {
         padding: 0 2rem;
@@ -161,16 +184,20 @@
         color: rgb(212, 209, 209);
         transition: transform 0.5s ease-in-out;
 
-        &:hover > .github {
-          transform: rotate(-15deg) scale(1.2);
-          border-left: 0.1rem solid yellow;
+        &:hover > .github,
+        &:hover > .facebook,
+        &:hover > .linkein {
+          transform: rotate(-10deg) scale(1.2);
+          color: white;
+          border-left: 0.3rem solid yellow;
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        &:hover > .linkein {
+          border-radius: 1rem;
         }
       }
     }
-  }
-
-  .image {
-    transform: translate3d(0, 0, 0);
-    transition: all 0.6s ease-out 0.3s;
   }
 }
