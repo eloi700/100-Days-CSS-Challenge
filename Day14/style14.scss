@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame {
+  height: 40rem;
+  width: 40rem;
+  background-image: linear-gradient(135deg, #52e5e7 10%, #130cb7 100%);
+  border-radius: 1rem;
+
+  &:hover .flip {
+    transform: rotateY(180deg);
+  }
+
+  & .flip {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.1s ease-in-out;
+    perspective: 200rem;
+
+    & .front,
+    & .back {
+      position: absolute;
+      backface-visibility: hidden;
+      overflow: hidden;
+      border-radius: 1rem;
+      text-align: center;
+      background-image: linear-gradient(135deg, #52e5e7 10%, #130cb7 100%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    & .front {
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      transform: rotateY(0);
+
+      & img {
+        position: relative;
+        animation: car 1s ease-in-out infinite;
+        transform-origin: 75% 100%;
+        width: 50%;
+        height: 50%;
+        top: 10rem;
+      }
+
+      & .street {
+        position: absolute;
+        top: 24rem;
+        left: 8rem;
+        width: 35rem;
+        height: 0.5rem;
+        overflow: hidden;
+
+        @for $k from 1 through 10 {
+          .stripe-#{$k} {
+            right: 0;
+            top: 0;
+            height: 0.1rem;
+            width: (0.3 + $k * 2) + rem;
+            background: lightgrey;
+            animation: street
+              (1 + random(3) / 10) +
+              s
+              linear
+              (random(10) / 10) +
+              s
+              infinite;
+          }
+        }
+      }
+    }
+
+    & .back {
+      height: 100%;
+      width: 100%;
+      transform: rotateY(180deg);
+
+      & img {
+        position: relative;
+        z-index: 1;
+        width: 65%;
+        height: 25%;
+        left: 3rem;
+        top: 18rem;
+        animation: helicopter 5s ease-in-out infinite;
+        animation-fill-mode: both;
+      }
+
+      & .sky {
+        position: absolute;
+        top: 10rem;
+        height: 30rem;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        overflow: hidden;
+
+        @for $m from 1 through 10 {
+          .cloud-#{$m} {
+            right: -3rem;
+            left: -3rem;
+            margin-top: 1.5rem;
+            top: (30 + $m * 14) + rem;
+            height: 0.3rem;
+            width: (10 + random(130) / 10) + rem;
+            background: lightskyblue;
+            border-radius: 0.3rem;
+            animation: cloud
+              (4 + random(4) / 10) +
+              s
+              linear
+              (random(10) / 10) +
+              s
+              infinite;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes car {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.03);
+  }
+}
+
+@keyframes street {
+  0% {
+    transform: translate3d(20rem, 0, 0) scaleX(1);
+  }
+  100% {
+    transform: translate3d(-50rem, 0, 0) scaleX(1.02);
+  }
+}
+
+@keyframes helicopter {
+  0% {
+    transform: translate3d(30rem, 0, 0) rotate(-10deg);
+  }
+  100% {
+    transform: translate3d(-50rem, -20rem, 0) rotate(-10deg);
+  }
+}
+
+@keyframes cloud {
+  0%,
+  100% {
+    transform: translate3d(30rem, 0, 0) scaleX(1);
+  }
+  50% {
+    transform: translate3d(-50rem, 0, 0) scaleX(0.5);
+  }
+}
