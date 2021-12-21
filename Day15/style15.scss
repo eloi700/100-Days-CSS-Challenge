@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+$background: linear-gradient(
+  45deg,
+  rgba(192, 190, 190, 0.616) 10%,
+  rgb(23, 121, 121) 90%,
+  rgb(2, 70, 70) 0%
+);
+$background-m: linear-gradient(
+  -90deg,
+  rgb(2, 70, 70) 92%,
+  rgba(192, 190, 190, 0.616) 0%
+);
+$direction: column;
+$text-color: rgb(192, 192, 192);
+$secondary-color: rgba(192, 190, 190, 0.616);
+$tertiary-color: rgb(23, 121, 121);
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  @include flex;
+
+  .container {
+    @include flex;
+    height: 40rem;
+    width: 40rem;
+    background: $background;
+    border-radius: 1rem;
+
+    .frame {
+      height: 30rem;
+      width: 30rem;
+      background: $background-m;
+      flex-direction: $direction;
+      border-radius: 1rem;
+      box-shadow: inset 0 -0.1rem 3rem rgba(7, 7, 7, 0.384),
+        inset -0.1rem 0.1rem 3rem rgba(1, 56, 56, 0.719);
+
+      .heading {
+        text-align: center;
+        padding-top: 3.5rem;
+        color: $text-color;
+        font-weight: 400;
+      }
+
+      .progress-bar {
+        position: relative;
+        top: -19%;
+        height: 28rem;
+        width: 2rem;
+        transform: rotate(180deg);
+        border-radius: 2rem;
+        padding: 0.3rem;
+        overflow: hidden;
+
+        & span {
+          display: block;
+          width: 100%;
+
+          & .progress.active {
+            background: linear-gradient(
+              135deg,
+              #92ffc0 30%,
+              rgb(4, 189, 189) 50%,
+              rgb(1, 43, 43)
+            );
+            animation: progressbar 5s ease-in-out;
+            animation-fill-mode: both;
+            border-radius: 2rem;
+          }
+        }
+
+        @keyframes progressbar {
+          from {
+            height: 0.5%;
+          }
+          to {
+            height: 100%;
+          }
+        }
+      }
+
+      .dropbox {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-right: 50%;
+        transform: translate(-50%, -50%);
+        width: 10rem;
+        height: 10rem;
+        border: 0.1rem dashed $secondary-color;
+        background: none;
+
+        &.is-dragover {
+          border-color: #666;
+          background: #eee;
+        }
+
+        .content {
+          display: table-cell;
+          vertical-align: middle;
+
+          .upload {
+            position: absolute;
+            font-size: 5rem;
+            color: $text-color;
+            top: calc(50% - 2.5rem);
+            left: calc(50% - 2.5rem);
+            pointer-events: none;
+          }
+
+          .filename {
+            @extend .upload;
+            top: calc(50% - 1rem);
+            left: 1rem;
+            font-size: 1.2rem;
+          }
+
+          input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            padding: 4rem 0;
+            font-size: 0.5rem;
+            overflow: none;
+            cursor: pointer;
+          }
+
+          .syncing {
+            @extend .upload;
+            opacity: 0;
+            pointer-events: none;
+
+            &.active {
+              animation: syncing 5s ease-in-out;
+            }
+          }
+
+          @keyframes syncing {
+            0% {
+              transform: rotate(0deg);
+            }
+            10% {
+              opacity: 1;
+            }
+            90% {
+              opacity: 1;
+            }
+            100% {
+              transform: rotate(360deg);
+              opacity: 0;
+            }
+          }
+
+          .done {
+            @extend .upload;
+            opacity: 0;
+            pointer-events: none;
+
+            &.active {
+              animation: done 1s ease-in 5s;
+              animation-fill-mode: both;
+              opacity: 1;
+            }
+
+            @keyframes done {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .upload-btn {
+        position: absolute;
+        top: 60vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0.5rem;
+        border: none;
+        font-family: "Poppins", sans-serif;
+        background: rgb(139, 138, 138);
+        box-shadow: 0.2rem 0.2rem 3rem rgba(0, 0, 0, 0.425);
+        color: rgb(228, 226, 226);
+        font-size: 1.2rem;
+        width: 10rem;
+        border-radius: 1rem;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          transform: translate(-50%, -50%) scale(1.2);
+          border-bottom: 0.5rem solid rgb(182, 181, 181);
+          border-left: 0.5rem solid rgb(182, 181, 181);
+          border-radius: 1.5rem;
+        }
+      }
+    }
+  }
+}

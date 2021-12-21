@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/up/css/style15.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Day 15 - Upload File Section</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="frame">
+        <h1 class="heading">Drop File to Upload</h1>
+        <div class="progress-bar">
+          <span style="height: 100%"><span class="progress"></span></span>
+        </div>
+        <div class="dropbox">
+          <div class="content">
+            <ion-icon name="cloud-upload" class="upload"></ion-icon>
+
+            <span class="filename"></span>
+            <input type="file" class="input" />
+
+            <ion-icon name="sync" class="syncing"></ion-icon>
+            <ion-icon name="cloud-done-outline" class="done"></ion-icon>
+          </div>
+        </div>
+
+        <button class="upload-btn">Upload File</button>
+      </div>
+    </div>
+
+    <!-- JavaSript File -->
+    <script src="app.js"></script>
+    <!-- <script src="15trial.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
