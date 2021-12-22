@@ -1,0 +1,353 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$primary-color: rgba(0, 0, 0, 0.651);
+$secondary-color: rgb(253, 116, 66);
+$sparkle-color: rgb(247, 142, 104);
+$direction: column;
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    height: 38rem;
+    width: 38rem;
+    box-shadow: -0.3rem 0.5rem 1.5rem rgba(0, 0, 0, 0.836);
+    border-radius: 2rem;
+    border: 0.3rem solid silver;
+    background: rgb(155, 43, 2);
+
+    .circle {
+      position: absolute;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+      background: $secondary-color;
+      animation: circle 5s ease-in-out infinite;
+    }
+
+    .circle-ring {
+      @extend .circle;
+      height: 11rem;
+      width: 11rem;
+      box-shadow: 0 0 3rem white;
+      animation: circle-ring 5s ease-in-out infinite;
+    }
+
+    .decagon {
+      width: 10rem;
+      height: 10rem;
+      position: absolute;
+      fill: $secondary-color;
+      animation: deca 5s ease-in-out infinite;
+    }
+
+    .triangle {
+      @extend .decagon;
+      animation: tri 5s ease-in-out infinite;
+    }
+
+    .star {
+      @extend .decagon;
+      animation: star 5s ease-in-out infinite;
+    }
+
+    .cross {
+      @extend .decagon;
+      animation: cross 5s ease-in-out infinite;
+    }
+  }
+
+  .deca-sparkles {
+    position: absolute;
+    width: 20rem;
+    height: 18rem;
+    animation: deca-sparkle 5s ease-in-out infinite;
+
+    .sparkle {
+      top: 0;
+      width: 0.5rem;
+      height: 2.5rem;
+    }
+
+    .s1 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 2rem;
+      left: 6rem;
+
+      transform: rotate(-15deg);
+    }
+
+    .s2 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 1rem;
+      left: 10rem;
+
+      transform: rotate(0);
+    }
+
+    .s3 {
+      @extend .s1;
+      left: 14rem;
+      transform: rotate(15deg);
+    }
+
+    .s4 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 6.5rem;
+      left: 2.5rem;
+
+      transform: rotate(90deg);
+    }
+
+    .s5 {
+      @extend .s4;
+      top: 9.5rem;
+    }
+
+    .s6 {
+      @extend .s4;
+      left: 16.5rem;
+    }
+
+    .s7 {
+      @extend .s5;
+      left: 16.5rem;
+    }
+
+    .s8 {
+      @extend .s2;
+      top: 15rem;
+      left: 9.5rem;
+    }
+    .s9 {
+      @extend .s1;
+      top: 14rem;
+      transform: rotate(15deg);
+    }
+    .s10 {
+      @extend .s3;
+      top: 14rem;
+      left: 13rem;
+      transform: rotate(-15deg);
+    }
+  }
+
+  .star-sparkles {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    animation: star-sparkle 5s ease-in-out infinite;
+
+    .sparkle {
+      top: 0;
+      width: 0.5rem;
+      height: 2.5rem;
+    }
+
+    .s1 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 1.5rem;
+      left: 9.8rem;
+
+      transform: rotate(0);
+    }
+    .s2 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 7.3rem;
+      left: 2.5rem;
+
+      transform: rotate(90deg);
+    }
+
+    .s3 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 7.3rem;
+      left: 17rem;
+
+      transform: rotate(90deg);
+    }
+
+    .s4 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 15rem;
+      left: 5rem;
+
+      transform: rotate(45deg);
+    }
+    .s5 {
+      position: absolute;
+      background: $sparkle-color;
+      top: 15rem;
+      left: 14rem;
+
+      transform: rotate(-45deg);
+    }
+  }
+
+  // Circle Animation
+
+  @keyframes circle {
+    0% {
+      transform: translateY(-30rem) scaleY(1.2);
+    }
+    10% {
+      transform: translateY(5rem) scaleY(0.8);
+    }
+    14% {
+      transform: translateY(-3rem) scaleY(1.1);
+    }
+    18% {
+      transform: translateY(1rem) scaleY(0.9);
+    }
+    20%,
+    22% {
+      transform: translate(0) scaleY(1);
+    }
+    26% {
+      transform: translate(0) scaleY(1.2);
+    }
+    32%,
+    74% {
+      transform: translate(0) scaleY(0);
+    }
+    80% {
+      transform: translate(0) scaleY(1.2);
+    }
+    84% {
+      transform: translate(0) scaleY(0.9);
+    }
+    86%,
+    88% {
+      transform: translate(0) scaleY(1);
+    }
+    92% {
+      transform: translate(0) scaleY(0.9);
+    }
+    100% {
+      transform: translate(0) scaleY(1.2);
+    }
+  }
+
+  @keyframes circle-ring {
+    0%,
+    74% {
+      transform: translate(0) scale(0);
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    84%,
+    100% {
+      transform: translate(0) scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  // Decagon Animation
+
+  @keyframes deca {
+    0%,
+    30% {
+      transform: translate(0) scale(0);
+    }
+    36% {
+      transform: translate(0) scale(1.2);
+    }
+    40% {
+      transform: translate(0) scale(0.9);
+    }
+    42%,
+    44% {
+      transform: translate(0) scale(1);
+    }
+    48% {
+      transform: translate(0) scale(1.2);
+    }
+    54%,
+    100% {
+      transform: translate(0) scale(0);
+    }
+  }
+
+  @keyframes deca-sparkle {
+    0%,
+    30% {
+      transform: translate(0) scale(0);
+      opacity: 1;
+    }
+    36% {
+      opacity: 1;
+    }
+    40%,
+    100% {
+      transform: translate(0) scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  //   Star Animation
+  @keyframes star {
+    0%,
+    52% {
+      transform: translate(0) scale(0);
+    }
+    58% {
+      transform: translate(0) scale(1.2);
+    }
+    62% {
+      transform: translate(0) scale(0.9);
+    }
+    64%,
+    66% {
+      transform: translate(0) scale(1);
+    }
+    70% {
+      transform: translate(0) scale(1.2);
+    }
+    76%,
+    100% {
+      transform: translate(0) scale(0);
+    }
+  }
+
+  @keyframes star-sparkle {
+    0%,
+    52% {
+      transform: translate(0) scale(0);
+      opacity: 1;
+    }
+    58% {
+      opacity: 1;
+    }
+    62%,
+    100% {
+      transform: translate(0) scale(1.4);
+      opacity: 0;
+    }
+  }
+}
