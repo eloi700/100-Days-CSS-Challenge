@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+$primary-color: #131313;
+$primary-color-m: #66fa03;
+$secondary-color: rgba(209, 207, 207, 0.596);
+$secondary-color-m: #64f801a8;
+$tertiary-color: rgba(114, 113, 113, 0.253);
+$tertiary-color-m: #64f80154;
+
+html {
+  font-size: 10px;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .container {
+    @include flex;
+    height: 38rem;
+    width: 38rem;
+    background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+      linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+      linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+      linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+      linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+      linear-gradient(
+        #1d1d1d 25%,
+        #1a1a1a 25%,
+        #1a1a1a 50%,
+        transparent 50%,
+        transparent 75%,
+        #242424 75%,
+        #242424
+      );
+    background-color: #131313;
+    background-size: 20px 20px;
+    border-radius: 1rem;
+
+    .frame {
+      height: 30rem;
+      width: 25rem;
+      background: $tertiary-color;
+      box-shadow: 0 0 1rem $primary-color;
+      border-radius: 1rem;
+      transform: rotate(-10deg) scale(1.2);
+      transition: 1s ease-in-out;
+
+      &:hover {
+        transform: rotate(0) scale(1);
+      }
+
+      .polygon {
+        position: absolute;
+        top: 53%;
+        left: 60%;
+        margin-right: 50%;
+        transform: translate(-50%, -50%) rotateY(10deg);
+        width: 25rem;
+        height: 25rem;
+        transition: 3s ease-in-out;
+        perspective: 20rem;
+        transform-style: preserve-3d;
+
+        &:hover {
+          transform: translate(-50%, -50%) rotateY(-360deg) scale(0.8);
+        }
+
+        .light {
+          fill: $secondary-color-m;
+          stroke: rgba(209, 207, 207, 0.596);
+          transition: all 0.5s ease-in-out;
+        }
+
+        .middle {
+          fill: $tertiary-color-m;
+          stroke: rgba(209, 207, 207, 0.596);
+          transition: all 0.5s ease-in-out;
+        }
+
+        .dark {
+          fill: $tertiary-color-m;
+          stroke: rgba(209, 207, 207, 0.596);
+          transition: all 0.5s ease-in-out;
+        }
+
+        &:hover {
+          .light {
+            fill: $tertiary-color-m;
+          }
+
+          .middle {
+            fill: $primary-color-m;
+          }
+
+          .dark {
+            fill: $secondary-color-m;
+          }
+        }
+      }
+    }
+  }
+}
