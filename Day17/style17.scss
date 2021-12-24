@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
 
 $primary-color: #131313;
@@ -55,6 +55,8 @@ body {
       border-radius: 1rem;
       transform: rotate(-10deg) scale(1.2);
       transition: 1s ease-in-out;
+      perspective: 20rem;
+      transform-style: preserve-3d;
 
       &:hover {
         transform: rotate(0) scale(1);
@@ -65,7 +67,7 @@ body {
         top: 53%;
         left: 60%;
         margin-right: 50%;
-        transform: translate(-50%, -50%) rotateY(10deg);
+        transform: translate(-50%, -50%) rotateZ(10deg);
         width: 25rem;
         height: 25rem;
         transition: 3s ease-in-out;
@@ -73,7 +75,7 @@ body {
         transform-style: preserve-3d;
 
         &:hover {
-          transform: translate(-50%, -50%) rotateY(-360deg) scale(0.8);
+          transform: translate(-50%, -50%) rotateZ(360deg) scale(0.8);
         }
 
         .light {
