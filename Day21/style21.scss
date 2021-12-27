@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg: rgb(207, 207, 6);
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    position: relative;
+    background: $bg;
+    height: 38rem;
+    width: 38rem;
+    border-radius: 2rem;
+    overflow: hidden;
+
+    .pacman {
+      position: absolute;
+      width: 16rem;
+      height: 16rem;
+      z-index: 5;
+      border-radius: 50%;
+      border-left: 0.5rem solid rgb(104, 128, 0);
+      filter: drop-shadow(-0.3rem 0.1rem 0.5rem rgba(8, 8, 8, 0.61))
+        drop-shadow(0.2rem -0.3rem 0.5rem rgba(5, 5, 5, 0.534));
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 16rem;
+        top: 0;
+        height: 8rem;
+        background: $bg;
+        border-radius: 8rem 8rem 0 0;
+        transition: 1s ease-in-out;
+        transform-origin: bottom center;
+        transform: rotate(-25deg);
+        animation: lip-up 1s ease infinite;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 16rem;
+        top: 8rem;
+        height: 8rem;
+        background: $bg;
+        border-radius: 0 0 8rem 8rem;
+        transition: 1s ease-in-out;
+        transform-origin: top center;
+        transform: rotate(25deg);
+        animation: lip-down 1s ease infinite;
+      }
+
+      .eye {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        z-index: 8;
+        top: 23%;
+        left: 64%;
+        margin-right: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        box-shadow: inset 0.5rem -0.5rem 2rem rgba(0, 0, 0, 0.582);
+
+        .eyeball {
+          @extend .eye;
+          width: 1rem;
+          height: 1rem;
+          top: 50%;
+          left: 50%;
+          margin-right: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          animation: enlarge 1.5s ease-in-out infinite;
+        }
+      }
+    }
+
+    .food-line {
+      @include flex;
+      position: absolute;
+      width: 50%;
+      height: 5rem;
+      transform: translateX(50%);
+      overflow: hidden;
+
+      .food {
+        @include flex;
+        position: relative;
+        flex-direction: row;
+        gap: 5rem;
+        font-size: 3rem;
+        top: 10%;
+        left: 40%;
+        animation: essen 5s linear infinite;
+
+        i.fas:nth-child(1) {
+          color: green;
+        }
+
+        i.fas:nth-child(2) {
+          color: rgb(199, 9, 9);
+        }
+        i.fas:nth-child(3) {
+          color: rgb(255, 230, 0);
+        }
+        i.fas:nth-child(4) {
+          color: rgb(7, 222, 250);
+        }
+        i.fas:nth-child(5) {
+          color: orangered;
+        }
+      }
+    }
+
+    @keyframes lip-up {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(-25deg);
+      }
+    }
+
+    @keyframes lip-down {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(50deg);
+      }
+    }
+
+    @keyframes enlarge {
+      0%,
+      100% {
+        transform: scale(1.2);
+      }
+      50% {
+        transform: translateZ(1rem) scale(1.8);
+      }
+    }
+
+    @keyframes essen {
+      0% {
+        transform: translate(10rem);
+      }
+      100% {
+        transform: translate(-120%);
+      }
+    }
+  }
+}
