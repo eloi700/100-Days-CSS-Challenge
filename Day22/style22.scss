@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -18,9 +16,10 @@ html {
 
 $font: "Raleway", Helvetica, sans-serif;
 $fcolor: white;
+$fcolor-count: rgb(2, 51, 2);
 $bcolor: forestgreen;
-$bgcolor: rgba(255, 255, 255, 0.26);
-$pcolor: #fff;
+$bgcolor: rgba(246, 250, 250, 0.568);
+$shadow: drop-shadow(0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.616));
 
 body {
   display: flex;
@@ -29,6 +28,7 @@ body {
   min-height: 100vh;
 
   .frame {
+    @include flex;
     position: relative;
     display: flex;
     justify-content: start;
@@ -39,102 +39,169 @@ body {
     background: $bcolor;
     border-radius: 1rem;
 
-    & .title {
-      position: absolute;
-      top: 2rem;
-    }
-
     & .small {
+      position: absolute;
       font-family: $font;
+      text-align: center;
       font-size: 2rem;
       color: $fcolor;
       font-weight: 300;
-      letter-spacing: 0.2rem;
+      top: 4rem;
     }
 
     & .big {
+      @extend .small;
       text-transform: uppercase;
-      padding-top: 1rem;
+      padding-top: 3rem;
       font-weight: bold;
       font-size: 3rem;
-      left: -3rem;
     }
 
-    & .calories {
-      @include flex;
-      position: relative;
+    & .mid-circle {
+      fill: $bgcolor;
+      stroke-width: 1rem;
+      position: absolute;
       width: 13rem;
       height: 13rem;
-      border-radius: 50%;
-      border: 2rem solid $bcolor;
+      top: 50%;
+      left: 50%;
+      margin-right: 50%;
+      transform: translate(-50%, -50%);
+      filter: $shadow contrast(1.75);
+
+      .mid-count {
+        position: absolute;
+        top: 43%;
+        left: 44%;
+        transform: translate(-44%, -55%);
+        font-size: 2rem;
+        color: $fcolor;
+        font-family: $font;
+        font-family: $font;
+        font-weight: 600;
+        filter: contrast(24);
+      }
+
+      .mid-text {
+        position: absolute;
+        top: 55%;
+        left: 44%;
+        transform: translate(-44%, -55%);
+        font-size: 1.5rem;
+        font-family: $font;
+        color: $fcolor;
+        font-weight: 300;
+        line-height: 2.5rem;
+      }
+
+      & svg {
+        @include flex;
+        position: absolute;
+
+        .progress {
+          fill: none;
+          stroke-width: 1rem;
+          stroke: $bcolor;
+          stroke-linecap: round;
+          stroke-dasharray: 220;
+          stroke-dashoffset: 50;
+          transform: rotate(-90deg);
+          transform-origin: center;
+          animation: big 1.5s ease-out;
+        }
+      }
+    }
+
+    .small-circles {
+      fill: $bgcolor;
+      position: relative;
+      width: 15rem;
+      height: 15rem;
+      top: 60%;
+      filter: $shadow contrast(1.75);
+    }
+
+    .cs {
+      position: absolute;
+      width: 11rem;
+      height: 11rem;
+    }
+
+    .left-circle {
+      margin-left: -8rem;
+    }
+
+    .right-circle {
+      margin-left: 12rem;
+    }
+
+    .progress {
+      fill: none;
+      stroke-width: 1rem;
+      stroke: $bcolor;
+      stroke-linecap: round;
+      transform: rotate(-90deg);
+      transform-origin: center;
+
+      &.one {
+        stroke-dashoffset: 40;
+        stroke-dasharray: 220;
+        animation: one 1.5s ease-out;
+      }
+
+      &.two {
+        stroke-dashoffset: 80;
+        stroke-dasharray: 220;
+        animation: two 1.5s ease-out;
+      }
+    }
+
+    .left-count,
+    .right-count {
+      position: absolute;
+      top: 40%;
+      left: 44%;
+      transform: translate(-44%, -55%);
+      font-size: 1.5rem;
+      color: $fcolor-count;
+      font-family: $font;
+    }
+
+    .left-text,
+    .right-text {
+      position: absolute;
+      top: 55%;
+      left: 44%;
+      transform: translate(-44%, -55%);
+      font-size: 1.5rem;
       color: $fcolor;
       font-family: $font;
-      font-size: 1.5rem;
-      background: $bgcolor;
-      top: 43%;
-      left: 18%;
-      text-align: center;
-      transform: translate(-50%, -50%);
-      box-shadow: -0.5rem -0.3rem 1rem rgba(0, 0, 0, 0.63),
-        inset -0.1rem -0.3rem 1rem rgb(0, 0, 0);
+    }
 
-      &::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        border: 1.5rem dashed transparent;
-        stroke-dashoffset: (52 * 2 * 3.14);
-        top: -1.5rem;
-        left: -1.5rem;
-        transition: 0.5s ease-in-out;
-        transform-origin: top center;
-        // animation: c-progress 0.5s forwards;
+    @keyframes big {
+      from {
+        stroke-dashoffset: (45 * 2 * 3.14);
+      }
+      to {
+        stroke-dashoffset: 60;
       }
     }
 
-    & .steps {
-      @extend .calories;
-      width: 12rem;
-      height: 12rem;
-      text-align: center;
-      font-size: 1.5rem;
-      top: 75%;
-      left: 25%;
-
-      & .steps-progress {
-        // @extend .calories-progress;
-        width: 11rem;
-        height: 11rem;
-        animation: s-progress 0.5s forwards;
+    @keyframes one {
+      from {
+        stroke-dashoffset: (45 * 2 * 3.14);
       }
-    }
-
-    & .km {
-      @extend .calories;
-      width: 12rem;
-      height: 12rem;
-      font-size: 1.5rem;
-      text-align: center;
-      top: 75%;
-      left: 75%;
-
-      & .km-progress {
-        // @extend .calories-progress;
-        width: 11rem;
-        height: 11rem;
-        animation: k-progress 0.5s forwards;
-      }
-    }
-
-    @keyframes c-progress {
-      0% {
-        stroke-dashoffset: (37 * 2 * 3.14);
-      }
-
-      100% {
+      to {
         stroke-dashoffset: 80;
+      }
+    }
+
+    @keyframes two {
+      from {
+        stroke-dashoffset: (45 * 2 * 3.14);
+      }
+      to {
+        stroke-dashoffset: 140;
       }
     }
   }

@@ -1,10 +1,19 @@
-let number = document.querySelector(".calories-progress");
-let counter = 0;
-setInterval(() => {
-  if (counter == 65) {
-    clearInterval();
-  } else {
-    counter += 1;
-    number.innerHTML = counter;
-  }
-}, 30);
+const calories = document.querySelector(".mid-count");
+const steps = document.querySelector(".left-count");
+const km = document.querySelector(".right-count");
+
+function progress(element, finalValue, timeInterval) {
+  let counter = 0;
+  setInterval(() => {
+    if (counter == finalValue) {
+      clearInterval();
+    } else {
+      counter += 1;
+      element.innerHTML = counter;
+    }
+  }, timeInterval);
+}
+
+progress(calories, 80, 30);
+progress(steps, 1080, 0.1);
+progress(km, 3, 60);

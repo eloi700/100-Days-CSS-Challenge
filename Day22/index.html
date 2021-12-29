@@ -14,31 +14,39 @@
   </head>
   <body>
     <div class="frame">
-      <h1 class="title small">
-        Your Daily
-        <div class="title big">Progress</div>
-      </h1>
+      <h3 class="title small">Your Daily</h3>
+      <h3 class="title big">Progress</h3>
 
-      <div class="calories circle">
-        <div class="calories-progress"></div>
-        <br />
-        <div class="calories-count"></div>
-        <br />
-        <!-- <span class="calories-count"></span> -->
-        <p class="calories-text">kcal</p>
+      <!-- Middle Circle -->
+      <div class="mid-circle">
+        <div class="mid-count"></div>
+        <div class="mid-text">kcal</div>
+        <svg viewBox="0 0 100 100">
+          <circle class="circle" cx="45" cy="45" r="45" />
+          <circle class="progress" cx="55" cy="45" r="35" />
+        </svg>
       </div>
 
-      <!-- <div class="steps circle">
-        <div class="steps-progress"></div>
-        <span class="steps-count"></span>
-        <p class="steps-text"></p>steps</p>
-      </div>
+      <!-- Small Circles -->
+      <div class="small-circles">
+        <div class="cs left-circle">
+          <div class="left-count"></div>
+          <div class="left-text">steps</div>
+          <svg viewBox="0 0 100 100">
+            <circle class="circle" cx="45" cy="45" r="45" />
+            <circle class="progress one" cx="55" cy="45" r="35" />
+          </svg>
+        </div>
 
-      <div class="km circle">
-        <div class="km-progress"></div>
-        <span class="km-count"></span>
-        <p class="km-text"></p>km</p>
-      </div> -->
+        <div class="cs right-circle">
+          <div class="right-count"></div>
+          <div class="right-text">km</div>
+          <svg viewBox="0 0 100 100">
+            <circle class="circle" cx="45" cy="45" r="45" />
+            <circle class="progress two" cx="55" cy="45" r="35" />
+          </svg>
+        </div>
+      </div>
     </div>
 
     <script src="day22.js"></script>
