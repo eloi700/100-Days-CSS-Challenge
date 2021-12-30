@@ -8,12 +8,12 @@ function progress(element, finalValue, timeInterval) {
     if (counter == finalValue) {
       clearInterval();
     } else {
-      counter += 1;
+      counter += 3;
       element.innerHTML = counter;
     }
   }, timeInterval);
 }
 
-progress(calories, 80, 30);
+progress(calories, 150, 30);
 progress(steps, 1080, 0.1);
 progress(km, 3, 60);
