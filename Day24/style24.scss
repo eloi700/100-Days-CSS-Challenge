@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+$font: "Raleway", Helvetica, sans-serif;
+$primary-color: rgb(253, 73, 7);
+$secondary-color: #fff;
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    position: relative;
+    height: 38rem;
+    width: 38rem;
+    border-radius: 1rem;
+    background: black;
+
+    input[type="checkbox"] {
+      visibility: hidden;
+    }
+
+    .finish {
+      position: absolute;
+      @include flex;
+      font-family: $font;
+      font-size: 3rem;
+      color: $secondary-color;
+      font-weight: 600;
+      height: 8rem;
+      width: 18rem;
+      border: 0.2rem solid $primary-color;
+      border-radius: 1rem 0 1rem 0;
+      cursor: pointer;
+      transition: 0.8s ease-in-out;
+
+      &:hover {
+        transform: rotate(-5deg);
+        background: rgb(250, 158, 124);
+        box-shadow: -0.5rem 0.5rem $primary-color;
+        color: rgb(68, 68, 68);
+      }
+
+      &.active {
+        color: transparent;
+        height: 8rem;
+        width: 8rem;
+        border-radius: 50%;
+        background: none;
+        border: 0.2rem solid $secondary-color;
+        transform: scale(1);
+        transition: 0.5s ease-in-out;
+        animation: glow 3s ease-in-out;
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        80% {
+          transform: scale(0);
+        }
+      }
+
+      .fas {
+        position: absolute;
+        font-size: 3rem;
+        color: $secondary-color;
+        opacity: 0;
+
+        &.active {
+          opacity: 1;
+          animation: check 3s ease-in-out;
+        }
+      }
+
+      .circle {
+        position: absolute;
+        height: 8rem;
+        width: 8rem;
+        stroke-dasharray: 282;
+        stroke: $primary-color;
+        stroke-linecap: round;
+        fill: none;
+        stroke-width: 0.3rem;
+        opacity: 0;
+        transform-origin: 50% center;
+        transition: 0.5s ease-in-out;
+
+        &.active {
+          opacity: 1;
+          animation: rotate 3s forwards;
+        }
+      }
+    }
+  }
+
+  @keyframes rotate {
+    0%,
+    80% {
+      stroke-dasharray: 282;
+      stroke-dashoffset: 282;
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 280;
+      stroke-dasharray: 70;
+      opacity: 1;
+    }
+  }
+
+  @keyframes check {
+    0%,
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
