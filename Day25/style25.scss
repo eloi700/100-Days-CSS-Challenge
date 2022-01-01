@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+$font: "Montserrat", sans-serif;
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    overflow: hidden;
+    background: rgba(3, 56, 56, 0.507);
+    border-radius: 1rem 1rem 0 0;
+
+    & .map {
+      position: absolute;
+      height: 38rem;
+      width: 38rem;
+      border-radius: 1rem;
+    }
+
+    & .marker {
+      @include flex;
+      position: absolute;
+      height: 8rem;
+      width: 9rem;
+      z-index: 5;
+      cursor: pointer;
+      transform: perspective(100rem) rotateY(0deg);
+      opacity: 1;
+      transition: all 0.5s ease 0.4s;
+
+      &.inactive {
+        transform: perspective(100rem) rotateY(-90deg);
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      & i.fas {
+        font-size: 8rem;
+        color: rgb(236, 68, 101);
+        transform: translateY(0) scale(1);
+        backface-visibility: hidden;
+        transition: 3s ease-in-out;
+        animation: hover 3s ease-in-out infinite;
+
+        &.active {
+          transform: rotate3d(180deg);
+        }
+      }
+
+      & .shadow {
+        position: absolute;
+        height: 0.5rem;
+        width: 2rem;
+        bottom: -2.5rem;
+        border-radius: 50%;
+        background: rgba(161, 161, 161, 0.397);
+        animation: shadow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes hover {
+        0%,
+        100% {
+          transform: translateY(1rem) scale(0.9);
+        }
+        50% {
+          transform: translateY(1.5rem) scale(1);
+        }
+      }
+
+      @keyframes shadow {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.5);
+        }
+      }
+    }
+
+    & .card {
+      @include flex;
+      position: absolute;
+      flex-direction: column;
+      height: auto;
+      width: auto;
+      font-family: $font;
+      font-size: 1.5rem;
+      background: white;
+      box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.384),
+        -0.3rem -0.3rem 0.5rem rgba(0, 0, 0, 0.363);
+      backface-visibility: hidden;
+      transform: perspective(100rem) rotateY(90deg);
+      transition: all 0.4s ease-in-out 0.1s;
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+        transform: perspective(100rem) rotateY(0);
+        pointer-events: all;
+        transition: all 0.4s ease-in-out 0.1s;
+      }
+
+      & .name {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 1.5rem 1.5rem 0 1.5rem;
+      }
+
+      & .address {
+        letter-spacing: 0.2rem;
+        line-height: 2rem;
+        padding-bottom: 1.5rem;
+      }
+
+      & .actions {
+        display: flex;
+        align-content: space-evenly;
+
+        & a {
+          text-decoration: none;
+          padding: 1.5rem 4rem;
+          color: crimson;
+
+          &:hover {
+            font-weight: 800;
+          }
+
+          &.save::after {
+            @include flex;
+            position: absolute;
+            content: "";
+            height: 2.5rem;
+            width: 0.3rem;
+            background: crimson;
+            left: 47%;
+            top: 85%;
+          }
+        }
+      }
+    }
+  }
+}
