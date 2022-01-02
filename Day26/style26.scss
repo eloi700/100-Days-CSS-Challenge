@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card-number {
+  position: absolute;
+  color: white;
+  z-index: 10;
+  font-size: 3rem;
+  font-family: $font;
+  left: 90%;
+  top: 0;
+}
+
+$font: "Poppins", sans-serif;
+$prime-color: rgb(255, 167, 2);
+$tcolor: rgb(224, 224, 224);
+$tcolor-m: rgb(253, 196, 91);
+$bgd: rgb(150, 49, 46);
+
+body {
+  @include flex;
+  min-height: 100vh;
+  font-family: $font;
+
+  .frame {
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    background-color: hsl(2, 57%, 40%);
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 50px,
+        rgba(0, 0, 0, 0.4) 50px,
+        rgba(0, 0, 0, 0.4) 53px,
+        transparent 53px,
+        transparent 63px,
+        rgba(0, 0, 0, 0.4) 63px,
+        rgba(0, 0, 0, 0.4) 66px,
+        transparent 66px,
+        transparent 116px,
+        rgba(0, 0, 0, 0.5) 116px,
+        rgba(0, 0, 0, 0.5) 166px,
+        rgba(255, 255, 255, 0.2) 166px,
+        rgba(255, 255, 255, 0.2) 169px,
+        rgba(0, 0, 0, 0.5) 169px,
+        rgba(0, 0, 0, 0.5) 179px,
+        rgba(255, 255, 255, 0.2) 179px,
+        rgba(255, 255, 255, 0.2) 182px,
+        rgba(0, 0, 0, 0.5) 182px,
+        rgba(0, 0, 0, 0.5) 232px,
+        transparent 232px
+      ),
+      repeating-linear-gradient(
+        270deg,
+        transparent,
+        transparent 50px,
+        rgba(0, 0, 0, 0.4) 50px,
+        rgba(0, 0, 0, 0.4) 53px,
+        transparent 53px,
+        transparent 63px,
+        rgba(0, 0, 0, 0.4) 63px,
+        rgba(0, 0, 0, 0.4) 66px,
+        transparent 66px,
+        transparent 116px,
+        rgba(0, 0, 0, 0.5) 116px,
+        rgba(0, 0, 0, 0.5) 166px,
+        rgba(255, 255, 255, 0.2) 166px,
+        rgba(255, 255, 255, 0.2) 169px,
+        rgba(0, 0, 0, 0.5) 169px,
+        rgba(0, 0, 0, 0.5) 179px,
+        rgba(255, 255, 255, 0.2) 179px,
+        rgba(255, 255, 255, 0.2) 182px,
+        rgba(0, 0, 0, 0.5) 182px,
+        rgba(0, 0, 0, 0.5) 232px,
+        transparent 232px
+      ),
+      repeating-linear-gradient(
+        125deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 3px,
+        transparent 3px,
+        transparent 5px,
+        rgba(0, 0, 0, 0.2) 5px
+      );
+
+    border-radius: 1rem;
+
+    .title {
+      text-align: center;
+      padding: 2rem 0 2rem 0;
+      color: $tcolor;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-bottom: 5rem;
+      border-bottom: 0.2rem solid $prime-color;
+    }
+
+    .quotations {
+      position: relative;
+      top: 25%;
+      left: 50%;
+      margin-right: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+      height: 25rem;
+      width: 32rem;
+
+      .quote-1 {
+        position: absolute;
+        @include flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(45deg, brown 85%, $prime-color 10%);
+        border-radius: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s ease;
+        animation: swipe-out 0.5s ease-in-out;
+
+        &::before {
+          @include card-number;
+          content: "1";
+        }
+
+        &.active {
+          opacity: 1;
+          pointer-events: initial;
+          transition: 0.5s ease;
+          animation: change 0.5s ease-in-out;
+        }
+      }
+
+      .quote-2 {
+        @extend .quote-1;
+        opacity: 0;
+        pointer-events: none;
+
+        &::before {
+          @include card-number;
+          content: "2";
+        }
+
+        &.active {
+          opacity: 1;
+          pointer-events: initial;
+        }
+      }
+
+      .quote-3 {
+        @extend .quote-1;
+        opacity: 0;
+        pointer-events: none;
+
+        &::before {
+          @include card-number;
+          content: "3";
+        }
+
+        &.active {
+          opacity: 1;
+          pointer-events: initial;
+        }
+      }
+
+      .quote-4 {
+        @extend .quote-1;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s ease;
+        animation: swipe-out 0.5s ease-in-out;
+
+        &::before {
+          @include card-number;
+          content: "4";
+        }
+
+        &.active {
+          opacity: 1;
+          pointer-events: initial;
+          transition: 0.5 ease;
+          animation: change 0.5 ease-in-out;
+        }
+      }
+
+      .quote-5 {
+        @extend .quote-1;
+        opacity: 0;
+        pointer-events: none;
+
+        &::before {
+          @include card-number;
+          content: "5";
+        }
+        &.active {
+          opacity: 1;
+          pointer-events: initial;
+        }
+      }
+
+      .verse {
+        font-size: 2rem;
+        padding-bottom: 1.5rem;
+        color: $tcolor-m;
+        letter-spacing: 0.1rem;
+      }
+
+      .para {
+        font-size: 1.5rem;
+        margin: 0 1rem;
+        text-align: center;
+        color: $tcolor;
+      }
+    }
+
+    input[type="button"] {
+      display: none;
+    }
+
+    .button {
+      position: absolute;
+      left: 1rem;
+      bottom: 0.5rem;
+      padding: 0.5rem 3rem;
+      border: 0.3rem solid $prime-color;
+      border-radius: 1rem 0 1rem 0;
+      font-family: $font;
+      font-size: 1.2rem;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background: $tcolor-m;
+        color: brown;
+        font-weight: 800;
+      }
+    }
+
+    @keyframes change {
+      0% {
+        transform: scale(0.5) rotateY(-5deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes swipe-out {
+      0% {
+        transform: rotateZ(0);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: rotateZ(-180deg);
+        opacity: 0;
+      }
+    }
+  }
+}
