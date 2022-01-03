@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Oregano&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+$font: "Oregano", cursive;
+$tcolor: rgb(228, 228, 228);
+$tcolor-m: rgb(1, 255, 1);
+$bgcolor-m: rgba(75, 75, 75, 0.342);
+$bg: rgb(243, 243, 243);
+$green: rgb(185, 255, 129);
+$transition-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+  font-family: $font;
+
+  .container {
+    position: relative;
+    @include flex;
+    height: 40rem;
+    width: 40rem;
+    background: radial-gradient(black 15%, transparent 16%) 0 0,
+      radial-gradient(black 15%, transparent 16%) 8px 8px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px;
+    border-radius: 1rem;
+
+    .frame {
+      @include flex;
+      position: relative;
+      flex-direction: column;
+      background: transparent;
+      color: $tcolor;
+      height: 35rem;
+      width: 35rem;
+      filter: drop-shadow(0.2rem 0.2rem 1rem rgba(10, 10, 10, 0.815))
+        contrast(25);
+      border: 0.5rem solid rgba(128, 255, 0, 0.575);
+      box-shadow: inset -0.1rem 0rem 1rem rgba(128, 255, 0, 0.747),
+        inset 0rem -0.2rem 1rem rgba(128, 255, 0, 0.747);
+      border-radius: 3rem 0 3rem 0;
+
+      .title {
+        position: absolute;
+        top: 0;
+        padding-top: 2rem;
+        font-size: 2rem;
+        font-weight: 300;
+        word-spacing: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .author {
+        position: absolute;
+        top: 4.5rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.4rem;
+        color: $tcolor-m;
+      }
+
+      .separator {
+        position: absolute;
+        width: 70%;
+        height: 0.1rem;
+        background: $tcolor;
+        top: 7.5rem;
+      }
+
+      .checklist {
+        position: relative;
+        top: 30%;
+        left: 5%;
+        height: 30rem;
+        width: 30rem;
+        font-size: 1.7rem;
+
+        //   Hiding the Default Checkbox
+        input {
+          position: absolute;
+          opacity: 0;
+
+          &:checked ~ .checkmark {
+            background-color: $tcolor;
+            text-decoration: line-through;
+          }
+
+          &:checked ~ .checkmark:after {
+            display: block;
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: 50%;
+            background: chartreuse;
+            text-decoration: none;
+          }
+        }
+
+        .checkmark {
+          content: "";
+          display: block;
+          color: $tcolor-m;
+          margin-bottom: 1.5rem;
+          cursor: pointer;
+          height: 2.5rem;
+          width: 2.5rem;
+          border-radius: 50%;
+          background: chartreuse;
+
+          & .text {
+            position: absolute;
+            color: $tcolor;
+            opacity: 0.8;
+            width: 100%;
+            height: 100%;
+            left: 5rem;
+          }
+
+          //   & .main {
+          //     position: absolute;
+          //     @include flex;
+          //     bottom: 3rem;
+          //   }
+        }
+      }
+    }
+  }
+}
