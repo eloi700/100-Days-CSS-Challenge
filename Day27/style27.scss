@@ -123,7 +123,7 @@ body {
           width: 1.5rem;
           height: 1.5rem;
           top: -2rem;
-          border: 1rem solid chartreuse;
+          border: 1rem solid silver;
           border-radius: 50%;
           cursor: pointer;
           transition: all 0.4s ease-out 0.5s;
@@ -131,13 +131,11 @@ body {
 
         .checkmark {
           position: absolute;
-          top: 0.4rem;
+          top: 0.3rem;
+          left: 95%;
           right: 0;
-          stroke: yellow;
-          fill: none;
-          stroke-width: 20;
-          stroke-dasharray: 20 20;
-          stroke-dashoffset: 20;
+          stroke: 3;
+          fill: silver;
           transition: all 0.5s ease-out;
         }
 
@@ -146,7 +144,7 @@ body {
 
           &:checked ~ .text,
           &:checked ~ .text > .addl-text {
-            color: yellowgreen;
+            color: greenyellow;
             text-decoration: line-through;
           }
 
@@ -158,7 +156,7 @@ body {
 
           &:checked ~ .checkmark {
             stroke-dashoffset: 0;
-            transition: all 0.5s ease-out 0.4s;
+            transition: all 0.5s ease-out 0.1s;
           }
         }
       }
