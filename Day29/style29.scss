@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+@mixin margin {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    border: 0.3rem solid lightgray;
+    filter: drop-shadow(0 0 1rem white);
+    border-radius: 1rem;
+    box-shadow: 0.2rem -0.2rem 1rem rgba(128, 128, 128, 0.582),
+      -0.2rem 0.2rem 1rem rgba(128, 128, 128, 0.568);
+
+    .logo {
+      @include margin;
+      top: 40%;
+      position: absolute;
+    }
+
+    .bar {
+      @include margin;
+      top: 50%;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+
+      .search {
+        background-position: 1rem 0.8rem;
+        font-size: 1rem;
+        text-align: left;
+        border: none;
+        border-bottom: 0.1rem solid rgb(206, 205, 205);
+        border-radius: 3rem;
+        outline: none;
+        padding: 0.3rem 0.5rem 0.3rem 2rem;
+        width: 30rem;
+        color: gray;
+
+        &:focus {
+          outline: 0.1rem solid #ddd;
+        }
+
+        &::placeholder {
+          font-size: 1rem;
+          opacity: 0.5rem;
+        }
+
+        &:focus::placeholder {
+          opacity: 0;
+        }
+      }
+
+      .fa-microphone {
+        position: relative;
+        color: gray;
+        left: -2rem;
+        z-index: 5;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(250, 60, 60);
+        }
+      }
+
+      .fa-search {
+        @extend .fa-microphone;
+        z-index: 6;
+        left: 2rem;
+
+        &:hover {
+          color: gray;
+        }
+      }
+    }
+
+    .suggested-list {
+      @include margin;
+      position: relative;
+      background-color: #f6f6f6;
+      width: 30rem;
+      height: 10rem;
+      overflow: auto;
+      top: 65%;
+      z-index: 8;
+      display: none;
+
+      & a {
+        color: gray;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        display: block;
+        font-size: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 50%;
+
+        &:hover {
+          color: orange;
+        }
+      }
+    }
+
+    .show {
+      display: block;
+    }
+  }
+}
