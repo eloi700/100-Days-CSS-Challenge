@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$primary-color: rgb(199, 199, 199);
+$bg-color: rgb(250, 164, 4);
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    position: relative;
+    background-image: linear-gradient(360deg, #71729e 10%, #0a04ad 100%);
+    height: 40rem;
+    width: 40rem;
+    box-shadow: 0.2rem -0.2rem 1rem rgba(180, 180, 180, 0.603),
+      -0.2rem 0.2rem 1rem rgba(180, 180, 180, 0.603);
+    border-radius: 1rem;
+
+    h1 {
+      position: absolute;
+      top: 2rem;
+      text-transform: uppercase;
+      color: rgb(157, 157, 230);
+      font-size: 3rem;
+      font-weight: bold;
+      padding: 0 0.5rem;
+      box-shadow: 0.1rem 0.1rem 0.2rem rgb(180, 180, 180);
+      border-bottom: 0.1rem solid rgb(180, 180, 180);
+      border-radius: 0.3rem;
+    }
+
+    .heart {
+      position: absolute;
+      top: 53%;
+      font-size: 6rem;
+      color: rgb(157, 157, 230);
+      animation: heartbeat 1s infinite;
+    }
+
+    .polypath {
+      position: relative;
+      fill: none;
+      top: 2rem;
+      //   stroke: rgb(1, 255, 255);
+      stroke: rgb(0, 0, 255);
+      stroke-width: 1rem;
+      stroke-linecap: round;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: crown 6s linear infinite;
+      filter: drop-shadow(0.1rem 0.1rem 0.3rem rgb(180, 180, 180));
+    }
+  }
+}
+@keyframes crown {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
