@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg-color: rgb(0, 98, 128);
+$dots-color: #000;
+$duration: 60;
+$dots-number: 20;
+$oscillations: 40;
+
+body {
+  @extend %flex;
+  min-height: 100vh;
+
+  .frame {
+    @extend %flex;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    background: $bg-color;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.514);
+
+    .dots {
+      position: absolute;
+      margin: 3rem 0;
+      perspective: 12rem;
+
+      .dot {
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        background: $dots-color;
+        box-shadow: -0.1rem 0 0.1rem rgba(0, 0, 0, 0.664),
+          0 -0.1rem 0.1rem rgba(0, 0, 0, 0.623);
+      }
+    }
+
+    @for $i from 1 through $dots-number {
+      $time: $duration / ($oscillations + $dots-number - $i);
+      .dot-#{$i} {
+        animation: dot-in-action ($time * 2000) + ms ease-in-out infinite;
+      }
+    }
+
+    @keyframes dot-in-action {
+      0%,
+      100% {
+        transform: translate3d(5rem, 0, 0);
+      }
+      50% {
+        transform: translate3d(-5rem, 0, 0);
+      }
+    }
+  }
+}
