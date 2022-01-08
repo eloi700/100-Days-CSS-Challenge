@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @extend %flex;
+  min-height: 100vh;
+
+  .frame {
+    position: relative;
+    @extend %flex;
+    height: 40rem;
+    width: 40rem;
+    background-image: linear-gradient(135deg, #fdd819 10%, #ff4f4f 100%);
+    border-radius: 1rem;
+    box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.603);
+
+    .title {
+      position: absolute;
+      left: 5rem;
+      right: 5rem;
+      top: 3rem;
+      font-size: 2.5rem;
+      text-align: center;
+      color: grey;
+    }
+
+    .counter {
+      position: absolute;
+      @extend %flex;
+      justify-content: space-between;
+      height: 5rem;
+      width: 15rem;
+      background: rgba(255, 255, 255, 0.404);
+      border-radius: 5rem;
+      box-shadow: inset 0.3rem -0.3rem 3rem orangered,
+        -0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.438),
+        inset -0.3rem 0.3rem 3rem hsl(16, 100%, 50%),
+        inset -0.3rem 0.3rem 3rem rgba(0, 0, 0, 0.445);
+
+      %fas {
+        font-size: 3rem;
+        color: #fff;
+        background: grey;
+        border-radius: 50%;
+        border: 0.2rem solid gray;
+        cursor: pointer;
+        box-shadow: 0.2rem -0.2rem 0.3rem rgba(0, 0, 0, 0.397),
+          -0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.397);
+      }
+
+      .minus {
+        .fa-minus-circle {
+          @extend %fas;
+          margin-left: 0.9rem;
+          user-select: none;
+          -webkit-user-select: none;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background: #fff;
+            color: rgb(255, 68, 0);
+          }
+        }
+      }
+
+      .number {
+        position: relative;
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: #fff;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .plus {
+        .fa-plus-circle {
+          @extend %fas;
+          margin-right: 0.9rem;
+          user-select: none;
+          -webkit-user-select: none;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background: #fff;
+            color: rgb(255, 68, 0);
+          }
+        }
+      }
+    }
+  }
+}
