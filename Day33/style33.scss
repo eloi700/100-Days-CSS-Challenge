@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$cloud-color1: #87b6f5;
+$cloud-color2: #ebe2ec;
+$cloud-color3: #a6bfda;
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem black;
+    overflow: hidden;
+
+    .top-bg {
+      position: absolute;
+      height: 60%;
+      width: 100%;
+      top: 0;
+      border-radius: 1rem 1rem 0 0;
+      background-image: linear-gradient(135deg, #c2ffd8 10%, #465efb 100%);
+
+      .sun {
+        position: absolute;
+        height: 6rem;
+        width: 6rem;
+        z-index: 10;
+        top: 3rem;
+        left: 3rem;
+        border-radius: 50%;
+        background: radial-gradient(#fff 15%, rgb(240, 219, 99) 80%);
+        filter: drop-shadow(0.5rem 0.5rem 1rem rgb(255, 255, 157));
+        animation: sun-up 5s ease-in-out;
+      }
+
+      .clouds {
+        position: relative;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+
+        .fas {
+          position: absolute;
+          filter: contrast(1.75);
+          transition: all 5s ease-in-out;
+        }
+
+        i:nth-child(1) {
+          top: 5rem;
+          font-size: 8rem;
+          color: $cloud-color2;
+          animation: travel 15s ease-in-out infinite alternate;
+        }
+
+        i:nth-child(2) {
+          top: 15rem;
+          font-size: 6rem;
+          color: $cloud-color3;
+          animation: travel 8s ease-in-out infinite 0.4s;
+        }
+
+        i:nth-child(3) {
+          top: 1rem;
+          font-size: 4rem;
+          color: $cloud-color1;
+          animation: travel 10s ease-in-out infinite;
+        }
+
+        i:nth-child(4) {
+          top: 2rem;
+          font-size: 6rem;
+          color: $cloud-color2;
+          animation: travel1 8s ease-in-out infinite alternate 0.2s;
+        }
+
+        i:nth-child(5) {
+          top: 13rem;
+          font-size: 10rem;
+          color: $cloud-color1;
+          animation: travel1 18s ease-in-out infinite;
+        }
+      }
+    }
+    .bottom-bg {
+      position: absolute;
+      height: 40%;
+      width: 100%;
+      bottom: 0;
+      border-radius: 0 0 1rem 1rem;
+      background-image: linear-gradient(135deg, #028802 10%, #78fc54 100%);
+    }
+
+    @keyframes travel {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(800%);
+      }
+    }
+
+    @keyframes travel1 {
+      0% {
+        transform: translateX(800%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes sun-up {
+      0% {
+        transform: translateY(15rem);
+        opacity: 0;
+      }
+
+      50% {
+        transform: translateY(10rem);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
