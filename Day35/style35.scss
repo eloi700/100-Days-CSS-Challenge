@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg1: linear-gradient(135deg, #ffdb01 10%, #fc02e7 100%);
+$bg2: silver;
+
+$rotate: 45deg;
+$ani-delay: 0.16s;
+
+body {
+  @extend %flex;
+  min-height: 100vh;
+
+  .frame {
+    @extend %flex;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    background: $bg1;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.753);
+
+    .spinning {
+      position: absolute;
+      @extend %flex;
+      height: 20rem;
+      width: 20rem;
+
+      & div {
+        transform-origin: 50% 50%;
+        opacity: 0;
+        filter: contrast(30);
+        animation: spin 1.4s linear infinite;
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 1.5rem;
+          width: 1.5rem;
+          height: 3rem;
+          border-radius: 50%;
+          background: $bg2;
+        }
+
+        @for $i from 0 through 10 {
+          &:nth-child(#{$i + 1}) {
+            transform: rotate($i * $rotate);
+            animation-delay: ($i * $ani-delay);
+          }
+        }
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        @for $i from 1 through 6 {
+          #{100 / $i} {
+            opacity: 0 / $i;
+          }
+        }
+      }
+    }
+  }
+}
