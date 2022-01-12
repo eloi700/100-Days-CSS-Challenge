@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+$tab1-color: rgb(230, 39, 70);
+$tab1-color-m: rgba(230, 39, 70, 0.555);
+$tab2-color: rgb(165, 2, 165);
+$tab2-color-m: rgba(165, 2, 165, 0.555);
+$tab3-color: rgb(255, 167, 5);
+$tab3-color-m: rgba(255, 167, 5, 0.555);
+$tab4-color: rgb(1, 102, 1);
+$tab4-color-m: rgba(1, 102, 1, 0.555);
+$tab5-color: rgb(1, 100, 107);
+$tab5-color-m: rgba(1, 100, 107, 0.555);
+$text-color1: #fff;
+$text-color2: #eee;
+$font-name: "Balsamiq Sans", cursive;
+$bg-image: linear-gradient(90deg, #79f1a4 10%, #0e5cad 100%);
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%link-hover {
+  box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.397),
+    0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.459);
+  transform: scaleZ(0.5) translateY(2rem);
+  filter: contrast(3);
+  font-size: 2rem;
+  padding: 1rem 1.8rem;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    border-radius: 1rem;
+    background: $bg-image;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.459),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.438);
+
+    .tabs {
+      position: relative;
+      @include flex;
+      align-items: flex-end;
+      border-radius: 1rem 1rem 0 0;
+      height: 20%;
+      width: 100%;
+      background: $bg-image;
+      pointer-events: initial;
+
+      & ul li {
+        position: relative;
+        display: inline-flex;
+        list-style: none;
+
+        & a {
+          text-decoration: none;
+          font-size: 1rem;
+          font-family: $font-name;
+          color: $text-color1;
+          padding: 0.3rem 3rem 1rem 3rem;
+          border-radius: 1rem 1rem 0 0;
+          transform: translateY(1rem);
+          perspective: 30rem;
+          transition: 0.3s ease-in-out;
+
+          &.dashboard {
+            background: $tab1-color;
+
+            &:hover {
+              @extend %link-hover;
+              background: $tab1-color-m;
+            }
+          }
+
+          &.comments {
+            background: $tab2-color;
+
+            &:hover {
+              @extend %link-hover;
+              background: $tab2-color-m;
+            }
+          }
+
+          &.notifications {
+            background: $tab3-color;
+
+            &:hover {
+              @extend %link-hover;
+              background: $tab3-color-m;
+            }
+          }
+
+          &.settings {
+            background: $tab4-color;
+
+            &:hover {
+              @extend %link-hover;
+              background: $tab4-color-m;
+            }
+          }
+
+          &.search {
+            background: $tab5-color;
+
+            &:hover {
+              @extend %link-hover;
+              background: $tab5-color-m;
+            }
+          }
+        }
+      }
+    }
+
+    .tab-contents {
+      position: relative;
+      border-radius: 0 0 1rem 1rem;
+      height: 28rem;
+      width: 36rem;
+      left: 2rem;
+      box-shadow: 0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.548),
+        -0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.637);
+      pointer-events: none;
+      perspective: 30rem;
+      transition: 0.3s ease-in-out;
+
+      & h1.title {
+        position: absolute;
+        font-family: $font-name;
+        padding: 4rem 2rem;
+        color: $text-color2;
+      }
+
+      & p.para {
+        position: absolute;
+        font-family: $font-name;
+        color: $text-color2;
+        font-size: 1rem;
+        padding: 8rem 2rem;
+      }
+
+      & div {
+        position: absolute;
+        height: 28rem;
+        width: 36rem;
+        display: none;
+
+        border-radius: 0 0 1rem 1rem;
+        transition: 0.5s ease-in-out;
+        animation: animate 0.5s ease-in-out;
+      }
+
+      & .active {
+        display: block;
+      }
+
+      #dashboard {
+        background: $tab1-color;
+      }
+
+      #comments {
+        background: $tab2-color;
+      }
+
+      #notifications {
+        background: $tab3-color;
+      }
+
+      #settings {
+        background: $tab4-color;
+      }
+
+      #search {
+        background: $tab5-color;
+      }
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateZ(0);
+      }
+      100% {
+        transform: translateZ(1rem);
+      }
+    }
+  }
+}
