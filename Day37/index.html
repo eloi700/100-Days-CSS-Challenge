@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/up/css/style37.css" />
+    <title>Day 37 - Playlist Carousel</title>
+  </head>
+  <body>
+    <div class="frame">
+      <h1 class="heading">Praise & Worship Playlist</h1>
+      <div class="container">
+        <input
+          type="radio"
+          id="item-1"
+          name="slider"
+          onclick="changeBackground()"
+        />
+        <input
+          type="radio"
+          id="item-2"
+          name="slider"
+          onclick="changeBackground()"
+          checked
+        />
+        <input
+          type="radio"
+          id="item-3"
+          name="slider"
+          onclick="changeBackground()"
+        />
+
+        <div class="cards">
+          <label for="item-1" class="card" id="song-1">
+            <img
+              src="https://source.unsplash.com/PGnqT0rXWLs"
+              alt="Goodness of God"
+            />
+          </label>
+          <label for="item-2" class="card" id="song-2">
+            <img
+              src="https://source.unsplash.com/7wP39t9zRzc"
+              alt="Remembrace"
+            />
+          </label>
+          <label for="item-3" class="card" id="song-3">
+            <img
+              src="https://source.unsplash.com/U6dnImauDAE"
+              alt="You Are Life"
+            />
+          </label>
+        </div>
+
+        <div class="player">
+          <div class="upper-part">
+            <div class="play-icon">
+              <svg
+                width="20"
+                height="20"
+                fill="#2992dc"
+                stroke="#2992dc"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="feather feather-play"
+                viewBox="0 0 24 24"
+              >
+                <defs />
+                <path d="M5 3l14 9-14 9V3z" />
+              </svg>
+            </div>
+
+            <div class="info-area" id="test">
+              <label class="song-info" id="song-info-1">
+                <div class="title">Goodness of God</div>
+                <div class="sub-line">
+                  <div class="subtitle">Cece Winans</div>
+                  <div class="time">4.05</div>
+                </div>
+              </label>
+
+              <label class="song-info" id="song-info-2">
+                <div class="title">Remembrance</div>
+                <div class="sub-line">
+                  <div class="subtitle">Hillsong Worship</div>
+                  <div class="time">3.80</div>
+                </div>
+              </label>
+
+              <label class="song-info" id="song-info-3">
+                <div class="title">You Are Life</div>
+                <div class="sub-line">
+                  <div class="subtitle">Hillsong Worship</div>
+                  <div class="time">4.01</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="progress-bar">
+            <span class="progress"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="day37.js"></script>
+  </body>
+</html>
