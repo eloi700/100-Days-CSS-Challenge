@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$color1: #000;
+$color2: #b9a21c;
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    @include flex;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    background: $color2;
+    border-radius: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+
+    .logo {
+      position: absolute;
+      @include flex;
+
+      &.black {
+        transform: scale(1);
+        transition: all 0.5s ease-out 0.3s;
+      }
+
+      &.gold {
+        transform: scale(0);
+        transition: all 0.5s ease-in;
+      }
+
+      &.small {
+        transform: scale(0);
+        transition: all 0.5s ease-in;
+      }
+
+      &.normal {
+        transform: scale(1);
+        transition: all 0.5s ease-out 0.3s;
+      }
+
+      &.big {
+        transform: scale(7);
+        transition: all 0.5s ease-in;
+      }
+    }
+  }
+}
