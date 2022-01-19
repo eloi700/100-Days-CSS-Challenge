@@ -16,14 +16,11 @@ function showBigImage(e) {
     currentSmall = false;
     for (i in smallImages) {
       if (smallImages[i] === e.target) {
-        // bigImages[i].style.display = "block";
         bigImages[i].classList.add("active");
       }
     }
   } else {
     currentSmall = true;
-    // e.target.style.display = "none";
     e.target.classList.remove("active");
-    // e.target.classList.add("inactive");
   }
 }

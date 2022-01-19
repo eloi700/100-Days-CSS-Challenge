@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$font-name: 'Poppins', sans-serif;
+$bg: rgb(66, 66, 65);
+$warn-color: rgb(255, 52, 52);
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    position: relative;
+    @include flex;
+    height: 40rem;
+    width: 40rem;
+    background: $bg;
+    border-radius: 1rem;
+
+    .card {
+      @include flex;
+      flex-direction: column;
+      height: 20rem;
+      width: 25rem;
+      background: #fff;
+      font-family: $font-name;
+      border-radius: 0.5rem;
+      filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.459)) drop-shadow(0 0.3rem 0.3rem rgba(0, 0, 0, 0.459));
+      transform: scale(1) perspective(30rem);
+      transition: 1s ease-in-out;
+      animation: show-card 1s ease-in-out;
+
+      &.active{
+        transform: scale(0);
+        animation: close-card 1.2s ease-in-out;
+      }
+      
+      i.fas{
+        position: absolute;
+        font-size: 4rem;
+        color: rgb(255, 52, 52);
+        top: 0;
+        padding: 1rem 0;
+      }
+
+      .error-title{
+        position: absolute;
+        top: 0;
+        padding: 6rem 0 3rem 0;
+        font-size: 2rem;
+        font-weight: 300;
+      }
+
+      .error-para{
+        position: absolute;
+        top: 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+        text-align: center;
+        padding: 10rem 2rem 0 2rem;
+      }
+
+      .closebtn{
+        position: absolute;
+        bottom: 0;
+        font-family: $font-name;
+        letter-spacing: 0.1rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+        width: 25rem;
+        padding: 1rem 0;
+        border: none;
+        color: #fff;
+        background: $warn-color;
+        border-radius: 0 0 0.5rem 0.5rem;
+        cursor: pointer;
+
+        &:hover{
+          background: rgb(255, 0, 0);
+        }
+      }
+    }
+
+    @keyframes show-card {
+      0%{
+        transform: scale(0);
+      }
+
+      80%{
+        transform: scale(1);
+      }
+
+      100%{
+        transform: scale(0.8);
+      }
+    }
+
+    @keyframes close-card {
+      0%{
+        transform: scale(0.8);
+      }
+
+      30%{
+        transform: scale(1.1);
+      }
+
+      100%{
+        transform: scale(0);
+      }
+    }
+  }
+}
