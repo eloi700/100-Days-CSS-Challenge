@@ -38,7 +38,7 @@ body {
       @include flex;
       flex-direction: column;
       height: 20rem;
-      width: 25rem;
+      width: 28rem;
       background: #fff;
       font-family: $font-name;
       border-radius: 0.5rem;
@@ -65,7 +65,7 @@ body {
         top: 0;
         padding: 6rem 0 3rem 0;
         font-size: 2rem;
-        font-weight: 300;
+        font-weight: 400;
       }
 
       .error-para{
@@ -81,10 +81,9 @@ body {
         position: absolute;
         bottom: 0;
         font-family: $font-name;
-        letter-spacing: 0.1rem;
         font-size: 1.5rem;
-        font-weight: 300;
-        width: 25rem;
+        font-weight: 400;
+        width: 100%;
         padding: 1rem 0;
         border: none;
         color: #fff;

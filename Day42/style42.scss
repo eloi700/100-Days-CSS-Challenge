@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+%flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+$bg-sky: linear-gradient(to bottom, #063858 30%,#663621 80%,#2F1107 100%);
+
+body{
+    @extend %flex;
+    min-height: 100vh;
+
+    .frame{
+        position: relative;
+        height: 40rem;
+        width: 40rem;
+        background: $bg-sky;
+        border-radius: 1rem;
+        overflow: hidden;
+
+        .stars{
+            position: absolute;
+            top: 5rem;
+            left: 5rem;
+            height: 30rem;
+            width: 30rem;
+            perspective: 80rem;
+     
+        .star{
+            position: absolute;
+            left: 5rem;
+            top: 5rem;
+            width: 0.2rem;
+            height: 0.2rem;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1), 0 0 0 0.4rem rgba(255, 255, 255, 0.1), 0 0 2remrgba(255, 255, 255, 1) ;
+        }
+
+        @for $i from 1 through 300 {
+            .star-#{$i} {
+                top: random(280) + px;
+                left: random(280) + px;
+                animation: ((random(20)+20)/10)+s flickr (random(20)/-10)+s infinite;
+            }
+        }
+    }
+
+        .shoot{
+            position: absolute;
+            top: 0;
+            left: -12rem;
+            width: 12rem;
+            height: 0.1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 1.5rem rgba(255, 255, 255, 0.678);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.623) 90%, rgba(255, 255, 255, 0.5) 5%, );
+            perspective: 80rem;
+            transform: rotate(20deg);
+
+            &::before{
+                content: '';
+                position: absolute;
+                height: 0.5rem;
+                width: 0.5rem;
+                top: -0.2rem;
+                left: 12rem;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.596);
+                box-shadow: 0 0 0.5rem #fff;
+            }
+        }
+
+        @for $i from 1 through 300 {
+            .shooting-star-#{$i} {
+                top: (random(100)-20)+px;
+                animation: (random(5)+20)+s shoot-star (random(250)/10)+s infinite;
+            }
+        }
+        
+        @keyframes flickr {
+            0%,100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.2;
+            }
+        }
+        
+        @keyframes shoot-star {
+            0% {
+                transform: translate3d(-20rem, 0, 0) rotate(20deg);
+            }
+            10%,100% {
+                transform: translate3d(60rem, 30rem, 0) rotate(20deg);
+            }
+        }
+        
+    }
+}
