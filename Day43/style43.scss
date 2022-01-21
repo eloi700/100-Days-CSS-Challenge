@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    @include flex;
+    min-height: 100vh;
+
+    .frame{
+        position: relative;
+        @include flex;
+        height: 40rem;
+        width: 40rem;
+        background: radial-gradient(rgb(145, 145, 145) 10%, rgb(0, 0, 0) 80%);
+        border-radius: 1rem;
+        overflow: hidden;
+
+        #lightbulb{
+        position: absolute;
+        z-index: 5;
+        
+        #path3005{
+            stroke: #808080;
+            fill: #808080;
+
+            &.active{
+                stroke: #fff !important;
+                fill: #fff !important;
+            }
+        }
+      }
+
+    //   Light Switch
+    .switch {
+      position: absolute;
+      bottom: 10rem;;
+      right: 3rem;
+      width: 5rem;
+      height: 8rem;
+      background: linear-gradient(to bottom, rgb(117, 116, 116) 0%, rgb(114, 111, 111) 100%);
+      border-radius: 10px;
+      filter: drop-shadow(1rem 1rem 5rem #fff);
+
+
+    .onoff {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 5rem;
+      height: 8rem;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(
+        to bottom,
+        #752b22 0%,
+        #f6765f 16%,
+        #411b17 19%,
+        #180504 60%,
+        #b14744 90%,
+        #692c2c 95%,
+        #7e2d2d 100%
+      );
+      border: 0.3rem solid #808080;
+      border-radius: 5px;
+      box-sizing: border-box;
+      box-shadow: 0 0 1rem black;
+      outline: none;
+      cursor: pointer;
+
+      &.on {
+        top: 50%;
+        background: linear-gradient(
+          to bottom,
+          #4d0d04 0%,
+          #842f22 6%,
+          #1f0d07 8%,
+          #58160c 40%,
+          #f65021 75%,
+          #f6765f 86%,
+          #731101 88%,
+          #660c03 100%
+        );
+        border-top: 1px solid #040404;
+        border-image: linear-gradient(
+            to top,
+            rgba(247, 170, 40, 0.1) 0,
+            #e61404 10%,
+            rgba(247, 170, 40, 0.6) 19%,
+            rgba(0, 0, 0, 0) 80%,
+            rgba(0, 0, 0, 0) 100%
+          )
+          1 100%;
+        border-image-width: 1px;
+        box-shadow: 0 5px 5px 1px #040404, 0 -2px 5px 1px #040404;
+        &::before {
+            position: absolute;
+          display: block;
+          content: "I";
+        top: 1rem;
+          width: 5rem;
+          height: 8rem;
+          background: radial-gradient(
+            ellipse at center,
+            rgb(255, 243, 108) 0%,
+            rgba(245, 188, 90, 0.8) 19%,
+            rgba(219, 68, 45, 0.4) 45%,
+            rgba(248, 95, 71, 0) 70%,
+            rgba(250, 46, 13, 0) 100%
+          );
+          border-radius: 50%;
+          opacity: 0.3;
+        }
+        &::after {
+          display: block;
+          content: "0";
+          position: absolute;
+          top: 5rem;
+          left: 0;
+          width: 100%;
+          height: 70%;
+          background-image: radial-gradient(
+              rgba(255, 202, 123, 0.2) 10%,
+              rgba(250, 198, 110, 0.2) 25%,
+              transparent 0
+            ),
+            radial-gradient(
+              rgba(177, 113, 19, 0.2) 10%,
+              rgba(247, 170, 40, 0.2) 25%,
+              transparent 0
+            );
+          background-size: 4px 4px;
+          background-position: 5px 5px, 10px 10px;
+          z-index: 10;
+        }
+      }
+    }
+  }
+ }
+}
