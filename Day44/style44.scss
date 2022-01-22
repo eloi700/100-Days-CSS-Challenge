@@ -1,0 +1,66 @@
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 10px;
+}
+
+%flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+$noOfSquares: 30;
+
+body{
+    @extend %flex;
+    min-height: 100vh;
+
+    .frame{
+        @extend %flex;
+        position: relative;
+        height: 40rem;
+        width: 40rem;
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);;
+
+        .sq{
+            position: absolute;
+            border: 0.1rem solid transparent;
+
+        }
+
+        @for $i from 1 through $noOfSquares{
+            .sq-#{$i} {
+                $size: 210 -($i * 10);
+                $offset: (400 - $size) / 2;
+                width: $size + 10 + px;
+                height: $size + 10 + px;
+                top: $offset + px;
+                left: $offset + px;
+                perspective: 10rem;
+                border-radius: 1rem;
+                filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.76));
+                animation: rotate 3s ease-in-out ($i / 30) + s alternate infinite;
+            }
+        }
+    
+
+        @keyframes rotate {
+            from{
+                transform:  rotateZ(0deg);
+            }
+
+            to{
+                transform:  rotateZ(360deg);
+            }
+            
+        }
+
+    }
+}
