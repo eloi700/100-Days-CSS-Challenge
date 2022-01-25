@@ -1,0 +1,122 @@
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+:root{
+    font-size: 10px;
+}
+
+%flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .frame{
+        position: relative;
+        @extend %flex;
+        height: 40rem;
+        width: 40rem;
+        overflow: hidden;
+        background: mediumaquamarine;
+        border-radius: 1rem;
+
+        .container{
+            position: absolute;
+            height: 30rem;
+            width: 30rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, black 10%, blue 80%);
+        }
+        @function iniStart($j){
+            $value: "#{random(300)}px #{random(300)}px rgba(226, 226,226, #{random(3)/3})";
+
+            @for $i from 0 through $j{
+                $value: "#{$value}, #{random(300)}px #{random(300)}px rgba(255,255,255, #{random(3)/3})";
+            }
+            @return unquote($value);
+        }
+
+    $stars-shadow1: iniStart(130);
+    $stars-shadow2: iniStart(100);
+
+    .stars1{
+        position: absolute;
+        top: 2rem;
+        left: 3rem;
+        width: 0.3rem;
+        height: 0.3rem;
+        box-shadow: $stars-shadow1;
+        background: transparent;
+        border-radius: 100%;
+        animation: spark 5s infinite 0.5s;
+    }
+
+    .stars2{
+        @extend .stars1;
+        width: 0.2rem;
+        height: 0.2rem;
+        box-shadow: $stars-shadow2;
+        animation: spark 8s infinite 0.2s;
+    }
+
+    .shoot{
+        position: absolute;
+        top: 0;
+        left: -12rem;
+        width: 10rem;
+        height: 0.1rem;
+        box-shadow: 0 0 1rem rgb(167, 167, 167);
+        background: linear-gradient(45deg, rgb(99, 98, 98) 10%, #fff 100%, );
+        perspective: 30rem;
+        transform: rotate(180deg);
+        border-radius: 1rem;
+
+        &::after{
+            position: absolute;
+            content: '';
+            top: -0.1rem;
+            left: 10rem;
+            height: 0.4rem;
+            width: 0.4rem;
+            border-radius: 100%;
+            background: rgb(255, 255, 255);
+            box-shadow: 0 0 3rem rgb(163, 163, 163);
+        }
+    }
+        @for $i from 1 through 5 {
+            .shooting-star-#{$i} {
+            top: (random(100)-20)+px;
+            animation: (random(10)+30)+s shoot-star (random(250)/30)+s infinite;
+            }
+        }
+
+    @keyframes spark {
+        0%, 100%{
+            opacity: 1;
+        }
+
+        50%{
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes shoot-star {
+        0% {
+            transform: translate3d(-20rem, 0, 0) rotate(20deg);
+        }
+        10%,100% {
+            transform: translate3d(60rem, 30rem, 0) rotate(20deg);
+        }
+    }
+  }
+}
