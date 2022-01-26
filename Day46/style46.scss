@@ -1,0 +1,85 @@
+*,*::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 10px;
+}
+
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    @include flex;
+    min-height: 100vh;
+
+    .frame{
+        @include flex;
+        height: 40rem;
+        width: 40rem;
+        background: #a55eea;
+        border-radius: 1rem;
+        transform: perspective(30rem);
+        transform-style: preserve-3d;
+        box-shadow: 0.5rem 0.5rem 1rem (rgba(0, 0, 0, 0.5));
+
+        $noOfRings: 6;
+        $noOfDots: 12;
+        $radius: 100;
+        $dotsPerCircle: 12;
+        $angle: 360 / $dotsPerCircle;
+
+        .ring{
+            position: absolute;
+            width: ($radius * 2)+px;
+            height: ($radius * 2)+px;
+        }
+
+        .dot{
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            background-image: linear-gradient( 135deg, #6a018a 50%, #ffffff 50%);
+            border-radius: 0.5rem 0 0.5rem 0;
+        }
+     
+        @for $i from 1 through $noOfRings{
+            .ring-#{$i}{
+                $nullBase: $i - 1;
+                animation: inOut-#{$i} 6s ease-in-out alternate infinite;
+                
+                .dot{
+                    opacity: (1-($nullBase / 10));
+                }
+            }
+        }
+
+        @for $i from 1 through $noOfDots{
+            .dot-#{$i}{
+                $nullBase: $i - 1;
+                $deg: ($nullBase * $angle) + deg;
+                transform: translate3d(0, ($radius * 1) + px, 0) rotate($deg);
+                transform-origin: ($radius) + px;
+            }
+        }
+
+        @for $i from 1 through $noOfRings{
+            @keyframes inOut-#{$i} {
+                $nullBase: $i * 2;
+                0%{
+                    transform: scale(1 - ($nullBase / 2)) rotate (($nullBase * 5) + deg);
+                }
+
+                100%{
+                    transform: scale(1 - ($nullBase / 5)) rotate((($nullBase * 5) + 360) + deg);
+                }
+            }
+        }
+    }
+}
+  
