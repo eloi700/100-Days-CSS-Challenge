@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    @include flex;
+    min-height: 100vh;
+
+    .frame{
+        @include flex;
+        flex-wrap: wrap;
+        height: 40rem;
+        width: 40rem;
+        background: rgba(192, 192, 192, 0.3);
+        filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.5)) drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.5));
+        box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.6), 0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.6);
+
+        .pixel{
+            float: left;   
+        }
+
+        input{
+            display: none;
+
+            &:checked ~ .tab{
+                background: radial-gradient(#ffffff 10%, #3b3a3b 80%);
+                border-radius: 1rem;
+            }
+        }
+
+        label {
+            display: block;
+            width: 2rem;
+            height: 2rem;
+            border: 0.1rem solid silver;
+            cursor: pointer;
+
+            
+            &:hover {
+                background: #fff;
+            }
+        }
+    }
+}
