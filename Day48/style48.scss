@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin bgstyle{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    @include flex;
+    min-height: 100vh;
+
+    .frame{
+        position: relative;
+        @include flex;
+        width: 40rem;
+        height: 40rem;
+        background: rgba(177, 177, 177, 0.2);
+        border: 1rem solid rgb(173, 173, 173);
+        box-shadow: inset -0.2rem 0.2rem 2rem rgba(0, 0, 0, 0.3), inset 0.2rem -0.2rem 2rem rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 0 0.5rem gray);
+        border-radius: 1rem;
+        perspective: 80rem;
+        perspective-origin: top right;
+        overflow: hidden;
+
+        .cube {
+            position: absolute;
+            width: 15rem;
+            height: 15rem;
+            transform-style: preserve-3d;
+            animation-delay: 0.5s;
+            animation: move-forward 15s cubic-bezier(0.215, 0.610, 0.355, 2) infinite;
+
+            .face {
+                position: absolute;
+                @include flex;
+                width: 100%;
+                height: 100%;
+                opacity: 0.9;
+                border: 1rem solid rgba(211, 211, 211, 0.671);
+              }
+
+              .front {
+                background: url("https://source.unsplash.com//3q3O3QftPVo");
+                transform: translateZ(7.5rem);
+                @include bgstyle;
+              }
+              
+              .back {
+                background: url("https://source.unsplash.com/UDdaT579v4g");
+                transform: translateZ(-7.5rem);
+                @include bgstyle;
+              }
+              
+              .left {
+                background: url("https://source.unsplash.com/FafRV4gMZ0Q");
+                transform: rotateY(90deg) translateZ(7.5rem);
+                @include bgstyle;
+              }
+              
+              .right {
+                background: url("https://source.unsplash.com/hwUxEG1dTig");
+                transform: rotateY(-90deg) translateZ(7.5rem);
+                @include bgstyle;
+              }
+              
+              .top {
+                background: url("https://source.unsplash.com/Cx6VH_2auxE");
+                transform: rotateX(90deg) translateZ(7.5rem);
+                @include bgstyle;
+              }
+              
+              .bottom {
+                background: url("https://source.unsplash.com/U00xWfo5yJA");
+                transform: rotateX(-90deg) translateZ(7.5rem);
+                @include bgstyle;
+              }
+          }
+
+        @keyframes move-forward {
+          from {
+            transform: rotateY(0deg) rotateX(720deg) rotateZ(0deg) scale(0);
+          }
+        
+          to {
+            transform: rotateY(360deg) rotateX(0deg) rotateZ(360deg) scale(1);
+          }
+        }
+    }
+}
+
+
+  
+
+
+
+
+
