@@ -1,0 +1,97 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 10px;
+}
+
+$color: #fff;
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .frame{
+        position: relative;
+        height: 40rem;
+        width: 40rem;
+        overflow: hidden;
+        background: darkorange;
+        box-shadow: 0.5rem 0.5rem 2rem 0 rgba(2, 2, 2, 0.5);
+        border-radius: 1rem;
+        
+        .trigger{
+            position: relative;
+            float: left;
+            height: 2rem;
+            width: 2rem;
+            background: $color;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .mouseFollow{
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            transform: translate(20rem, 20rem);
+            transition: 0.2s ease-in-out;
+            pointer-events: none;
+
+            .fas {
+                color: $color;
+                font-size: 2rem;
+            }
+
+            &::after{
+                position: absolute;
+                content: '';
+                display: block;
+                width: 5rem;
+                height: 5rem;
+                top: -1.2rem;
+                left: -1.2rem;
+                border: 0.2rem solid $color;
+                border-radius: 50%;
+                animation: buzz 1.5s ease-in-out infinite;
+            }
+        }
+
+        $row: 1;
+        $column: 1;
+        $rows: 20;
+        $columns: 20;
+        $triggerSide: 20;
+
+        @for $i from 1 through ($rows * $columns){
+            @if ($row * $columns) < $i {
+                $row: $row + 1;
+            }
+
+            $column: $i - (($row - 1) * $columns);
+            $top: (($row * $triggerSide) - ($triggerSide / 2)) + px;
+            $left: (($column * $triggerSide) - ($triggerSide / 2)) + px;
+
+            .trigger-#{$i}:hover ~ .mouseFollow{
+                transform: translate($left, $top);
+            }
+        }
+
+        @keyframes buzz {
+            0%{
+                transform:  scale(0);
+                opacity: 1;
+            }
+            100%{
+                transform: scale(1.5);
+                opacity: 0;
+            }
+            
+        }
+    }
+}
