@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
+$bg-m: linear-gradient(to top, #F05F57, #360940 100%);
+$bg-mm: rgb(236, 235, 235);
+$tshadow: 0.1rem 0.1rem 0.5rem rgba(107, 107, 107, 0.733);
+$bg-1: #360940;
+
+body {
+  @extend %flex;
+  min-height: 100vh;
+
+  .frame {
+    @extend %flex;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    background: $bg;
+    border-radius: 1rem;
+
+    .container {
+      position: relative;
+      text-align: center;
+      width: 20rem;
+      height: 20rem;
+      padding: 0 1.4rem;
+      margin: 0 auto;
+      background: $bg-mm;
+      border: 0.1rem solid #999;
+      border-radius: 0.5rem;
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        height: 2rem;
+        width: 95%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: -2rem;
+        background: $bg-1;
+        clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
+      }
+
+      &::after {
+        transform: rotateX(180deg);
+        top: auto;
+        bottom: -2.1rem;
+      }
+
+      .title {
+        position: absolute;
+        font-size: 2rem;
+        font-weight: 600;
+        width: 85%;
+        color: #fff;
+        background: $bg-m;
+        text-transform: uppercase;
+        border-radius: 2rem 2rem 0 0;
+        bottom: -2.1rem;
+        z-index: 2;
+        left: 1.5rem;
+        padding: 1.5rem 1rem;
+      }
+
+      #button {
+        display: none;
+      }
+
+      .icon {
+        @extend .title;
+        transform: rotateX(180deg);
+        top: -2rem;
+        height: 9rem;
+        pointer-events: none;
+        cursor: pointer;
+
+        .pause {
+          position: absolute;
+          width: 3rem;
+          height: 3rem;
+          border-style: double;
+          border-width: 0 0 0 1.8rem;
+          border-color: #fff;
+          top: 3rem;
+          left: 47%;
+          filter: drop-shadow(0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.603));
+          transition: 0.3s ease-in-out;
+          pointer-events: initial;
+          transform: scale(1);
+          opacity: 1;        }
+
+        .play {
+          position: absolute;
+          height: 2rem;
+          width: 2rem;
+          top: 2.5rem;
+          left: 45%;
+          border-style: solid;
+          border-width: 1.5rem 0 1.5rem 3rem;
+          border-color: transparent transparent transparent #fff;
+          transition: all 0.3s ease-in-out;
+          filter: drop-shadow(0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.603));
+          pointer-events: initial;
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+
+      #button:checked ~ .icon {
+	
+        .pause {
+            transform: scale(0);
+            opacity: 0;
+        }
+        
+        .play {
+            transform: scale(1);
+            opacity: 1;
+        }     
+    }
+
+      #button:checked ~ .counter {
+        .ones,
+        .tens,
+        .hundreds {
+          animation-play-state: paused;
+        }
+      }
+
+      .counter {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 12rem;
+        height: 4rem;
+        top: 8rem;
+        left: 4rem;
+        text-shadow: $tshadow;
+        padding: 1rem 0;
+        border-bottom: 0.5rem solid #F05F57;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .number {
+          float: left;
+
+          span {
+            display: block;
+            height: 4rem;
+            width: 1.8rem;
+            text-align: center;
+            font-size: 3rem;
+            line-height: 1rem;
+            font-weight: 400;
+            color: $bg-1;
+          }
+        }
+
+        .ones {
+          animation: count 10s steps(1) infinite;
+        }
+        .tens {
+          animation: count 100s steps(1) infinite;
+        }
+        .hundreds {
+          animation: count 1000s steps(1) infinite;
+        }
+        .oneK {
+          animation: count 10000s steps(1) infinite;
+        }
+      }
+    }
+
+    @keyframes count {
+      @for $i from 0 through 9 {
+        #{$i}0% {
+          transform: translateY(($i * -40) + px);
+        }
+      }
+    }
+  }
+}
