@@ -71,11 +71,14 @@ body {
       .title {
         position: absolute;
         font-size: 2rem;
-        font-weight: 600;
+        font-weight: 400;
         width: 85%;
         color: #fff;
         background: $bg-m;
+        letter-spacing: 0.1rem;
         text-transform: uppercase;
+        text-shadow: 0.5rem 0.5rem 3rem rgb(77, 77, 77);
+
         border-radius: 2rem 2rem 0 0;
         bottom: -2.1rem;
         z-index: 2;
@@ -108,7 +111,8 @@ body {
           transition: 0.3s ease-in-out;
           pointer-events: initial;
           transform: scale(1);
-          opacity: 1;        }
+          opacity: 1;        
+        }
 
         .play {
           position: absolute;

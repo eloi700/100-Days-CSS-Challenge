@@ -19,7 +19,7 @@ container.appendChild(labelButton);
 
 const text = document.createElement('h3');
 text.classList.add('title');
-text.innerText = "Web Development";
+text.innerText = "Code Challenge";
 container.appendChild(text);
 
 const pauseButton = document.createElement('div');
