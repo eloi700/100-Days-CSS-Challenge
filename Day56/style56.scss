@@ -1,0 +1,145 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+
+  .frame {
+    position: relative;
+    @include flex;
+    height: 40rem;
+    width: 40rem;
+    background: darkolivegreen;
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.308);
+
+    .flower {
+      position: absolute;
+      width: 5rem;
+      height: 5rem;
+      transition: 0.5s ease-in-out;
+
+      &:hover {
+        .leaf,
+        .dot {
+          opacity: 0.3;
+        }
+      }
+
+      .leaf {
+        position: absolute;
+        width: 5rem;
+        height: 5rem;
+        background: #fff;
+        border-radius: 0.2rem 5rem;
+        opacity: 0.8rem;
+        transition: 0.8s ease-in-out;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.02);
+        z-index: 1;
+
+        &:nth-child(2n + 2) {
+          z-index: 2;
+        }
+      }
+
+      .dot {
+        position: absolute;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background: rgb(199, 199, 0);
+        box-shadow: inset -0.2rem -0.2rem 1rem rgba(0, 0, 0, 0.5);
+        z-index: 5;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+        transform: scale(0);
+        transition: opacity 0.5s ease;
+        animation: dot 7s ease infinite;
+      }
+    }
+
+    @for $x from 1 through 16 {
+      $angle: 360 / 16;
+      .leaf-#{$x} {
+        transform: rotate (($x * $angle) + deg) translateY(0);
+        animation: leaf-#{$x} 7s ease-in-out infinite;
+      }
+
+      .flower {
+        animation: flower 7s ease-in-out infinite;
+      }
+
+      @keyframes leaf-#{$x} {
+        $percentIn: ($x * (45/16)) + 10;
+        $percentOut: 75;
+        0%,
+        100% {
+          transform: rotate(($x * $angle) + deg) translateY(0);
+        }
+
+        #{$percentIn}% {
+          transform: rotate(($x * $angle) + deg) translate(-3.5rem, -3.5rem)
+            scale(2);
+          box-shadow: -0.5rem -0.5rem 0.1rem 0 rgba(0, 0, 0, 0.08);
+        }
+
+        #{$percentOut}% {
+          transform: rotate(($x * $angle) + deg) translate(-3.5rem, -3.5rem)
+            scale(2);
+          box-shadow: -0.5rem -0.5rem 0.1rem 0 rgba(0, 0, 0, 0.08);
+        }
+      }
+    }
+
+    @keyframes flower {
+      0% {
+        transform: rotate(0);
+      }
+      60% {
+        transform: rotate(180deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dot {
+      12% {
+        transform: scale(0);
+      }
+      20% {
+        transform: scale(1.1);
+      }
+      25% {
+        transform: scale(0.95);
+      }
+      30%,
+      55% {
+        transform: scale(1);
+      }
+      57.9% {
+        transform: scale(1.1);
+      }
+      70% {
+        transform: scale(0);
+      }
+    }
+  }
+}
