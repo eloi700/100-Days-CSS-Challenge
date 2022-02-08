@@ -1,0 +1,171 @@
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+$frame-bg: rgba(226, 226, 226, 0.5);
+$side-color: rgba(136, 135, 135, 0.4);
+$side-color-m: rgba(126, 125, 125, 0.6);
+$translate: 129.2px;
+$angle: 360 / 5;
+$side-l: 80;
+$tri-h: $side-l *1.732;
+$degree-z: 8deg;
+$degree-y: 35.264deg;
+$degree-x1: 135deg;
+$degree-x2: 45deg;
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+}
+
+.frame {
+  @include flex;
+  position: relative;
+  height: 40rem;
+  width: 40rem;
+  background: $frame-bg;
+  border-radius: 1rem;
+  border: 0.1rem solid rgb(126, 0, 0);
+}
+
+.icoSides{
+    position: relative;
+    height: 28rem;
+    width: 16rem;
+    transform-style: preserve-3d;
+    transform: rotateX(-40deg) rotateY(-40deg);
+    transition: all 5s ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+         transform: rotateX(-360deg) rotateY(-360deg);
+
+         .side{
+             opacity: 0.8;
+         }
+    }
+    
+    .side{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 $side-l+px $tri-h+px $side-l+px;
+        border-color: transparent transparent $side-color transparent;
+        transform-origin: 50% 100%;
+        transition: all 3s ease-in-out;
+    }
+
+    .side-1 {
+		transform: translateZ($translate) rotateZ(90deg) rotateX(159.095deg);
+	}
+	.side-2 {
+		transform: translateZ($translate) rotateZ(-90deg) rotateX(159.095deg);
+	}
+	.side-3 {
+		transform: translateZ(-1 * $translate) rotateZ(90deg) rotateX(-159.095deg);
+	}
+	.side-4 {
+		transform: translateZ(-1 * $translate) rotateZ(-90deg) rotateX(-159.095deg);
+	}
+	.side-5 {
+		transform: rotateY(-90deg) translateZ($translate) rotateX(20.905deg);
+	}
+	.side-6 {
+		transform: rotateY(-90deg) translateZ($translate) rotateX(159.095deg);
+	}
+	.side-7 {
+		transform: rotateY(-90deg) translateZ(-1 * $translate) rotateX(-20.905deg);
+	}
+	.side-8 {
+		transform: rotateY(-90deg) translateZ(-1 * $translate) rotateX(-159.095deg);
+	}
+	.side-9 {
+		transform: translateY($translate) rotateX(69.095deg);
+	}
+	.side-10 {
+		transform: translateY($translate) rotateX(-69.095deg);
+	}
+	.side-11 {
+		transform: translateY(-1 * $translate) rotateX(110.905deg);
+	}
+	.side-12 {
+		transform: translateY(-1 * $translate) rotateX(-110.905deg);
+	}
+	.side-13 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY(-1 * $translate) translateX($side-l+px) rotateX(-1 * $degree-x1) rotateY(-1 * $degree-y) rotateZ(-1 * $degree-z);
+	}
+	.side-14 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY(-1 * $translate) translateX($side-l+px) rotateX($degree-x1) rotateY($degree-y) rotateZ(-1 * $degree-z);
+	}
+	.side-15 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY(-1 * $translate) translateX(-1 * $side-l+px) rotateX(-1 * $degree-x1) rotateY($degree-y) rotateZ($degree-z);
+	}
+	.side-16 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY(-1 * $translate) translateX(-1 * $side-l+px) rotateX($degree-x1) rotateY(-1 * $degree-y) rotateZ($degree-z);
+	}
+	.side-17 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY($translate) translateX($side-l+px) rotateX($degree-x2) rotateY(-1 * $degree-y) rotateZ(-1 * $degree-z);
+	}
+	.side-18 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY($translate) translateX($side-l+px) rotateX(-1 * $degree-x2) rotateY($degree-y) rotateZ(-1 * $degree-z);
+	}
+	.side-19 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY($translate) translateX(-1 * $side-l+px) rotateX($degree-x2) rotateY($degree-y) rotateZ($degree-z);
+	}
+	.side-20 {
+		border-width: $tri-h+px $side-l+px 0 $side-l+px;
+		transform: translateY($translate) translateX(-1 * $side-l+px) rotateX(-1 * $degree-x2) rotateY(-1 * $degree-y) rotateZ($degree-z);
+	}
+
+	.side-21{
+		border-color: rgba(255, 255, 255, 0.459);
+		transform: translateY(7rem);
+		border-radius: 50%;
+		box-shadow: 0.2rem -0.2rem 0.5rem 0 #fff;
+	}
+
+	.fas{
+		font-size: 10rem;
+		color: rgb(255, 0, 0);
+		transform: translateX(-5rem) translateY(1.5rem);
+	}
+
+    @for $i from 1 through 6 {
+		$id: $i*2;
+		.side-#{$id} {
+			border-color: transparent transparent $side-color-m transparent;
+		}
+	}
+	@for $i from 13 through 20 {
+		.side-#{$i} {
+			border-color: rgb(255, 0, 0) transparent transparent transparent;
+			background-color: rgba(121, 121, 121, 0.281);
+		}
+	}
+}
+
+
