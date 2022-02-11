@@ -1,0 +1,124 @@
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  @mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body {
+    @include flex;
+    min-height: 100vh;
+  }
+
+  .frame {
+    position: relative;
+    @include flex;
+    height: 40rem;
+    width: 40rem;
+    background: rgb(253, 165, 2);
+  }
+
+  .wrapper {
+    @include flex;
+    height: 30rem;
+    width: 30rem;
+    background-color: #C5C5C5;
+    border: 0.2rem solid darkorange;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3), 0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+h1{
+    position: absolute;
+    top: 6.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.12rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.1rem;
+    text-shadow: 0 0 0.3rem rgb(48, 48, 48);
+}
+
+.text{
+    position: absolute;
+    width: 100%;
+    top: 8rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h2{
+    font-size: 2rem;
+    color: #fff;
+    transition: all 1s linear;
+    transform: translateX(0);
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 0.4);
+}
+
+h3{
+    @extend h2;
+}
+
+.slices{
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    background-size: 20rem 20rem;
+    overflow: hidden;
+    // Famous City1 - Tehran, Iran credit to Khashayar from unsplash
+    background-image: url('https://source.unsplash.com/eSOST-WeOqo');
+    cursor: pointer;
+
+    &:hover{
+        h2{
+            transform: translateX(-8rem);
+        }
+        h3{
+            transform: translateX(8rem);
+        }
+
+        .img{
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .img{
+        position: relative;
+        z-index: 4;
+        float: left;
+        width: 2.5rem;
+        height: 20rem;
+        background-size: 20rem 20rem;
+        // Famous City2 - Abu Dhabi, UAE - credit to Kamil from unsplash
+        background-image: url('https://source.unsplash.com/PvMwVuZZfFc');
+        transition: 1s ease-in-out;
+
+    }
+
+    @for $i from 1 through 8 {
+		$base: $i - 1;
+		.slice-#{$i} {
+			background-position: ($base * -25)+px 0;
+			transform: translateY(-4rem);	
+			opacity: 0;
+		}
+	}
+
+	@for $i from 1 through 4 {
+		.slice-#{$i*2} {
+			transform: translateY(4rem);
+		}
+	}
+
+}

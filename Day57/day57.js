@@ -20,7 +20,7 @@ side21.innerHTML = '<i class="fas fa-hand-holding-water"></i>'
 icoSides.appendChild(side21);
 
 // Adding Font Awesome Source Link in JS
-const script = document.createElement('script')
+const script = document.createElement('script');
 script.src='https://kit.fontawesome.com/7d534dd6bd.js';
 script.crossOrigin='anonymous';
 document.body.appendChild(script);
