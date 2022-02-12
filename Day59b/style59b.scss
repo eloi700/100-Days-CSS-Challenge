@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include flex;
+  height: 40rem;
+  width: 40rem;
+  background: rgb(253, 165, 2);
+}
+
+.title {
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  font-size: 1.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  top: 6.5rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+  color: #fff;
+  text-shadow: 0 0 0.3rem rgb(48, 48, 48);
+}
+
+.wrapper {
+    @include flex;
+    height: 30rem;
+    width: 30rem;
+    background-color: #C5C5C5;
+    border: 0.2rem solid darkorange;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3), 0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.images{
+    position: relative;
+    @include flex;
+    width: 28rem;
+    height: 22rem;  
+    justify-content: space-evenly;
+    gap: 0.3rem;
+
+    &:hover .image{
+        width: 100%;
+        border: none;
+
+    }
+}
+
+.image{
+    width: 6rem;
+    height: 22rem;
+    border: 0.1rem solid #fff;
+    perspective: 80rem;
+    transition: all 1s ease-in-out;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: sepia(100%);
+
+    &:hover{
+        display: block;
+        width: 20rem;
+        filter: drop-shadow(0 0 0.5rem #000) hue-rotate(360deg) contrast(2);
+        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    }
+}
