@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  user-select: none;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include flex;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include flex;
+  flex-direction: column;
+  height: 40rem;
+  width: 40rem;
+  overflow: hidden;
+  object-fit: cover;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  box-shadow: inset 0.2rem 0.2rem 3rem 0 rgba(0, 0, 0, 0.568);
+  //   Photo from unplash - Raphael Lovaski @rapahellovaski
+  background-image: url("https://source.unsplash.com/nELN9L5nhzI");
+}
+
+.trigger {
+  height: 0.2rem;
+  width: 40rem;
+  cursor: pointer;
+}
+
+.plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40rem;
+  height: 20rem;
+  background: #43553550;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+  transform-origin: 50% 0%;
+  transition: 0.5s ease-in-out;
+}
+
+.back {
+  position: absolute;
+  width: 40rem;
+  height: 17rem;
+  top: 17rem;
+  font-size: 6rem;
+  line-height: 6rem;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(105, 219, 105);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.front {
+  @extend .back;
+  position: absolute;
+  color: transparent;
+  z-index: 5;
+  text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.4);
+}
+
+@for $i from 0 through 200 {
+  .trigger-#{$i} {
+    &:hover ~ .plane {
+      height: ($i * 2) + px;
+    }
+  }
+}
