@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+$pri-color: rgb(255, 255, 0);
+$bg-color: rgb(0, 1, 43);
+$text-color: #fff;
+$ter-color: rgba(251, 251, 252, 0.2);
+$bg-output: linear-gradient(var(--angle), var(--one-color), var(--two-color));
+
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+$font-f: 'Zen Kaku Gothic Antique', sans-serif;
+
+body{
+    @include flex;
+    min-height: 100vh
+}
+
+.frame{
+    position: relative;
+    @include flex;
+    height: 40rem;
+    width: 40rem;
+    background: $bg-color;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.wrapper-output-color{
+    position: relative;
+    @include flex;
+    top: -4rem;
+    height: 25rem;
+    width: 25rem;
+    background: $bg-output;
+    border-radius: 0 3rem 0 3rem;
+
+    &::after{
+        position: absolute;
+        content: '';
+        top: -1.5rem;
+        height: 32rem;
+        width: 28rem;
+        z-index: 3;
+        border-radius: 0 5rem 0 3rem;
+        border: 0.2rem dashed $pri-color;
+    }
+
+    &::before{
+        content: '';
+        position: absolute;
+        transform: translateX(-16rem);
+        height: 18rem;
+        width: 4rem;
+        border-radius: 5rem 0 0 5rem;
+        z-index: 1;
+        border-width: 0.2rem;
+        border-style: dashed;
+        border-color: $pri-color transparent $pri-color $pri-color;
+    }
+}
+
+.code-output {
+    position: absolute;
+    top: 26.5rem;
+    width: 102%;
+    background-color: $ter-color;
+    border-radius: 1rem;
+    border: none;
+    color: $text-color;
+    outline: none;
+    font-family: $font-f;
+    font-size: 1.2rem;
+    padding: 0.4rem 1rem;
+  }
+  
+  button {
+    position: absolute;
+    top: 31.5rem;
+    background: transparent;
+    border-radius: 1rem;
+    border-bottom: 0.3rem solid $pri-color;
+    border-width: 0 0 0.3rem 0;
+    font-size: 1.5rem;
+    font-family: $font-f;
+    color: $text-color;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+
+    &:hover{
+        background: $ter-color;
+        color:$text-color;
+    }
+  }
+
+  .generate-btn{
+      position: absolute;
+      transform: translateX(-10rem);
+      padding: 0.3rem 1rem;
+
+      &:active{
+        transform: translateX(-10rem) scale(0.95) rotateZ(-15deg);
+      }
+  }
+
+  .copy-btn{
+    position: absolute;
+    transform: translateX(1rem);
+    padding: 0.3rem 2.5rem;
+
+    &:active{
+        transform: translateX(1.5rem) scale(0.95) rotateZ(-15deg);
+      }
+    }
+  
