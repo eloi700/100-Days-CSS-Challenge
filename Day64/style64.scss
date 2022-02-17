@@ -1,0 +1,84 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+$color-bg: #fff;
+$bg-color: rgb(141, 60, 51);
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin btn {
+  padding: 1.5rem 5rem;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  background: $color-bg;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  color: rgb(141, 60, 51);
+  box-shadow: inset 0 0 0.5rem rgba(44, 44, 44, 0.5);
+  transition: all 0.3s ease-in-out;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: salmon;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+}
+
+.hover-btn {
+  position: relative;
+  border: none;
+  background: none;
+
+  &::before {
+    content: "HOVER ME";
+    position: absolute;
+    @include btn;
+    transform: translate(-43%, -30%);
+    cursor: pointer;
+  }
+
+  &:hover::before {
+    transform: translate(-50%, -50%);
+    background-color: $bg-color;
+    color: $color-bg;
+  }
+
+  &::after {
+    content: "HOVER ME";
+    position: absolute;
+    @include btn;
+    color: $color-bg;
+    background: $bg-color;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover::after {
+    color: $bg-color;
+    background-color: $color-bg;
+    transform: translate(-43%, -30%);
+  }
+}
