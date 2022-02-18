@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 10px;
+}
+
+@mixin center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+$bg-color: #3c1053ff;
+$ellipse-color: rgba(255, 141, 249, 0.8);
+
+body{
+    @include center;
+    min-height: 100vh;
+}
+
+.frame{
+    @include center;
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    background: $bg-color;
+    overflow: hidden;
+    border-radius: 1rem;
+
+    &::after{
+        content: '';
+        position: absolute;
+        height: 30rem;
+        width: 30rem;
+        border-color: rgba(255, 141, 249, 0.5);
+        border-style: solid;
+        border-top-width: 1rem;
+        border-bottom-width: 1rem;
+        border-left-width: 0.1rem;
+        border-right-width: 0.1rem;
+        border-radius: 10%;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.555);
+    }
+}
+
+.wrapper{
+    position: absolute;
+    @include center;
+    width: 30rem;
+    height: 30rem;
+}
+
+.ellipse{
+    position: absolute;
+    width: 5rem;
+    height: 20rem;
+    border: 0.1rem solid $ellipse-color;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+}
+
+$noOfEllipses: 18;
+
+@for $i from 1 through $noOfEllipses{
+    $x: $i - 1;
+    $degree: (180 / $noOfEllipses) * $x;
+    .ellipse-#{$i}{
+        animation: rotate-#{$i} 5s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+    }
+
+    @keyframes rotate-#{$i} {
+		0% {
+			transform: rotate( ($degree)+deg );
+			border-radius: 50%;
+			border-width: 0.1rem;
+		}
+		50% {
+			transform: rotate(0) scaleX(5 * 0.6);
+			border-radius: 0%;;
+		}
+
+		100% {
+			transform: rotate( ((-1 * $degree) + 360)+deg );
+			border-radius: 50%;
+			border-width: 0.1rem;
+		}
+	}
+}
