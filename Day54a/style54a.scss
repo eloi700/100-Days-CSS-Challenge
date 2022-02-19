@@ -1,0 +1,83 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+$color-dark: rgb(1, 81, 92);
+$color-med: rgb(1, 132, 150);
+$color-light: rgb(0, 180, 204);
+$color-light-m: rgb(160, 242, 253);
+$bg-color: linear-gradient(35deg, $color-light-m 50%, $color-med 100%);
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin clipPathSet{
+    width: 80rem;
+    left: -20rem;
+    height: 60rem;
+    clip-path: url(#waveePath);
+    background: $color-dark;
+}
+
+body {
+  @extend %flex;
+  min-height: 100vh;
+}
+
+  .frame {
+    position: relative;
+    height: 40rem;
+    width: 40rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(65, 65, 65, 0.493);
+    background: $bg-color;
+    overflow: hidden;
+  }
+
+    .wave {
+      position: relative;
+      @include clipPathSet;
+      bottom: 10rem;
+      background-image: $color-dark;
+      animation: move 10s infinite alternate ease-in-out;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -5rem;
+        @include clipPathSet;
+        z-index: -2;
+        background: $color-med;
+        animation: move 6s infinite alternate ease-in-out;
+      }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10rem;
+      @include clipPathSet;
+      z-index: -1;
+      background: $color-light;
+      animation: move 10s infinite alternate ease-in-out;
+    }
+}
+
+    @keyframes move {
+      0% {
+        transform: translateX(3rem);
+      }
+      100% {
+        transform: translateX(20rem);
+      }
+    }
