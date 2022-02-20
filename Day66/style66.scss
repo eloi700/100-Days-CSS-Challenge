@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg-color: linear-gradient(135deg, #fddb27ff 10%, #00b1d2ff 100%);
+$border-color: rgb(0, 77, 77);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg-color;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 25rem;
+    width: 25rem;
+    z-index: 1;
+    background: none;
+    transform: rotate(-45deg);
+    border-top: 0.3rem dashed #fddb27ff;
+    border-bottom: 0.3rem dashed #fddb27ff;
+    border-left: 1rem solid rgb(0, 150, 92);
+    border-right: 1rem solid rgb(0, 150, 92);
+    border-radius: 10rem;
+  }
+}
+
+.checkbox {
+  position: absolute;
+  @include center;
+}
+
+#cbox {
+  display: none;
+}
+
+.toggle {
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  z-index: 5;
+  border: 0.2rem solid $border-color;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2),
+    -0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0);
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    @extend .toggle;
+    border: 1.4rem solid $border-color;
+    left: -0.2rem;
+    top: -0.2rem;
+    visibility: hidden;
+  }
+}
+
+.sparkles {
+  position: relative;
+  @include center;
+  height: 8rem;
+  width: 8rem;
+  cursor: pointer;
+  user-select: none;
+  visibility: hidden;
+
+  $angle-offset: 0deg;
+  $no-of-stars: 12;
+  $angle-to-rotate: 360deg;
+  $angle-per-star: $angle-to-rotate / $no-of-stars;
+
+  @for $i from 1 through $no-of-stars {
+    .sparkle-#{$i} {
+      transform: (rotate($angle-offset + $angle-per-star * $i))
+        translateY(-3rem)
+        scaleY(0);
+    }
+  }
+
+  .sparkle {
+    position: absolute;
+    @include center;
+    top: 1.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.5rem;
+    color: cyan;
+    transform-origin: 50% 100%;
+    border-radius: 2rem;
+    z-index: 3;
+    background: rgba(0, 77, 77, 0.1);
+    filter: drop-shadow(0 0 0.3rem rgba(37, 37, 37, 0.3)) contrast(3);
+    box-shadow: 0 0 0.5rem rgb(58, 58, 58);
+  }
+}
+
+#cbox:checked ~ .toggle {
+  background: transparent;
+
+  &::after {
+    visibility: visible;
+  }
+}
+
+#cbox:checked ~ .sparkles {
+  @for $i from 1 through 12 {
+    $x: $i - 1;
+    $deg: (360 / 12) * $x;
+    .sparkle-#{$i} {
+      visibility: visible;
+      transition: all 0.5s ease-in-out;
+      transform: rotate(($deg) + deg) translateY(-6rem) scaleY(1);
+    }
+  }
+}
