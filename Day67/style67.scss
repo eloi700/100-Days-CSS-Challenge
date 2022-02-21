@@ -1,0 +1,169 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$shadow-color: rgba(128, 128, 128, 0.5);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  @include center;
+  position: relative;
+  height: 40rem;
+  width: 40rem;
+  border-radius: 0.5rem;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-image: url("https://source.unsplash.com/L_hK813fu9k");
+}
+
+.parasol {
+  position: absolute;
+  top: 10rem;
+  left: 22rem;
+  transform-style: preserve-3d;
+  transform: rotateX(-50deg) rotateY(-20deg);
+}
+
+.pole {
+  position: absolute;
+  width: 0.5rem;
+  height: 25rem;
+  top: -15rem;
+  left: 10rem;
+  z-index: 3;
+  background: rgb(167, 204, 216);
+  transform-origin: 50% 0;
+  perspective: 50rem;
+  transform: translateX(-2rem) translateZ(-2rem) translateY(30rem) rotate(10deg);
+}
+
+.shadowPole {
+    position: absolute;
+    z-index: -1;
+    width: 3rem;
+    height: 0.5rem;
+    top: 9.2rem;
+    left: 8.5rem;
+    background: $shadow-color;
+    transform-origin: 50% 0%;
+    transform: translateZ(10rem) translateX(-3rem) translateY(14rem) rotate(30deg);
+    box-shadow: 0 0 2px 1px $shadow-color;
+    border-radius: 5rem;
+}
+
+.top {
+  position: relative;
+  z-index: 3;
+  width: 20rem;
+  height: 20rem;
+  transform-style: preserve-3d;
+  animation: rotateTop 5s linear infinite;
+
+  .triangle {
+    position: absolute;
+    top: 10rem;
+    left: 7.7rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 1.8rem 7rem 1.8rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-color: transparent transparent #fff transparent;
+    transform-origin: 50% 0;
+  }
+
+  @for $i from 0 through 11 {
+    $nullBase: $i - 1;
+    $deg: (360 / 12) * $nullBase;
+
+    .triangle-#{$i} {
+      transform: rotateZ(($deg) + deg) rotateX(24deg);
+    }
+  }
+
+  @for $i from 1 through (12 / 2) {
+    $nullBase: $i - 1;
+    $id: 1 + ($nullBase * 2);
+
+    .triangle-#{$id} {
+      border-color: transparent transparent rgb(0, 0, 100) transparent;
+    }
+  }
+}
+
+// -------------------
+
+.shadowTop {
+  position: absolute;
+  z-index: -1;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  animation: rotateTopShadow 5s linear infinite;
+
+  .triangle {
+    position: absolute;
+    top: 10rem;
+    left: 7.7rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 2.5rem 9.8rem 2.5rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-color: transparent transparent $shadow-color transparent;
+    transform-origin: 50% 0;
+    box-shadow: 0 0 4px 2px $shadow-color;
+  }
+
+  @for $i from 0 through 11 {
+    $nullBase: $i - 1;
+    $deg: (360 / 12) * $nullBase;
+
+    .triangle-#{$i} {
+      transform: rotateZ(($deg) + deg) rotateX(24deg) translateY(-1px);
+    }
+  }
+}
+
+// -------------------------
+
+@keyframes rotateTop {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotateTopShadow {
+  from {
+    transform: translateZ(3rem) translateX(-12rem) translateY(-3rem) scale(.75)
+      rotateZ(0deg);
+  }
+  to {
+    transform: translateZ(3rem) translateX(-12rem) translateY(-3rem) scale(.75)
+      rotateZ(360deg);
+  }
+}
