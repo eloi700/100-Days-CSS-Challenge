@@ -32,6 +32,7 @@ body {
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-image: url("https://source.unsplash.com/L_hK813fu9k");
 }
 
@@ -59,13 +60,13 @@ body {
 .shadowPole {
     position: absolute;
     z-index: -1;
-    width: 3rem;
+    width: 3.5rem;
     height: 0.5rem;
     top: 9.2rem;
     left: 8.5rem;
     background: $shadow-color;
     transform-origin: 50% 0%;
-    transform: translateZ(10rem) translateX(-3rem) translateY(14rem) rotate(30deg);
+    transform: translateZ(10rem) translateX(-3rem) translateY(13.5rem) rotate(45deg);
     box-shadow: 0 0 2px 1px $shadow-color;
     border-radius: 5rem;
 }
@@ -159,11 +160,11 @@ body {
 
 @keyframes rotateTopShadow {
   from {
-    transform: translateZ(3rem) translateX(-12rem) translateY(-3rem) scale(.75)
+    transform: translateZ(3rem) translateX(-12rem) translateY(-4rem) scale(.8)
       rotateZ(0deg);
   }
   to {
-    transform: translateZ(3rem) translateX(-12rem) translateY(-3rem) scale(.75)
+    transform: translateZ(3rem) translateX(-12rem) translateY(-4rem) scale(.8)
       rotateZ(360deg);
   }
 }
