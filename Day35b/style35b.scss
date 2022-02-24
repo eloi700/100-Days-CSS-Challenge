@@ -21,40 +21,71 @@ body {
   min-height: 100vh;
 }
 
+%bg-frame{
+  height: 20rem;
+  width: 10rem;
+  border-radius: 0.3rem;
+}
+
 .frame {
   position: relative;
   @include center;
   height: 40rem;
   width: 40rem;
-  background: rgb(190, 213, 255);
+  background: teal;
   border-radius: 1rem;
+
+  &::before{
+    position: absolute;
+    content: '';
+    @include center;
+    @extend %bg-frame;
+    background: rgba(218, 246, 255, 0.212);
+    z-index: 2;
+  }
+
+  &::after{
+    position: absolute;
+    content: '';
+    @include center;
+    @extend %bg-frame;
+    transform: rotate(-8deg);
+    background: rgb(0, 66, 66);
+    z-index: 1;
+  }
+}
+
+%load-set {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border-width: 0.4rem;
+  filter: contrast(3);
+  mix-blend-mode: hue;
 }
 
 .load {
   position: absolute;
   @include center;
-  height: 8rem;
-  width: 8rem;
-  border-radius: 50%;
-  border-width: 1rem;
+  @extend %load-set;
   border-style: solid;
-  border-color: crimson crimson transparent transparent;
-  animation: rotate 2.5s cubic-bezier(0, .15, 1, .85) infinite;
+  z-index: 10;
+  border-color: rgb(126, 1, 21) red transparent transparent;
+  animation: rotate 2.5s cubic-bezier(0, 0.15, 1, 0.85) infinite;
 
   &::after {
     position: absolute;
     content: "";
-    height: 8rem;
-    width: 8rem;
-    border-radius: 50%;
+    @extend %load-set;
     border-style: dashed;
-    border-width: 1rem;
-    border-color: transparent transparent crimson crimson;
-    animation: rotate 2.5s cubic-bezier(0, .15, 1, .85) infinite;
-    // animation-timing-function: steps(2, start);
+    border-color: transparent transparent red rgb(126, 1, 21);
+    animation: rotate 3s cubic-bezier(0, 0.15, 1, 0.85) infinite;
+
   }
 }
 
 @keyframes rotate {
-	to { transform: rotate(360deg) }
+  to {
+    transform: rotate(360deg);
+  }
 }
