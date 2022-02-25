@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: #000;
+  perspective: 30rem;
+  perspective-origin: 50% calc(50% - 15rem);
+  overflow: hidden;
+  border-radius: 0.5rem;
+
+  &::after{
+      content: '';
+      position: absolute;
+      height: 25rem;
+      width: 25rem;
+      border-radius: 50%;
+      box-shadow: inset -0.2rem -0.2rem 0.5rem lightblue, inset 0.2rem 0.2rem 0.5rem lightblue;
+  }
+}
+
+.scene {
+  position: relative;
+  @include center;
+  transform-style: preserve-3d;
+}
+
+.banner {
+  position: absolute;
+  @include center;
+  top: -1rem;
+  transform-style: preserve-3d;
+  animation: rotate 18s infinite linear;
+}
+
+$width: 7rem;
+
+@for $i from 0 to 9 {
+  .letter:nth-child(#{$i + 1}) {
+    --left: #{$width * $i * -1};
+    --filter: hue-rotate(180deg / $i);
+    --angle: #{360deg / 7.5 * $i};
+  }
+}
+
+.letter {
+  position: absolute;
+  width: $width;
+  height: 80px;
+  overflow: hidden;
+  filter: var(--filter);
+  transform: rotateY(var(--angle)) translateZ(7.8rem);
+
+  &::before {
+    position: absolute;
+    left: var(--left);
+    content: "Hello, Willkommen!";
+    font-size: 60px;
+    width: max-content;
+    filter: contrast(3);
+    color: hsl(4, 75%, 75%);
+  }
+}
+
+.back-screen {
+  position: absolute;
+  @include center;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(#000000, 0.5);
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateY(-360deg);
+  }
+}

@@ -22,8 +22,8 @@ body {
 }
 
 %bg-frame{
-  height: 20rem;
-  width: 10rem;
+  height: 25rem;
+  width: 15rem;
   border-radius: 0.3rem;
 }
 
@@ -56,10 +56,10 @@ body {
 }
 
 %load-set {
-  height: 4rem;
-  width: 4rem;
+  height: 8rem;
+  width: 8rem;
   border-radius: 50%;
-  border-width: 0.4rem;
+  border-width: 0.8rem;
   filter: contrast(3);
   mix-blend-mode: hue;
 }
@@ -71,7 +71,7 @@ body {
   border-style: solid;
   z-index: 10;
   border-color: rgb(126, 1, 21) red transparent transparent;
-  animation: rotate 2.5s cubic-bezier(0, 0.15, 1, 0.85) infinite;
+  animation: rotate 3s cubic-bezier(0, 0.15, 1, 0.85) infinite;
 
   &::after {
     position: absolute;
