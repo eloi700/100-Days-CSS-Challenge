@@ -1,0 +1,198 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg-color: #dddddd;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  @include center;
+  position: relative;
+  height: 40rem;
+  width: 40rem;
+  background: $bg-color;
+  border-radius: 0.5rem;
+
+  &::before{
+      content: '';
+      position: absolute;
+      z-index: 50;
+      height: 30rem;
+      width: 30rem;
+      border-radius: 50%;
+      border: 0.1rem solid rgba(172, 172, 172, 0.534);
+      box-shadow: 0 0 0.5rem rgba(78, 78, 78, 0.8);
+  }
+}
+
+.eyebrow {
+  position: absolute;
+  @include center;
+  stroke: none;
+  top: -8.5rem;
+}
+
+.brow {
+  position: absolute;
+  fill: rgba(131, 131, 131, 0.4);
+  z-index: 100;
+  filter: drop-shadow(0.1rem -0.1rem 0.3rem rgba(63, 63, 63, 0.8));
+}
+
+.eye {
+  position: absolute;
+  @include center;
+  height: 14rem;
+  width: 14rem;
+  border-radius: 12rem 0;
+  background: #e0e0e0;
+  overflow: hidden;
+  box-shadow: inset -0.1rem -0.2rem 0.2rem rgba(109, 109, 109, 0.8), inset 0.1rem -0.1rem 0.2rem rgba(109, 109, 109, 0.8);
+  transform: rotate(50deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.ball {
+  position: absolute;
+  @include center;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+background: linear-gradient(to top, rgb(102, 102, 102) 10%, #fff 100%);
+box-shadow: inset 0.1rem -0.1rem 0.3rem rgb(124, 124, 124);
+  animation: ball 5s ease-in-out infinite;
+}
+
+.iris {
+  position: absolute;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background: #000;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 2rem;
+    width: 2rem;
+    left: 2rem;
+    top: -1rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.555);
+  }
+}
+
+.lid {
+  position: absolute;
+  fill: $bg-color;
+  stroke: none;
+}
+
+.lid-top {
+  position: absolute;
+  z-index: 1;
+  width: 24rem;
+  height: 13rem;
+  top: 7.5rem;
+  transform: translateY(-2rem);
+  animation: lid-top 5s ease-in-out infinite;
+}
+
+.lid-bottom {
+  position: absolute;
+  z-index: 2;
+  width: 24rem;
+  height: 14rem;
+  transform: rotate(180deg) translateY(-6rem);
+  animation: lid-bottom 5s ease-in-out infinite;
+}
+
+.container {
+  position: absolute;
+  @include center;
+  height: 25rem;
+  width: 25rem;
+}
+
+.frame:hover {
+  .lid-top {
+    transform: translateY(0);
+  }
+  .lid-bottom {
+    transform: rotate(180deg) translateY(0);
+  }
+}
+
+@keyframes lid-top {
+  0%,
+  10%,
+  18%,
+  26%,
+  34%,
+  48%,
+  56%,
+  76%,
+  84% {
+    transform: translateY(-2rem);
+  }
+  14%,
+  30%,
+  52%,
+  80% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes lid-bottom {
+  0%,
+  10%,
+  18%,
+  26%,
+  34%,
+  48%,
+  56%,
+  76%,
+  84% {
+    transform: rotate(180deg) translateY(-6rem);
+  }
+  14%,
+  30%,
+  52%,
+  80% {
+    transform: rotate(180deg) translateY(0);
+  }
+}
+
+@keyframes ball {
+  0%,
+  14%,
+  56% {
+    transform: rotate(-45deg) translateX(0);
+  }
+  18%,
+  30% {
+    transform: rotate(-45deg) translate(-2.5rem, 0.5rem) scale(0.9);
+  }
+  34%,
+  52% {
+    transform: rotate(-45deg) translate(2.5rem, 1rem) scale(0.9);
+  }
+}
