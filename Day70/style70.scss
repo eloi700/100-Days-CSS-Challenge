@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Boogaloo&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Boogaloo", cursive;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  height: 40rem;
+  width: 40rem;
+  background: rgb(255, 160, 179);
+}
+
+.days-date{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 40rem;
+    width: 40rem;
+    cursor: pointer;
+}
+
+.d {
+  @include center;
+  flex-direction: column;
+  color: pink;
+  height: 20rem;
+  width: 20rem;
+  background: rgb(252, 0, 126);
+  transition: 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.day {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+}
+
+.date {
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: -0.3rem;
+}
+
+.d:hover {
+  transform: scale(0.9);
+
+  .date, .day{
+      color: #fff;
+      filter: drop-shadow(0.1rem 0.1rem 0.1rem #000);
+  }
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -8,6 +10,7 @@
 
 :root {
   font-size: 10px;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 @mixin center {
@@ -38,8 +41,17 @@ body {
       height: 30rem;
       width: 30rem;
       border-radius: 50%;
-      border: 0.1rem solid rgba(172, 172, 172, 0.534);
-      box-shadow: 0 0 0.5rem rgba(78, 78, 78, 0.8);
+      box-shadow: inset -0.2rem -0.2rem 0.5rem rgba(78, 78, 78, 0.5), inset 0.2rem -0.2rem 0.5rem rgba(78, 78, 78, 0.5);
+  }
+
+  &::after{
+    content:"D'EYE";
+    position: absolute;
+    font-size: 3rem;
+    color: gray;
+    text-shadow: 0.1rem 0.1rem 0 rgb(34, 34, 34);
+    top: 27rem;
+    z-index: 55;
   }
 }
 
@@ -52,9 +64,8 @@ body {
 
 .brow {
   position: absolute;
-  fill: rgba(131, 131, 131, 0.4);
+  fill: rgb(90, 90, 90);
   z-index: 100;
-  filter: drop-shadow(0.1rem -0.1rem 0.3rem rgba(63, 63, 63, 0.8));
 }
 
 .eye {
