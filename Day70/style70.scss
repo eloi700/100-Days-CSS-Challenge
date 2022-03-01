@@ -31,15 +31,15 @@ body {
   background: rgb(255, 160, 179);
 }
 
-.days-date{
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    overflow: hidden;
-    height: 40rem;
-    width: 40rem;
-    cursor: pointer;
+.calendar {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 40rem;
+  width: 40rem;
+  cursor: pointer;
 }
 
 .d {
@@ -54,12 +54,12 @@ body {
 }
 
 .day {
-  font-size: 2rem;
+  font-size: 3rem;
   letter-spacing: 0.1rem;
 }
 
 .date {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 600;
   letter-spacing: -0.3rem;
 }
@@ -67,8 +67,9 @@ body {
 .d:hover {
   transform: scale(0.9);
 
-  .date, .day{
-      color: #fff;
-      filter: drop-shadow(0.1rem 0.1rem 0.1rem #000);
+  .date,
+  .day {
+    color: #fff;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem #000);
   }
 }
