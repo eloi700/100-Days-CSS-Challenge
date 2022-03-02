@@ -83,6 +83,7 @@ body{
     width: 40rem;
     background: #000;
     border-radius: 0.5rem;
+    overflow: hidden;
     box-shadow: 0 0 0 0.1rem #000;
 
     &::after{
@@ -164,8 +165,8 @@ body{
 	top: -13rem;
 	left: 18.5rem ;
 	border-radius: 50%;
-	background: #fff;
-	box-shadow: 0 0 15px 0 #fff;
+	background: rgb(216, 216, 216);
+	box-shadow: 0 0 5rem 0 #fff;
 	opacity: 0;
 	animation: none;
 }
