@@ -1,0 +1,3 @@
+## Day 73 - Word Carousel
+
+Do you wanna know who is Jesus Christ? Well, He is the son of God, the way, the truth, the life, true vine, savior, resurrection and life, mediator, lamb of God, High Priest, Good Shepherd, deliverer, bread of life, author and perfecter of faith, the Redeemer, LORD of all, the great I am, Alpha and Omega, Word of Life, Word of God, Holy One, Prince of Peace, Light of the World, King of Kings and Lord of Lords . . .

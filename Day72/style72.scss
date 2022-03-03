@@ -32,8 +32,8 @@ body {
   &::before{
       content: '';
       position: absolute;
-      height: 25rem;
-      width: 25rem;
+      height: 30rem;
+      width: 30rem;
       border-width: 0.5rem 0.5rem 0.5rem 0.5rem;
       border-style: solid none solid none;
       border-color: #fff;
@@ -44,15 +44,15 @@ body {
 
 .circle {
   position: absolute;
-  height: 20rem;
-  width: 20rem;
+  height: 25rem;
+  width: 25rem;
   transform-style: preserve-3d;
 }
 
 .ring {
   position: absolute;
-  height: 20rem;
-  width: 20rem;
+  height: 25rem;
+  width: 25rem;
   border: 0.1rem solid cyan;
   border-radius: 50%;
   transform-origin: 50% 50%;

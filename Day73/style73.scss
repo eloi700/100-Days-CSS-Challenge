@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Libre Baskerville", serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin border {
+  top: 16.5rem;
+  height: 2rem;
+  width: 2rem;
+  border-width: 0.5rem;
+  border-style: solid;
+  background-color: orange;
+  border-color: orange;
+  border-radius: 50%;
+  box-shadow: 0.1rem 0.1rem 0.3rem #000;
+}
+
+$bg: linear-gradient(
+  to top,
+  rgb(253, 181, 47),
+  white 50%,
+  rgb(205, 225, 248) 70%
+);
+$elements: 10;
+$font-s: 2rem;
+$h: $font-s * 2;
+$text-s: 0.1rem 0.1rem 0.1rem #000;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  border-radius: 0.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    @include border;
+    left: 32rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    @include border;
+    left: 6rem;
+    transform: rotate(180deg);
+  }
+}
+
+.title {
+  position: absolute;
+  flex-direction: column;
+  top: 16.5rem;
+  color: rgb(182, 182, 182);
+  text-shadow: $text-s;
+}
+
+.carousel {
+  position: relative;
+  font-size: $font-s;
+  top: 2rem;
+  text-align: center;
+  width: 90%;
+  height: $h;
+  line-height: $h;
+  z-index: 2;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 -0.5rem 0.5rem rgba(83, 83, 83, 0.5);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: -10rem;
+    z-index: -1;
+    height: 20rem;
+    width: 38rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+  }
+}
+
+.pre {
+  position: absolute;
+  color: orange;
+  font-size: $font-s;
+  left: 5rem;
+  height: $h;
+  font-weight: 700;
+  text-shadow: 0 0 0.1rem orangered;
+}
+
+.outer {
+  position: absolute;
+  left: 15rem;
+  color: orange;
+  text-align: left;
+  height: $h;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  animation: rotate 20s ease-in-out infinite;
+}
+
+.element {
+  display: block;
+  font-weight: 700;
+  text-shadow: 0 0 0.1rem orangered;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY($font-s * -2);
+  }
+  30% {
+    transform: translateY($font-s * -4);
+  }
+  40% {
+    transform: translateY($font-s * -6);
+  }
+
+  50% {
+    transform: translateY($font-s * -8);
+  }
+
+  60% {
+    transform: translateY($font-s * -10);
+  }
+
+  70% {
+    transform: translateY($font-s * -12);
+  }
+  80% {
+    transform: translateY($font-s * -14);
+  }
+
+  90% {
+    transform: translateY($font-s * -16);
+  }
+  100% {
+    transform: translateY($font-s * -18);
+  }
+}
