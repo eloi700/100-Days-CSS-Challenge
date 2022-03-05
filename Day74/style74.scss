@@ -28,6 +28,7 @@ body {
   height: 40rem;
   width: 40rem;
   border-radius: 0.5rem;
+  overflow: hidden;
   background: linear-gradient(
     to right,
     rgb(0, 63, 63) 3px,
@@ -39,16 +40,8 @@ body {
     rgba(255, 255, 255, 0.25) 17px,
     transparent 22px
   );
-  box-shadow: 0 0 5px -1px black, inset -1px 1px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0.5rem -0.1rem black, inset -0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.5);
   background-color: rgb(231, 231, 231);
-  background-color: rgb(231, 231, 231);
-}
-
-.pages {
-  position: absolute;
-  @include center;
-  flex-direction: column;
-  left: 0;
 
   &:before {
     position: absolute;
@@ -73,6 +66,40 @@ body {
   }
 }
 
+.pages {
+  position: absolute;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+
+  @mixin border-style{
+    top: 0;
+    height: 30rem;
+    width: 30rem;
+    border-width: 0.3rem;
+    border-radius: 50%;
+    border-style: dashed;
+    transform: translate(9rem, 4rem) rotate(35deg);
+    border-color:rgb(2, 139, 139) transparent transparent transparent;
+  }
+
+  &::before{
+    position: absolute;
+    content: '';
+    @include border-style;
+    z-index: 2;
+  }
+
+  &::after{
+    position: absolute;
+    content: '';
+    @include border-style;
+    z-index: 3;
+    transform: translate(8rem, 6rem) rotate(-60deg);
+    border-color:transparent transparent transparent rgb(2, 139, 139) ;
+  }
+}
+
 .input {
   display: none;
 }
@@ -82,10 +109,12 @@ body {
   @include center;
   width: 3rem;
   height: 3rem;
+  top: 7rem;
   left: 2rem;
   padding: 3rem 0;
   border: none;
   margin: 0.5rem;
+  z-index: 100 !important;
   background: none;
   color: rgb(231, 231, 231);
   cursor: pointer;
@@ -93,24 +122,6 @@ body {
   font-size: 1.5rem;
   line-height: 2.7rem;
   transition: 0.5s ease-in-out;
-
-  &:hover {
-    color: rgb(231, 231, 231);
-    border: none;
-    transition: 0.3s ease-in-out;
-  }
-
-  &:before {
-    display: block;
-    @include center;
-    justify-content: space-evenly;
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    background: rgb(231, 231, 231);
-    // z-index: -2;
-    transition: 0.5s ease-in-out;
-  }
 }
 
 @for $i from 1 through 4 {
@@ -121,11 +132,39 @@ body {
     border-width: 0.2rem;
     border-style: none dashed none none;
     border-color: transparent cyan transparent transparent;
-    // z-index: 1;
-    transition: 0.3s ease-in-out;
+    transition: 1s ease-in-out;
 
     &:hover {
       background: none;
     }
+  }
+  #input-#{$i}:checked ~ .image-#{$i} {
+    transition: 0.5s ease-in-out;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+img {
+  position: relative;
+  height: 30rem;
+  width: 30rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+  box-shadow: 0 0 1rem #000;
+}
+
+@for $x from 1 through 4 {
+  .image-#{$x} {
+    position: absolute;
+    top: 5rem;
+    left:8.5rem;
+    width: 100%;
+    perspective: 30rem;
+    transform-style: preserve-3d;
+    transition: 0.5s ease-in-out;
+    transform-origin: 350% center;
+    transform: scale(0) rotateY(180deg);
+    visibility: hidden;
   }
 }
