@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg-color: linear-gradient(135deg, rgb(122, 255, 255) 10%, #fff 50%, rgb(91, 156, 253) 100%);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg-color;
+  border-radius: 0.5rem;
+  
+
+  &::before{
+      position: absolute;
+      content: '';
+      height: 28rem;
+      width: 28rem;
+      z-index: 2;
+      background: rgba(231, 230, 230, 0.5);
+      clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  }
+
+  &::after{
+      position: absolute;
+      content: '';
+      top: 6rem;
+      height: 27.9rem;
+      width: 28rem;
+      background: teal;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 3rem;
+  }
+}
+
+.circle {
+  position: relative;
+  @include center;
+  height: 20rem;
+  width: 20rem;
+  z-index: 3;
+  perspective: 100rem;
+  transform-style: preserve-3d;
+  animation: rotate 7s linear infinite;
+}
+
+.plane {
+  position: absolute;
+  height: 20rem;
+  width: 20rem;
+  background: gray;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+@mixin random-bgr() {
+  background: rgb(random(256), random(256), random(256));
+  filter:contrast(3);
+  border: 0.1rem solid #fff;
+}
+
+@for $x from 1 through 6 {
+  $nullBase: $x - 1;
+  $degree: (180 / 6) * $nullBase;
+  .plane-#{$x} {
+    transform: rotateX($degree + deg);
+    @include random-bgr();
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+    }
+    25% {
+      transform: rotateY(45deg) rotateX(180deg) rotateZ(20deg);
+    }
+    50% {
+      transform: rotateY(225deg) rotateX(0deg) rotateZ(90deg);
+    }
+    75% {
+      transform: rotateY(0deg) rotateX(45deg) rotateZ(120deg);
+    }
+    100% {
+      transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+    }
+  }
+}
