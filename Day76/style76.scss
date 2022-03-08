@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  user-select: none;
+  font-family: "Courier New", Courier, monospace;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: absolute;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: darkseagreen;
+  border-radius: 0.5rem;
+}
+
+.wrapper {
+  position: absolute;
+  height: 12rem;
+  width: 25rem;
+  border-radius: 1rem;
+  box-shadow: inset 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+
+  &::before, &::after {
+    position: absolute;
+    content: "";
+    border-width: 1rem;
+    border-style: double;
+    top: 5rem;
+    transform: rotate(-45deg);
+    z-index: 20;
+    border-color: silver;
+    left: 3rem;
+  }
+
+  &::after {
+    left: 20.5rem;
+  }
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  top: 2rem;
+  color: #fff;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.input {
+  position: absolute;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 6rem;
+  top: 6rem;
+  color: darkseagreen;
+  backface-visibility: hidden;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 0 0 1rem 1rem ;
+  text-align: center;
+  transform: perspective(25rem);
+  transform-style: preserve-3d;
+  transform-origin: 100% 0;
+  transition: all 0.5s ease;
+  z-index: 5;
+
+  &::placeholder {
+    color: rgb(120, 160, 120);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5rem;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+
+  &:valid {
+    transform: rotateX(-180deg);
+    backface-visibility: hidden;
+
+    ~ .backSide {
+      backface-visibility: hidden;
+      visibility: visible;
+      transform: rotateX(0deg);
+      z-index: 7;
+    }
+
+    ~ .title {
+      top: -3rem;
+    }
+  }
+
+  &:valid ~ .key {
+    z-index: 8;
+  }
+}
+
+.backSide {
+  position: absolute;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: darkseagreen;
+  top: 0;
+  height: 6rem;
+  width: 100%;
+  font-size: 1.5rem;
+  transform: rotateX(-180deg);
+  transform-origin: 100% 100%;
+  transition: all 0.5s ease;
+  font-weight: 700;
+  border-radius: 1rem 1rem 0 0;
+  visibility: hidden;
+}
+
+.key {
+  position: absolute;
+  background: darkseagreen;
+  @include center;
+  top: 6rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  height: 6rem;
+  width: 100%;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: inset 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+}
