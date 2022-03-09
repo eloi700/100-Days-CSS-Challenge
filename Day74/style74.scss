@@ -9,6 +9,8 @@
 :root {
   font-size: 10px;
   user-select: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+  Arial, sans-serif;;
 }
 
 @mixin center {
@@ -29,24 +31,13 @@ body {
   width: 40rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  background: linear-gradient(
-    to right,
-    rgb(0, 63, 63) 3px,
-    rgba(255, 255, 255, 0.5) 5px,
-    rgba(255, 255, 255, 0.25) 7px,
-    rgba(255, 255, 255, 0.25) 10px,
-    transparent 12px,
-    transparent 16px,
-    rgba(255, 255, 255, 0.25) 17px,
-    transparent 22px
-  );
   box-shadow: 0 0 0.5rem -0.1rem black, inset -0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.5);
-  background-color: rgb(231, 231, 231);
+  background-color: silver;
 
   &:before {
     position: absolute;
     content: "";
-    height: 40rem;
+    height: 100%;
     width: 7rem;
     left: 0;
     border-radius: 0.5rem 0 0 0.5rem;
@@ -66,13 +57,27 @@ body {
   }
 }
 
+.title{
+  position: absolute;
+  // left: calc(33rem/2);
+  left: 2rem;
+  margin-right: -50%;
+  color: #fff;
+  top: 2rem;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+}
+
 .pages {
   position: absolute;
   flex-direction: column;
   left: 0;
   top: 0;
 
-  @mixin border-style{
+  &::before, &::after{
+    position: absolute;
+    content: '';
     top: 0;
     height: 30rem;
     width: 30rem;
@@ -80,23 +85,17 @@ body {
     border-radius: 50%;
     border-style: dashed;
     transform: translate(9rem, 4rem) rotate(35deg);
-    border-color:rgb(2, 139, 139) transparent transparent transparent;
+    border-color:rgb(0, 36, 36)transparent transparent transparent;
   }
 
   &::before{
-    position: absolute;
-    content: '';
-    @include border-style;
     z-index: 2;
   }
 
   &::after{
-    position: absolute;
-    content: '';
-    @include border-style;
     z-index: 3;
     transform: translate(8rem, 6rem) rotate(-60deg);
-    border-color:transparent transparent transparent rgb(2, 139, 139) ;
+    border-color:transparent transparent transparent rgb(0, 36, 36) ;
   }
 }
 
@@ -107,21 +106,17 @@ body {
 .button {
   position: relative;
   @include center;
-  width: 3rem;
-  height: 3rem;
   top: 7rem;
   left: 2rem;
-  padding: 3rem 0;
+  padding: 2rem 1rem;
   border: none;
   margin: 0.5rem;
-  z-index: 100 !important;
   background: none;
   color: rgb(231, 231, 231);
   cursor: pointer;
   text-align: center;
   font-size: 1.5rem;
   line-height: 2.7rem;
-  transition: 0.5s ease-in-out;
 }
 
 @for $i from 1 through 4 {
@@ -132,7 +127,7 @@ body {
     border-width: 0.2rem;
     border-style: none dashed none none;
     border-color: transparent cyan transparent transparent;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
 
     &:hover {
       background: none;
