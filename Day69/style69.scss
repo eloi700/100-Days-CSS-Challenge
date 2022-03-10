@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&display=swap');
-
 *,
 *::before,
 *::after {
@@ -10,7 +8,8 @@
 
 :root {
   font-size: 10px;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 @mixin center {
@@ -19,7 +18,7 @@
   align-items: center;
 }
 
-$bg-color: #dddddd;
+$bg-color: rgb(199, 145, 155);
 
 body {
   @include center;
@@ -34,24 +33,27 @@ body {
   background: $bg-color;
   border-radius: 0.5rem;
 
-  &::before{
-      content: '';
-      position: absolute;
-      z-index: 50;
-      height: 30rem;
-      width: 30rem;
-      border-radius: 50%;
-      box-shadow: inset -0.2rem -0.2rem 0.5rem rgba(78, 78, 78, 0.5), inset 0.2rem -0.2rem 0.5rem rgba(78, 78, 78, 0.5);
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 69 - D'EYE";
+    color: #fff;
+    top: 7rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 10;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
   }
 
-  &::after{
-    content:"D'EYE";
+  &::after {
     position: absolute;
-    font-size: 3rem;
-    color: gray;
-    text-shadow: 0.1rem 0.1rem 0 rgb(34, 34, 34);
-    top: 27rem;
-    z-index: 55;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    border: 0.2rem solid silver;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -76,7 +78,8 @@ body {
   border-radius: 12rem 0;
   background: #e0e0e0;
   overflow: hidden;
-  box-shadow: inset -0.1rem -0.2rem 0.2rem rgba(109, 109, 109, 0.8), inset 0.1rem -0.1rem 0.2rem rgba(109, 109, 109, 0.8);
+  box-shadow: inset -0.1rem -0.2rem 0.2rem rgba(109, 109, 109, 0.8),
+    inset 0.1rem -0.1rem 0.2rem rgba(109, 109, 109, 0.8);
   transform: rotate(50deg);
   transition: all 0.5s ease-in-out;
 }
@@ -87,8 +90,8 @@ body {
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-background: linear-gradient(to top, rgb(102, 102, 102) 10%, #fff 100%);
-box-shadow: inset 0.1rem -0.1rem 0.3rem rgb(124, 124, 124);
+  background: linear-gradient(to top, rgb(102, 102, 102) 10%, #fff 100%);
+  box-shadow: inset 0.1rem -0.1rem 0.3rem rgb(124, 124, 124);
   animation: ball 5s ease-in-out infinite;
 }
 

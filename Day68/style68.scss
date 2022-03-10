@@ -8,6 +8,8 @@
 
 :root {
   font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
 }
 
 @mixin center {
@@ -42,13 +44,27 @@ body {
   border-radius: 0.5rem;
   user-select: none;
 
-  &::after{
-      position: absolute;
-      content: '';
-      height: 20rem;
-      width: 20rem;
-      box-shadow: 0 0 0.8rem #fff;
-      border-radius: 0.5rem 3rem 0.5rem 3rem;
+  &::before{
+    position:absolute;
+    text-align: center;
+    content: 'DAY 68 - RECORDING';
+    color: #fff;
+    top: 7rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 10;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgba(255, 255, 255, 0.5);
+}
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    border: 0.1rem solid orange;
+    box-shadow: -0.1rem 0.1rem 0.3rem orange,
+      0.1rem -0.1rem 0.3rem orange;
   }
 }
 
@@ -88,7 +104,7 @@ body {
   height: 13rem;
   width: 13rem;
   border-radius: 50%;
-  z-index: 10;
+  z-index: 30;
   cursor: pointer;
 }
 
@@ -97,6 +113,7 @@ body {
   position: absolute;
   height: 12rem;
   width: 12rem;
+  z-index: 20;
   user-select: none;
   cursor: pointer;
 
