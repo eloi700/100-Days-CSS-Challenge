@@ -6,6 +6,8 @@
 
 :root{
     font-size: 10px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 @mixin center{
@@ -14,8 +16,8 @@
     align-items: center;
 }
 
-$bg-color: #3c1053ff;
-$ellipse-color: rgba(255, 141, 249, 0.8);
+$bg-color: rgb(60, 16, 83);
+$e-color: rgba(255, 141, 249, 0.8);
 
 body{
     @include center;
@@ -31,20 +33,29 @@ body{
     overflow: hidden;
     border-radius: 1rem;
 
-    &::after{
-        content: '';
+    &::before {
         position: absolute;
+        text-align: center;
+        content: "DAY 66 - CHECKBOX | MENU BUTTON";
+        color: #fff;
+        top: 2rem;
+        font-size: 1.5rem;
+        z-index: 10;
+        white-space: nowrap;
+        text-shadow: 0.1rem 0.1rem 0.3rem #000;
+      }
+    
+      &::after {
+        position: absolute;
+        content: "";
+        @include center;
         height: 30rem;
         width: 30rem;
-        border-color: rgba(255, 141, 249, 0.5);
-        border-style: solid;
-        border-top-width: 1rem;
-        border-bottom-width: 1rem;
-        border-left-width: 0.1rem;
-        border-right-width: 0.1rem;
-        border-radius: 10%;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.555);
-    }
+        background-color: #c5c5c534;
+        border: 0.2rem solid $e-color;
+        box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+          0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+      }
 }
 
 .wrapper{
@@ -58,7 +69,7 @@ body{
     position: absolute;
     width: 5rem;
     height: 20rem;
-    border: 0.1rem solid $ellipse-color;
+    border: 0.1rem solid $e-color;
     border-radius: 50%;
     transition: 0.5s ease-in-out;
 }
@@ -74,13 +85,13 @@ $noOfEllipses: 18;
 
     @keyframes rotate-#{$i} {
 		0% {
-			transform: rotate( ($degree)+deg );
+			transform: rotate($degree + deg );
 			border-radius: 50%;
 			border-width: 0.1rem;
 		}
 		50% {
 			transform: rotate(0) scaleX(5 * 0.6);
-			border-radius: 0%;;
+			border-radius: 0%;
 		}
 
 		100% {

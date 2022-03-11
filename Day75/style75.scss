@@ -64,6 +64,14 @@ body {
     white-space: nowrap;
     z-index: 10;
     text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+
+    // &::after{
+    //   position: absolute;
+    //   content: '';
+    //   border-width: 1.8rem;
+    //   border-style: solid;
+    //   border-color: #c5c5c5 #c5c5c5 #bcb6b9 #bcb6b9;
+    // }
 }
 
 

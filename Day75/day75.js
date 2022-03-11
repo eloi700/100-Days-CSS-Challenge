@@ -1,6 +1,6 @@
-const frame = document.createElement('div')
-const circle = document.createElement('div')
-const title = document.createElement('div')
+const frame = document.createElement('div'),
+circle = document.createElement('div'),
+title = document.createElement('div');
 frame.classList.add('frame')
 title.classList.add('title')
 title.textContent = "DAY 75 - SPINNING DISCS"
