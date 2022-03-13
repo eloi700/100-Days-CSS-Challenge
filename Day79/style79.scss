@@ -1,0 +1,185 @@
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+$bg: #ac8181;
+$s-color: #c5c5c5;
+$m-color: #fff;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 79 - LINE ANIMATION";
+    color: #fff;
+    top: 2rem;
+    z-index: 2;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+}
+.container {
+  position: absolute;
+  @include center;
+  height: 30rem;
+  width: 30rem;
+  overflow: hidden;
+  background-color: $s-color;
+  border: 0.2rem solid $m-color;
+  transform-style: preserve-3d;
+  perspective: 20rem;
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+    0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.triangle {
+  position: absolute;
+  @include center;
+  height: 6rem;
+  width: 6rem;
+  background: $bg;
+  transform-origin: top;
+  clip-path: polygon(18% 100%, 0% 38%, 100% 38%, 82% 100%, 50% 0%);
+  animation: rotate 5s linear infinite;
+}
+
+.line {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  z-index: 10;
+  background: rgb(random(255), random(255), random(255));
+}
+
+@for $i from 1 through 5 {
+  $base: $i - 1;
+  $deg: 360 / 5;
+
+  .line-#{$i} {
+    animation: line-#{$i} 10s ease-in-out infinite;
+  }
+
+  @keyframes line-#{$i} {
+    0% {
+      transform: rotate(0) translate(0, 0) scale(0.01);
+      background: $m-color;
+    }
+    5% {
+      transform: rotate(0) translate(0, 0) scale(1);
+    }
+    15% {
+      transform: rotate($base * $deg + deg) translate(0, 0) scale(1);
+    }
+    20% {
+      transform: rotate($base * $deg + deg) translate(0, -100px) scale(0.25, 1);
+    }
+    25% {
+      transform: rotate($base * $deg + deg) translate(0, -100px) rotate(180deg)
+        scale(0.25, 0.25);
+    }
+    30% {
+      transform: rotate($base * $deg + deg) translate(0, -50px) scale(1, 0.25)
+        translate(0, -100px) scale(1, 0.25) rotate(180deg);
+    }
+    35% {
+      transform: rotate($base * $deg + deg) translate(0, -50px) scale(1, 0.1);
+    }
+    40% {
+      transform: rotate($base * $deg + deg) translate(0, -50px) scale(1, 0.1)
+        translate(-30px, 0);
+    }
+    45% {
+      transform: rotate($base * $deg + deg) translate(0, -50px) scale(1, 0.1)
+        translate(30px, 0);
+    }
+    50% {
+      transform: rotate($base * $deg + deg) translate(0, -50px) scale(0.1, 1);
+    }
+    55% {
+      transform: rotate($base * $deg + deg) translate(0, -50px) scale(0.25, 0.1);
+      border-radius: 0;
+    }
+    60% {
+      transform: rotate($base * $deg + deg) translate(0, -80px) scale(0.5, 0.5)
+        rotate(180deg);
+      border-radius: 50%;
+    }
+
+    65% {
+      transform: rotate($base * $deg + deg) translate(10px, 10px)
+        scale(0.2, 0.2);
+      border-radius: 50%;
+      background: $m-color;
+    }
+    65.9% {
+      background: rgb(random(255), random(255), random(255));
+    }
+    70% {
+      transform: rotate($base * $deg + deg) translate(30px, -80px)
+        scale(0.25, 0.5);
+      border-radius: 0;
+    }
+    75% {
+      transform: rotate($base * $deg + deg) translate(30px, -80px)
+        scale(0.25, 0.25);
+    }
+    80% {
+      transform: rotate($base * $deg + deg) translate(30px, -50px)
+        scale(0.5, 0.5);
+      background: rgb(random(255), random(255), random(255));
+    }
+
+    85% {
+      transform: rotate($base * $deg + deg) translate(30px, -50px)
+        scale(0.5, 0.5) rotate(180deg) translate(-50px, 50px);
+    }
+    90% {
+      transform: rotate($base * $deg + deg) translate(30px, -30px)
+        scale(0.5, 0.1);
+    }
+
+    95% {
+      transform: rotate($base * $deg + deg) translate(0, -10px) scale(0.1, 0.5);
+    }
+    100% {
+      transform: rotate($base * $deg + deg) translate(0, -200px) scale(0.1, 0.5);
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(-360deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
