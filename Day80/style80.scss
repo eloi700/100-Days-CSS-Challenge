@@ -1,0 +1,157 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  user-select: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg1: rgb(108, 108, 223);
+$bg2: rgb(207, 205, 205);
+$bg2-m: rgb(190, 190, 190);
+$bg-m: rgb(75, 75, 156);
+$t-color: #fff;
+$font-f: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+  Arial, sans-serif;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg1;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 80 - ACCORDION";
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    background-color: $bg2;
+    border: 0.2rem solid $bg-m;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.title {
+  position: absolute;
+  top: 7rem;
+  z-index: 5;
+  color: $bg-m;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-shadow: 0 0 0.3rem #fff;
+}
+
+.questions {
+  position: relative;
+  @include center;
+  flex-direction: column;
+  z-index: 2;
+  top: 2rem;
+  height: 27rem;
+  width: 28rem;
+  overflow: hidden;
+}
+
+.quest {
+  position: relative;
+  background: $bg2-m;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 25rem;
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+  top: -2rem;
+  border: none;
+  margin-top: 0.5rem;
+  outline: none;
+  color: $bg-m;
+  font-size: 1.2rem;
+  font-family: $font-f;
+  border-radius: 0.3rem 0.3rem 0 0;
+  transition: 0.3s ease-in-out;
+
+  &::after {
+    content: "\002B";
+    float: right;
+    margin-right: -1.4rem;
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    line-height: 1.5rem;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: $bg-m;
+    background: $bg2-m;
+    border: 0.3rem solid $bg2;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    background: $bg-m;
+    color: $t-color;
+    transform: rotate(720deg);
+  }
+
+  &.active,
+  &:hover {
+    color: $t-color;
+    background: $bg-m;
+    border-left: 0.5rem solid $bg1;
+  }
+
+  &.active::after {
+    content: "\2212";
+    color: $bg1;
+    background: $bg-m;
+  }
+}
+
+.ans{
+  position: relative;
+  padding: 0 1.5rem;
+  background: $bg1;
+  width: 25rem;
+  color: $t-color;
+  top: -2rem;
+  line-height: 1.4rem;
+  overflow: hidden;
+  font-size: 0.8rem;
+  max-height: 0rem;
+  border-bottom: 0.3rem solid transparent;
+  clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+  transition: max-height 0.3s ease-in-out;
+}
