@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter&display=swap");
+
 *,
 *::before,
 *::after {
@@ -8,6 +10,9 @@
 
 :root {
   font-size: 62.5%;
+  user-select: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 @mixin flex {
@@ -15,6 +20,16 @@
   justify-content: center;
   align-items: center;
 }
+
+$img-colr: img-1, img-2, img-3, img-4, img-5;
+
+$colors: (
+  img-1: #ff3c00,
+  img-2: #999723,
+  img-3: #fffb00,
+  img-4: #00aaa2,
+  img-5: #7d89f7,
+);
 
 body {
   @include flex;
@@ -27,16 +42,28 @@ body {
   height: 40rem;
   width: 40rem;
   background: rgb(253, 165, 2);
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 59 - IMAGE TRANSITION";
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 10;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
 }
 
 .title {
   position: absolute;
   text-align: center;
   z-index: 1;
-  font-size: 1.5rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  top: 6.5rem;
-  text-transform: uppercase;
+  font-size: 2rem;
+  top: 6rem;
+  font-family: "Comforter", cursive;
+  text-transform: capitalize;
   font-weight: 300;
   letter-spacing: 0.2rem;
   color: #fff;
@@ -44,48 +71,69 @@ body {
 }
 
 .wrapper {
-    @include flex;
-    height: 30rem;
-    width: 30rem;
-    background-color: #C5C5C5;
-    border: 0.2rem solid darkorange;
-    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3), 0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+  @include flex;
+  height: 30rem;
+  width: 30rem;
+  background-color: #c5c5c5;
+  border: 0.2rem solid darkorange;
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+    0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
 }
 
-.images{
-    position: relative;
-    @include flex;
-    width: 28rem;
-    height: 22rem;  
-    justify-content: space-evenly;
-    gap: 0.3rem;
-
-    &:hover .image{
-        width: 100%;
-        border: none;
-
-    }
+.images {
+  position: relative;
+  @include flex;
+  width: 28rem;
+  height: 22rem;
+  justify-content: space-evenly;
 }
 
-.image{
-    width: 6rem;
-    height: 22rem;
-    border: 0.1rem solid #fff;
-    perspective: 80rem;
-    transition: all 1s ease-in-out;
-}
+.image {
+  position: relative;
+  flex: 1 1 auto;
+  width: 20%;
+  height: 100%;
+  z-index: 12;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
 
-img{
-    display: block;
+  &:hover {
+    opacity: 1;
     width: 100%;
-    height: 100%;
-    filter: sepia(100%);
+  }
+
+
+  @function getColor($color-name){
+    @if map-has-key($colors, $color-name){
+      @return map-get($colors , $color-name)
+    }
+  }
+  @each $i in $img-colr{
+    &.#{$i}{
+      background: getColor($i);
+      border-radius: 1rem;
+    }
 
     &:hover{
-        display: block;
-        width: 20rem;
-        filter: drop-shadow(0 0 0.5rem #000) hue-rotate(360deg) contrast(2);
-        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+      transition: all 1s ease-in-out;
+      background: none;
     }
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.image:hover > img {
+  opacity: 1;
+  width: 100%;
+  filter:contrast(1);
 }
