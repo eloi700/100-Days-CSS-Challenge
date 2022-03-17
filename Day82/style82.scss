@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$font-f: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+  Arial, sans-serif;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: dimgray;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 82 - ACTION BUTTON";
+    color: #fff;
+    top: 2rem;
+    font-family: $font-f;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 10;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    background-color: #c5c5c5;
+    border: 0.2rem solid #fff;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn{
+    display: none;
+}
+
+.buttons {
+	position: absolute;
+    @include center;
+    height: 5rem;
+    width: 10rem;
+    z-index: 5;
+	border-radius: 3rem;
+    font-family: $font-f;
+    font-size: 1.5rem;
+    text-shadow: -0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
+	transform-style: preserve-3d;
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, .3);
+	
+	.btn-send {
+		box-sizing: border-box;
+		position: absolute;
+		z-index: 2;
+        padding: 1.5rem 4rem;
+		color: dimgrey;
+		background: #fff;
+		border: .5rem solid #fff;
+		border-radius: 3rem;
+        box-shadow: inset 0 0 .8rem grey;
+		backface-visibility: hidden;
+		transform: rotateX(0);
+	}
+	
+	.btn-done {
+		@extend .btn-send;
+		z-index: 1;
+		color: #fff;
+		background: #64C760;
+		border: .5rem solid #fff;
+		transform: rotateX(180deg);
+	}
+	
+}
+
+.btn:checked ~ .buttons {
+	transform: rotateX(180deg);
+	box-shadow: 4px -8px 12px 0 rgba(0,0,0,.1);
+}
