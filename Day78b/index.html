@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/up/css/Day78b.css" />
+    <title>Day 78 - Hover Gooey Effect</title>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="wrapper">
+        <a href="#" class="hover-1">HOVER ME</a>
+        <a href="#" class="hover-2">HOVER ME</a>
+        <a href="#" class="hover-3">HOVER ME</a>
+      </div>
+
+      <svg
+        style="visibility: hidden"
+        width="0"
+        height="0"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+      >
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  </body>
+</html>

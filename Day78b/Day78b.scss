@@ -1,0 +1,163 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: darkcyan;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 78 - HOVER GOOEY EFFECT";
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 10;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    background-color: #c5c5c5;
+    border: 0.2rem solid darkcyan;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.wrapper {
+  position: absolute;
+  @include center;
+  flex-direction: column;
+  top: 3rem;
+  z-index: 5;
+  padding: 4rem 6rem;
+  perspective: 30rem;
+  filter: url("#goo");
+}
+
+@mixin btn-hover {
+  position: relative;
+  background: darkcyan;
+  color: #fff;
+  padding: 2rem 4rem;
+  min-width: 8rem;
+  font-size: 1.5rem;
+  text-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.8);
+  margin-top: 2rem;
+  text-decoration: none;
+}
+.hover-1 {
+  @include btn-hover;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    height: 2rem;
+    width: 2rem;
+    background: darkcyan;
+    border-radius: 50%;
+    transform: rotate((random(420)) + deg);
+    transition: transform 1s ease;
+    animation: rotate 5s ease infinite;
+  }
+
+  &::before {
+    top: -1rem;
+    right: 95%;
+  }
+
+  &::after {
+    bottom: -.5rem;
+    left: 100%;
+  }
+
+  &:hover::before,
+  &:hover::after {
+      animation: stop 3s ease;
+  }
+}
+
+.hover-2 {
+  @extend .hover-1;
+
+  &::before {
+    top: 2rem;
+    right: 105%;
+  }
+
+  &::after {
+    bottom: 1.5rem;
+    left: 95%;
+
+    &:hover::before,
+    &:hover::after {
+        animation: stop 3s ease;
+    }
+  }
+}
+
+.hover-3 {
+  @extend .hover-1;
+
+  &::before {
+    bottom: 100%;
+    right: -15%;
+  }
+
+  &::after {
+    top: 80%;
+    left: -10%;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    animation: stop 3s ease;
+  }
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(360deg) translate3d(-1rem, -.5rem, -1rem);
+    }
+    100% {
+      transform: rotate(-360deg) translate3d(1rem, .5rem, 1rem);
+    }
+  }
+
+  @keyframes stop {
+    0%, 100% {
+      transform: rotate(0) translate3d(0, 0, 0);
+    }
+  }
