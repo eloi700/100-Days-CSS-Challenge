@@ -1,0 +1,171 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: darkcyan;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 83 - WARP DRIVE";
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 2;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+}
+
+.container {
+  position: absolute;
+  @include center;
+  height: 30rem;
+  width: 30rem;
+  overflow: hidden;
+  background-color: #c5c5c5;
+  border: 0.2rem solid darkcyan;
+  box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+    0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.counter {
+  position: relative;
+  @include center;
+  background: #c5c5c5;
+  z-index: 5;
+  height: 30rem;
+  width: 30rem;
+
+  span {
+    position: absolute;
+    display: inline-block;
+    font-size: 20rem;
+    line-height: 20rem;
+    color: darkcyan;
+    pointer-events: none;
+  }
+}
+
+@for $x from 1 through 3 {
+  .c-#{$x} {
+    animation: cDown 18s ease-in-out infinite;
+    animation-delay: $x * 1.2s;
+    opacity: 0;
+  }
+}
+
+@keyframes cDown {
+  0% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.warp {
+  position: absolute;
+  @include center;
+  width: 15rem;
+  height: 15rem;
+  z-index: 3;
+  pointer-events: none;
+  animation: 18s warpme linear infinite;
+
+  .ring {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+
+    .line {
+      position: absolute;
+      width: 0.2rem;
+      height: 2rem;
+      top: 8rem;
+      left: 8rem;
+      background: darkcyan;
+    }
+  }
+
+  @keyframes warpme {
+    0%,
+    29% {
+      z-index: 3;
+    }
+    30%,
+    100% {
+      z-index: 20;
+    }
+  }
+
+  $rings: 30;
+  $lines: 24;
+  $ani-t: 4s;
+
+  @for $i from 1 through $rings {
+    $base1: $i - 1;
+    $offset-t: $base1 * (4s / $rings) * -1;
+    .ring-#{$i} {
+      animation: ring
+        $ani-t
+        cubic-bezier(0.98, 0.02, 0.97, 0.12)
+        $offset-t
+        infinite;
+
+      @for $x from 1 through $lines {
+        $base2: $x - 1;
+        $degree: ((360 / $lines) * $base2) - (random() * 10);
+        $offset: 100 - (random() * 40);
+        .line-#{$x} {
+          transform: rotate(($degree) + deg)
+            translate3d(0, ($offset) + px, 0)
+            scaleY(($offset / 100));
+        }
+      }
+    }
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 1;
+  }
+}
