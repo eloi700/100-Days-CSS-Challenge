@@ -1,0 +1,198 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: rgb(255, 166, 0);
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 84 - BOOK COVER";
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 1;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    // background-color: #000138;
+    background-color: silver;
+    border: 0.2rem solid darkorange;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.book {
+  position: relative;
+  height: 25em;
+  width: 18em;
+  z-index: 10;
+  text-align: center;
+  text-transform: uppercase;
+  // transform: perspective(60em) rotateX(58deg) rotateZ(-34deg) skewY(-7deg);
+  border-radius: 0.2em 0.4em 0.4em 0.2em;
+  background: linear-gradient(45deg, #ffd000 30%, #c5f2ff 100%);
+  background: -moz-linear-gradient(center top, #fad59f, #ffd000) repeat scroll 0
+    0 transparent;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fad59f),
+    to(#ffd000)
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fad59f, endColorstr=#ffd000);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#fad59f, endColorstr=#fa9907)";
+  box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.2), -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1.3em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 0.2em 0 0 0.2em;
+    background: -moz-linear-gradient(
+      left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.8) 20%,
+      rgba(255, 255, 255, 0.8) 45%,
+      rgba(0, 0, 0, 0.15) 49%,
+      rgba(0, 0, 0, 0.15) 84%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0.1) 45%,
+      rgba(0, 0, 0, 0.15) 49%,
+      rgba(0, 0, 0, 0.15) 84%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0.1) 45%,
+      rgba(0, 0, 0, 0.15) 49%,
+      rgba(0, 0, 0, 0.15) 84%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00000000',GradientType=1 );
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    top: -1px;
+    right: 25px;
+    bottom: -1px;
+    border-radius: 1px;
+    box-shadow: -1px 0px 1px 0 rgba(0, 0, 0, 0.4);
+    background: #444;
+    background: -moz-linear-gradient(
+      left,
+      #444 0%,
+      #c5f2ff 12%,
+      #444 25%,
+      #c5f2ff 37%,
+      #444 50%,
+      #c5f2ff 62%,
+      #444 75%,
+      #c5f2ff 87%,
+      #444 100%
+    );
+    background: -webkit-linear-gradient(
+      left,
+      #444 0%,
+      #c5f2ff 12%,
+      #444 25%,
+      #c5f2ff 37%,
+      #444 50%,
+      #c5f2ff 62%,
+      #444 75%,
+      #c5f2ff 87%,
+      #444 100%
+    );
+    background: linear-gradient(
+      to right,
+      #444 0%,
+      #c5f2ff 12%,
+      #444 25%,
+      #c5f2ff 37%,
+      #444 50%,
+      #c5f2ff 62%,
+      #444 75%,
+      #c5f2ff 87%,
+      #444 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444', endColorstr='#444',GradientType=1 );
+  }
+}
+
+.title {
+  position: relative;
+  top: 30%;
+  left: 2em;
+  color: rgb(163, 163, 163);
+  font-weight: 800;
+}
+
+.title-small {
+  position: absolute;
+  top: -1em;
+  left: 0.5em;
+  font-size: 1.5em;
+  text-decoration: line-through;
+}
+
+.title-big {
+  text-align: left;
+  font-size: 2.5em;
+}
+
+.title-xsmall {
+  position: absolute;
+  top: 8.5em;
+  text-transform: lowercase;
+  left: 1em;
+}
