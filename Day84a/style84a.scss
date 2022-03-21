@@ -1,0 +1,196 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$h-color: rgb(67, 208, 255);
+$w-color: rgb(90, 105, 90);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: rgb(93, 182, 255);
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 84 - BOOK | BIBLE";
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 1;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30em;
+    width: 30em;
+    background-color: #000138;
+    border: 0.2rem solid $h-color;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.book {
+  position: relative;
+  z-index: 2;
+  height: 15em;
+  width: 11em;
+  top: -1em;
+  border: 0.3em solid $w-color;
+  border-bottom: 0 solid transparent;
+  border-left-width: 0.5em;
+  border-radius: 1em 0 0 0;
+  box-shadow: -.4em 0 .5em rgba(0, 0, 0, 0.3);
+  transform: perspective(80em) rotateX(40deg) rotateZ(-25deg) skewY(-10deg);
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 14em;
+    width: 0.8em;
+    left: 0.1rem;
+    top: 0.1rem;
+    border: 0.2em solid $h-color;
+    border-bottom: none;
+    border-radius: 1em 0 0 0;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 7.5em;
+    width: 5em;
+    left: 50%;
+    top: 0.1rem;
+    z-index: 1;
+    border-width: 0.2em;
+    border-radius: 0.3em;
+    border-style: solid;
+    border-color: $h-color $h-color transparent transparent;
+  }
+}
+
+.title{
+    position: absolute;
+    color: $w-color;
+    font-size: 1.5em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transform: rotate(1deg);
+    top: 11rem;
+    left: 3.5rem;
+    font-weight: 800;
+    text-shadow: 0 0 0.8em #000;
+}
+
+.cross {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  height: 8em;
+  width: 6em;
+  z-index: 10;
+  background-color: $h-color;
+  clip-path: polygon(
+    30% 45%,
+    45% 45%,
+    45% 30%,
+    55% 30%,
+    55% 45%,
+    70% 45%,
+    70% 50%,
+    45% 50%,
+    45% 95%,
+    55% 95%,
+    55% 50%,
+    30% 50%
+  );
+}
+
+.bottom {
+  position: absolute;
+  height: 3em;
+  width: 11em;
+  z-index: 3;
+  border-radius: 1.5em 0 0 2em;
+  border-width: 0.3em;
+  border-style: solid;
+  border-color: $w-color transparent $w-color $w-color;
+  transform: rotate(3deg);
+  bottom: -2.4em;
+  left: -0.55em;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 0.2em;
+    width: 9.5em;
+    top: 0.5rem;
+    background: $w-color;
+    box-shadow: -0.1em 0.8em $w-color, .17em 1.4em $w-color;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 2.8em;
+    width: 0.3em;
+    background: rgb(90, 105, 90);
+    top: -.2em;
+    right: 0.7em;
+  }
+}
+
+.bookmarker {
+  position: absolute;
+  height: 2.2em;
+  background: #000138;
+  width: 1.8em;
+  border-width: 0.2em;
+  border-style: solid;
+  border-color: $w-color $h-color transparent $h-color;
+  left: 2em;
+  top: 1.3em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 1.3em;
+    width: 1.3em;
+    top: 1.3em;
+    left: 0;
+    border: 0.2em;
+    border-radius: 0.5em 0 0 0;
+    border-style: solid;
+    border-color: $h-color transparent transparent $h-color;
+    transform: rotate(45deg);
+  }
+}
