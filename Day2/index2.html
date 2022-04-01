@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../up/css/style2.css" />
     <title>Challenge#2 - Menu Button</title>
-</head>
+  </head>
 
-<body>
-    <div class="content">
-        <div class="container" onclick="menuHamburger(this)">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
+  <body>
+    <div class="frame">
+      <div class="wrapper" onclick="menu(this)">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
     </div>
-    <script>
-        function menuHamburger(x) {
-            x.classList.toggle("move");
-        }
-    </script>
-</body>
 
+    <script>
+      function menu(x) {
+        x.classList.toggle("active");
+      }
+    </script>
+  </body>
 </html>
