@@ -48,9 +48,9 @@ body {
   }
 
   .container {
-    position: relative;
-    width: 33rem;
-    height: 33rem;
+    position: absolute;
+    width: 31rem;
+    height: 31rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,6 +88,22 @@ body {
           border-radius: 50%;
           z-index: 100000;
         }
+
+        &::after{
+        position: absolute;
+        content: 'DAY 10 - CLASSY CLOCK';
+        text-align: center;
+        color: rgb(10, 10, 10);
+        top: -3rem;
+        left: 25%;
+        font-size: 1.5rem;
+        text-align: center;
+        white-space: nowrap;
+        filter: contrast(5);
+        text-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, .5);
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+      }
 
         .hour,
         .minute,
@@ -192,7 +208,7 @@ body {
       .date {
         @extend .calories;
         top: 32%;
-        left: 25%;
+        left: 15%;
         padding: 0.5rem;
         text-shadow: 0.3rem solid gray;
         // background: rgba(128, 128, 128, 0.384);
