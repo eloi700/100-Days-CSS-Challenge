@@ -32,15 +32,29 @@ $tertiary-color: rgb(23, 121, 121);
 
 body {
   min-height: 100vh;
-  font-family: "Poppins", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
   @include flex;
 
   .container {
+    position: relative;
     @include flex;
     height: 40rem;
     width: 40rem;
     background: $background;
     border-radius: 1rem;
+
+    &::before {
+      position: absolute;
+      content: '';
+      text-align: center;
+      content: "DAY 15 - UPLOAD FILE";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      z-index: 10;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .frame {
       height: 30rem;
@@ -191,7 +205,7 @@ body {
 
       .upload-btn {
         position: absolute;
-        top: 60vh;
+        top: 30rem;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 0.5rem;

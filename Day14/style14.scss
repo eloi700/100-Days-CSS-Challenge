@@ -15,7 +15,20 @@ body {
   align-items: center;
 }
 
+.title{
+    position:absolute;
+    text-align: center;
+    content: 'DAY 77 - MOTION BLUR';
+    color: #fff;
+    top: 7rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 999;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+}
+
 .frame {
+  position: relative;
   height: 40rem;
   width: 40rem;
   background-image: linear-gradient(135deg, #52e5e7 10%, #130cb7 100%);
