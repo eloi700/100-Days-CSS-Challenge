@@ -15,24 +15,27 @@ body {
   align-items: center;
 }
 
-.title{
-    position:absolute;
-    text-align: center;
-    content: 'DAY 77 - MOTION BLUR';
-    color: #fff;
-    top: 7rem;
-    font-size: 1.5rem;
-    white-space: nowrap;
-    z-index: 999;
-    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
-}
-
 .frame {
   position: relative;
   height: 40rem;
   width: 40rem;
-  background-image: linear-gradient(135deg, #52e5e7 10%, #130cb7 100%);
-  border-radius: 1rem;
+  background-image: rgb(187, 187, 187);
+  border: 0.2rem solid rgb(128, 128, 128);
+
+  &::before {
+    position: absolute;
+    content: '';
+    text-align: center;
+    content: "DAY 14 - CARCLOPTER";
+    color: #000;
+    top: 2rem;
+    left: 13rem;
+    font-size: 1.5rem;
+    z-index: 10;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+  }
 
   &:hover .flip {
     transform: rotateY(180deg);
@@ -52,7 +55,7 @@ body {
       overflow: hidden;
       border-radius: 1rem;
       text-align: center;
-      background-image: linear-gradient(135deg, #52e5e7 10%, #130cb7 100%);
+      background-image: rgb(187, 187, 187);
       top: 0;
       left: 0;
       right: 0;
@@ -82,13 +85,13 @@ body {
         height: 0.5rem;
         overflow: hidden;
 
-        @for $k from 1 through 10 {
-          .stripe-#{$k} {
+        @for $i from 1 through 10 {
+          .stripe-#{$i} {
             right: 0;
             top: 0;
             height: 0.1rem;
-            width: (0.3 + $k * 2) + rem;
-            background: lightgrey;
+            width: (0.3 + $i * 2) + rem;
+            background: rgb(128, 128, 128);
             animation: street
               (1 + random(3) / 10) +
               s
@@ -134,7 +137,7 @@ body {
             top: (30 + $m * 14) + rem;
             height: 0.3rem;
             width: (10 + random(130) / 10) + rem;
-            background: lightskyblue;
+            background: rgb(128, 128, 128);
             border-radius: 0.3rem;
             animation: cloud
               (4 + random(4) / 10) +
