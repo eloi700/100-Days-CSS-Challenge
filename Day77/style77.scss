@@ -30,17 +30,17 @@ body {
   width: 40rem;
   background: rgb(255, 166, 0);
 
-  &::before{
-    position:absolute;
+  &::before {
+    position: absolute;
     text-align: center;
-    content: 'DAY 77 - MOTION BLUR';
+    content: "DAY 77 - MOTION BLUR";
     color: #fff;
     top: 7rem;
     font-size: 1.5rem;
     white-space: nowrap;
     z-index: 10;
     text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
-}
+  }
 }
 
 .ball {
@@ -55,43 +55,45 @@ body {
 }
 
 .blur {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    background: orange;
-    border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: orange;
+  border-radius: 50%;
 }
 
 @for $i from 1 through 6 {
-    .blur-#{$i} {
-        opacity: 1 - ($i / 10);
-        animation: blur-#{$i} 2s ease-in-out infinite;
-    }
+  .blur-#{$i} {
+    opacity: 1 - ($i / 10);
+    animation: blur-#{$i} 2s ease-in-out infinite;
+  }
 }
 
 @keyframes move-h {
-	0%, 100% {
-		transform: translateX(-10rem);
-	}
-	50% {
-		transform: translateX(10rem);
-	}
+  0%,
+  100% {
+    transform: translateX(-10rem);
+  }
+  50% {
+    transform: translateX(10rem);
+  }
 }
 
 @for $i from 1 through 6 {
-	@keyframes blur-#{$i} {
-		0%, 50%, 100% {
-			transform: translateX(0);
-		}
-		25% {
-			transform: translateX( $i * -10px );
-		}
-		75% {
-			transform: translateX( $i * 10px );
-		}
-	}
+  @keyframes blur-#{$i} {
+    0%,
+    50%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX($i * -10px);
+    }
+    75% {
+      transform: translateX($i * 10px);
+    }
+  }
 }
-

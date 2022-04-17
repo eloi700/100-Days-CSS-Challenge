@@ -19,20 +19,35 @@ $direction: column;
 
 html {
   font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
 }
 
 body {
   @include flex;
   min-height: 100vh;
 
+
   .frame {
+    position: relative;
     @include flex;
-    height: 38rem;
-    width: 38rem;
-    box-shadow: -0.3rem 0.5rem 1.5rem rgba(0, 0, 0, 0.836);
-    border-radius: 2rem;
-    border: 0.3rem solid silver;
+    height: 40rem;
+    width: 40rem;
+    box-shadow:.1rem .1rem 1rem rgba(0, 0, 0, 0.5);
+    border: 0.1rem solid silver;
     background: rgb(155, 43, 2);
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 16 - BLOBBLY SHAPES";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      z-index: 10;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .circle {
       position: absolute;
