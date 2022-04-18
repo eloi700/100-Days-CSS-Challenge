@@ -8,11 +8,13 @@
 
 html {
   font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --segment-width: 40rem;
 }
 
-$frame1-color: rgb(7, 253, 253);
-$frame2-color: rgb(252, 69, 2);
-$frame3-color: rgb(33, 252, 5);
+$frame1-color: rgb(86, 69, 134);
+$frame2-color: rgb(103, 146, 175);
+$frame3-color: rgb(223, 171, 0);
 
 @mixin flex {
   display: flex;
@@ -28,12 +30,22 @@ body {
   .frame {
     @include flex;
     position: relative;
-    width: 35rem;
-    height: 35rem;
-    overflow: hidden;
-    border-radius: 1rem;
+    width: var(--segment-width);
+    height: var(--segment-width);
     overflow: hidden;
     gap: 1rem;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 19 - SLIDER WITH RADIO BUTTON";
+      color: #fff;
+      top: 2rem;
+      z-index: 2;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     input[type="radio"] {
       display: none;
@@ -44,9 +56,8 @@ body {
       width: 6rem;
       border-radius: 50%;
       z-index: 2;
-      background-color: #008080;
+      background-color: rgb(220, 20, 60);
       cursor: pointer;
-      box-shadow: inset -0.5rem -0.5rem 3rem rgba(0, 0, 0, 0.856);
     }
 
     .c2 {
@@ -80,24 +91,23 @@ body {
 
     .background {
       position: absolute;
-      width: 105rem;
-      height: 35rem;
-      border-radius: 1rem;
+      width: calc(var(--segment-width) * 3);
+      height: var(--segment-width);
       background: $frame1-color;
-      border-left: 35rem solid $frame2-color;
-      border-right: 35rem solid $frame3-color;
+      border-left: var(--segment-width) solid $frame2-color;
+      border-right: var(--segment-width) solid $frame3-color;
       transition: all 1s ease;
       transform: translateX(0);
     }
 
     #button-1:checked ~ .background {
-      transform: translateX(calc(100% / 3));
+      transform: translateX(var(--segment-width));
     }
     #button-2:checked ~ .background {
       transform: translateX(0);
     }
     #button-3:checked ~ .background {
-      transform: translateX(calc(-100% / 3));
+      transform: translateX(calc(-1 * var(--segment-width)));
     }
   }
 }

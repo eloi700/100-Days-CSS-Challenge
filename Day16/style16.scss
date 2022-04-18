@@ -7,8 +7,8 @@
 }
 
 $primary-color: rgba(0, 0, 0, 0.651);
-$secondary-color: rgb(253, 116, 66);
-$sparkle-color: rgb(247, 142, 104);
+$secondary-color: #fff;
+$sparkle-color: #fff;
 $direction: column;
 
 @mixin flex {
@@ -35,7 +35,7 @@ body {
     width: 40rem;
     box-shadow:.1rem .1rem 1rem rgba(0, 0, 0, 0.5);
     border: 0.1rem solid silver;
-    background: rgb(155, 43, 2);
+    background: rgb(44, 0, 95);
 
     &::before {
       position: absolute;
