@@ -34,6 +34,8 @@ body {
     height: var(--segment-width);
     overflow: hidden;
     gap: 1rem;
+    box-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.5);
+
 
     &::before {
       position: absolute;

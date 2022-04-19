@@ -5,14 +5,16 @@
 }
 
 $primary-color: #131313;
-$primary-color-m: #66fa03;
-$secondary-color: rgba(209, 207, 207, 0.596);
-$secondary-color-m: #64f801a8;
-$tertiary-color: rgba(114, 113, 113, 0.253);
-$tertiary-color-m: #64f80154;
+$primary-color-m: #ffd000;
+$secondary-color: rgba(209, 207, 207, 0.4);
+$secondary-color-m: #ffee00;
+$tertiary-color: rgba(114, 113, 113, 0.2);
+// $tertiary-color-m: #2b6901;
+$tertiary-color-m: #b49300;
 
 html {
   font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 @mixin flex {
@@ -26,9 +28,10 @@ body {
   min-height: 100vh;
 
   .container {
+    position: relative;
     @include flex;
-    height: 38rem;
-    width: 38rem;
+    height: 40rem;
+    width: 40rem;
     background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
       linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
       linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
@@ -45,15 +48,28 @@ body {
       );
     background-color: #131313;
     background-size: 20px 20px;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 17 - PENROSE TRIANGLE";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      z-index: 10;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .frame {
+      position: relative;
       height: 30rem;
-      width: 25rem;
+      width: 30rem;
       background: $tertiary-color;
       box-shadow: 0 0 1rem $primary-color;
-      border-radius: 1rem;
-      transform: rotate(-10deg) scale(1.2);
+      box-shadow: 0 0 .3rem #fff;
+      transform: scale(1);
       transition: 1s ease-in-out;
       perspective: 20rem;
       transform-style: preserve-3d;
@@ -67,32 +83,32 @@ body {
         top: 53%;
         left: 60%;
         margin-right: 50%;
-        transform: translate(-50%, -50%) rotateZ(10deg);
-        width: 25rem;
-        height: 25rem;
+        transform: translate(-56%, -40%);
+        width: 20rem;
+        height: 20rem;
         transition: 3s ease-in-out;
         perspective: 20rem;
         transform-style: preserve-3d;
 
         &:hover {
-          transform: translate(-50%, -50%) rotateZ(360deg) scale(0.8);
+          transform: translate(-60%, -50%) rotateZ(360deg) scale(0.5);
         }
 
         .light {
           fill: $secondary-color-m;
-          stroke: rgba(209, 207, 207, 0.596);
+          stroke: rgb(218, 165, 32);
           transition: all 0.5s ease-in-out;
         }
 
         .middle {
           fill: $tertiary-color-m;
-          stroke: rgba(209, 207, 207, 0.596);
+          stroke: rgb(218, 165, 32);
           transition: all 0.5s ease-in-out;
         }
 
         .dark {
           fill: $tertiary-color-m;
-          stroke: rgba(209, 207, 207, 0.596);
+          stroke: rgb(218, 165, 32);
           transition: all 0.5s ease-in-out;
         }
 
