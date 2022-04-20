@@ -38,12 +38,12 @@ body {
 
 
     &::before {
+      content: '';
       position: absolute;
       text-align: center;
-      content: "DAY 19 - SLIDER WITH RADIO BUTTON";
+      content: "DAY 19 - BOUNCING BALL";
       color: #fff;
       top: 2rem;
-      z-index: 2;
       font-size: 1.5rem;
       white-space: nowrap;
       text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);

@@ -6,6 +6,7 @@
 
 html {
   font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 $bg1: repeating-linear-gradient(
@@ -41,11 +42,11 @@ $bg1: repeating-linear-gradient(
 
 $background-size: 70px 120px;
 
-$top-bg: linear-gradient(45deg, #81ffeec5 10%, #f382f37e 100%);
+$top-bg: linear-gradient(45deg, cyan 10%, purple 100%);
 $skycolor: rgb(155, 199, 226);
 $bot-bg: green;
-$width: 38rem;
-$height: 38rem;
+$width: 40rem;
+$height: 40rem;
 
 @mixin flex {
   display: flex;
@@ -56,19 +57,31 @@ $height: 38rem;
 body {
   @include flex;
   min-height: 100vh;
-  background-image: linear-gradient(135deg, #6b73ff 10%, #000dff 100%);
 }
 
 .container {
-  height: 38rem;
+  position: relative;
+  height: $height;
   width: $width;
-  box-shadow: -0.1rem 0.1rem 0.8rem rgba(0, 0, 0, 0.4),
-    0.1rem -0.1rem 0.8rem rgba(0, 0, 0, 0.4),
-    -0.1rem 0.8rem 1rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.4);
+
+  &::before {
+    position: absolute;
+    content: '';
+    text-align: center;
+    content: "DAY 18 - BOUNCING BALL";
+    color: #fff;
+    top: 2rem;
+    left: 12rem;
+    z-index: 2;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
 
   .bg-top {
     position: absolute;
-    height: 16rem;
+    height: 17rem;
     width: $width;
     background: $top-bg;
     overflow: hidden;
@@ -82,7 +95,7 @@ body {
       top: 5rem;
       font-size: 8rem;
       color: $skycolor;
-      animation: move1 6s ease-in-out infinite;
+      animation: move1 15s ease-in-out infinite;
       filter: contrast(1.75);
       opacity: 0;
     }
@@ -91,7 +104,7 @@ body {
       @extend i, .one;
       left: 13rem;
       top: 1rem;
-      animation: move2 4s ease-in-out infinite;
+      animation: move2 12s ease-in-out infinite;
       filter: hue-rotate(90deg);
     }
 
@@ -100,7 +113,7 @@ body {
       left: 0;
       font-size: 6rem;
       top: 9rem;
-      animation: move3 4.5s ease-in-out infinite;
+      animation: move3 10s ease-in-out infinite;
       filter: hue-rotate(15deg);
     }
 
@@ -109,14 +122,15 @@ body {
       left: 10rem;
       font-size: 5rem;
       top: 1rem;
-      animation: move4 5s ease-in-out infinite;
+      animation: move4 8s ease-in-out infinite;
       filter: hue-rotate(145deg);
     }
   }
 
   .bg-bottom {
+    position: absolute;
     @extend .bg-top;
-    top: 46%;
+    top: 17rem;
     height: 23rem;
     width: $width;
     background: $bot-bg;
@@ -125,12 +139,12 @@ body {
   .flipper {
     position: absolute;
     width: $width;
-    height: 12rem;
-    top: 58%;
+    height: 10rem;
+    top: 30rem;
     border: 0 -1.5rem 5rem black;
     animation-fill-mode: both;
     transform-style: preserve-3d;
-    animation: flip 1s ease-in-out alternate infinite 0.5s;
+    transform: rotateY(5deg);
     background: $bg1;
     background-size: $background-size;
   }
@@ -139,7 +153,7 @@ body {
     position: absolute;
     width: 8rem;
     height: 8rem;
-    top: 70%;
+    top: 25rem;
     border-radius: 50%;
     box-shadow: 0 -0.2rem 2rem rgba(0, 0, 0, 0.582);
     z-index: 10;
@@ -152,7 +166,7 @@ body {
       rgb(3, 89, 117) 100%,
       blue 50%
     );
-    animation: b-ball 1s linear alternate infinite;
+    animation: b-ball 1.5s linear alternate infinite;
     transform-style: preserve-3d;
     perspective: 1000rem;
     overflow: hidden;
@@ -176,19 +190,10 @@ body {
 
   @keyframes b-ball {
     from {
-      transform: translate3d(15rem, -15rem, 0) rotateZ(0deg);
+      transform: translate3d(15rem, 0, 0) rotateZ(0deg);
     }
     to {
-      transform: translate3d(15rem, -40rem, 0) rotateZ(360deg);
-    }
-  }
-
-  @keyframes flip {
-    from {
-      transform: rotateX(90deg);
-    }
-    to {
-      transform: rotateX(45deg);
+      transform: translate3d(15rem, -20rem, 0) rotateZ(360deg);
     }
   }
 
