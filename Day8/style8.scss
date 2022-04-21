@@ -7,11 +7,13 @@
 }
 
 // $primary-color: teal;
-$secondary-color: black;
-$tertiary-color: white;
+$secondary-color: #000;
+$tertiary-color: #fff;
 
 :root {
   font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
 }
 
 body {
@@ -23,18 +25,31 @@ body {
 
 .frame {
   position: relative;
-  width: 35rem;
-  height: 35rem;
+  width: 40rem;
+  height: 40rem;
   background: $tertiary-color;
   filter: contrast(25);
-  box-shadow: 0.5rem -0.3rem 1rem rgba(0, 0, 0, 0.445),
-    -0.3rem -0.5rem 3rem rgba(0, 0, 0, 0.562);
-  border-radius: 1rem;
+  box-shadow: .3rem .3rem 1rem rgba(0, 0, 0, 0.4);
+  border: 0.1rem solid rgb(102, 102, 102);
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   perspective: 5rem;
+
+  &::before{
+    position: absolute;
+    content: 'DAY 8 - METABALLS';
+    text-align: center;
+    color: #fff;
+    top: 2rem;
+    width: 100%;
+    line-height: 2.5rem;
+    background: #000;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 10;
+  }
 }
 
 .bubbles {
