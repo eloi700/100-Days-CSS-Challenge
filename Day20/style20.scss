@@ -6,6 +6,7 @@
 
 html {
   font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 @mixin flex {
@@ -22,16 +23,28 @@ $tertiary-color: rgb(218, 216, 216);
 body {
   @include flex;
   min-height: 100vh;
-  overflow-y: hidden;
-  background-image: linear-gradient(135deg, #92ffc0 10%, #002661 100%);
 
   .frame {
+    position: relative;
     @include flex;
     position: relative;
-    height: 38rem;
-    width: 38rem;
+    height: 40rem;
+    width: 40rem;
     background: $primary-color;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgb(146, 146, 146);
+
+    &::before {
+      content: '';
+      position: absolute;
+      text-align: center;
+      content: "DAY 20 - SEND MAIL";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .circle {
       position: absolute;
