@@ -5,6 +5,7 @@
 }
 html {
   font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 @mixin flex {
@@ -23,10 +24,20 @@ body {
     @include flex;
     position: relative;
     background: $bg;
-    height: 38rem;
-    width: 38rem;
-    border-radius: 2rem;
+    height: 40rem;
+    width: 40rem;
     overflow: hidden;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 21 - BUSY PACMAN";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .pacman {
       position: absolute;

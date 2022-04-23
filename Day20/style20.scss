@@ -35,7 +35,6 @@ body {
     box-shadow: 0 0 1rem rgb(146, 146, 146);
 
     &::before {
-      content: '';
       position: absolute;
       text-align: center;
       content: "DAY 20 - SEND MAIL";
