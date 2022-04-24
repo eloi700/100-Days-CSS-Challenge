@@ -34,10 +34,21 @@ body {
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    height: 38rem;
-    width: 38rem;
+    height: 40rem;
+    width: 40rem;
     background: $bcolor;
-    border-radius: 1rem;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 22 - FITNESS TRACKER";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     & .small {
       position: absolute;
@@ -46,7 +57,7 @@ body {
       font-size: 2rem;
       color: $fcolor;
       font-weight: 300;
-      top: 4rem;
+      top: 6rem;
     }
 
     & .big {
