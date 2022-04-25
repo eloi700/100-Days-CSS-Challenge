@@ -27,14 +27,25 @@ body {
   font-family: $font;
 
   .frame {
+    position: relative;
     @include flex;
     position: relative;
-    width: 38rem;
-    height: 38rem;
+    width: 40rem;
+    height: 40rem;
     background: $primarybg;
-    border-radius: 1rem;
-    box-shadow: -0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.514),
-      0.5rem -0.2rem 1rem rgba(0, 0, 0, 0.582);
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.8);
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 23 - ANIMATED TYPOGRAPHY";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .circle {
       position: absolute;
@@ -129,7 +140,7 @@ body {
 
     .fas {
       position: absolute;
-      font-size: 35rem;
+      font-size: 30rem;
       color: lightskyblue;
       opacity: 0.2;
     }
