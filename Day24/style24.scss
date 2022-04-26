@@ -22,10 +22,21 @@ body {
   .frame {
     @include flex;
     position: relative;
-    height: 38rem;
-    width: 38rem;
-    border-radius: 1rem;
+    height: 40rem;
+    width: 40rem;
     background: black;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 24 - BUTTON";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     input[type="checkbox"] {
       visibility: hidden;
