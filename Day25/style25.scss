@@ -29,15 +29,25 @@ body {
     position: relative;
     height: 40rem;
     width: 40rem;
+    background: rgb(153, 243, 153);
     overflow: hidden;
-    background: rgba(3, 56, 56, 0.507);
-    border-radius: 1rem 1rem 0 0;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 25 - MAP MARKER";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     & .map {
       position: absolute;
-      height: 38rem;
-      width: 38rem;
-      border-radius: 1rem;
+      height: 40rem;
+      width: 40rem;
     }
 
     & .marker {
@@ -76,7 +86,7 @@ body {
         width: 2rem;
         bottom: -2.5rem;
         border-radius: 50%;
-        background: rgba(161, 161, 161, 0.397);
+        background: rgba(161, 161, 161, 0.8);
         animation: shadow 3s ease-in-out infinite alternate;
       }
 
