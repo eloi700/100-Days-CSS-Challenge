@@ -7,6 +7,7 @@
 }
 :root {
   font-size: 62.5%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 @mixin flex {
@@ -25,7 +26,17 @@ body {
     height: 40rem;
     width: 40rem;
     overflow: hidden;
-    border-radius: 1rem;
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 28 - BELL RINGING";
+      color: #fff;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+    }
 
     .bell {
       position: absolute;
