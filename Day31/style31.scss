@@ -33,8 +33,30 @@ body {
     width: 40rem;
     background: $bg-color;
     overflow: hidden;
-    border-radius: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.514);
+
+    &::before {
+      position: absolute;
+      text-align: center;
+      content: "DAY 31 - PENDULUM WAVE";
+      color: #fff;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+      top: 2rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      text-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 30rem;
+      width: 30rem;
+      z-index: 2;
+      border: 0.1rem solid rgb(192, 192, 192);
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    }
 
     .dots {
       position: absolute;
