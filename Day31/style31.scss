@@ -8,6 +8,8 @@
 
 :root {
   font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
 }
 
 %flex {
@@ -40,8 +42,6 @@ body {
       text-align: center;
       content: "DAY 31 - PENDULUM WAVE";
       color: #fff;
-      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
       top: 2rem;
       font-size: 1.5rem;
       white-space: nowrap;

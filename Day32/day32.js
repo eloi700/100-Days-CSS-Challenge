@@ -1,6 +1,6 @@
-const plusInc = document.querySelector(".plus");
-const minusInc = document.querySelector(".minus");
-const numberIncDec = document.querySelector(".number");
+const plusInc = document.querySelector(".plus"),
+  minusInc = document.querySelector(".minus"),
+  numberIncDec = document.querySelector(".number");
 
 let number = 0;
 
