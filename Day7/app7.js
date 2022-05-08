@@ -1,9 +1,9 @@
-const menu = document.querySelector(".menu-button");
-const dropDownMenu = document.querySelector(".dropdown-menu");
-const notifications = document.querySelector(".alert-messages");
-const searchIcon = document.querySelector(".search-icon");
-const searchBar = document.querySelector(".search");
-const title = document.querySelector(".title");
+const menu = document.querySelector(".menu-button"),
+  dropDownMenu = document.querySelector(".dropdown-menu"),
+  notifications = document.querySelector(".alert-messages"),
+  searchIcon = document.querySelector(".search-icon"),
+  searchBar = document.querySelector(".search"),
+  title = document.querySelector(".title");
 
 menu.addEventListener("click", () => {
   dropDownMenu.classList.toggle("dropdown-menu--active");
