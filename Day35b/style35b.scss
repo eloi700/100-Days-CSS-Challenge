@@ -33,7 +33,6 @@ body {
   height: 40rem;
   width: 40rem;
   background: teal;
-  border-radius: 1rem;
 
   &::before{
     position: absolute;
@@ -50,8 +49,30 @@ body {
     @include center;
     @extend %bg-frame;
     transform: rotate(-8deg);
-    background: rgb(0, 66, 66);
+    background: linear-gradient(to right, rgb(78, 151, 151), rgba(0, 75, 75, 0.685));
     z-index: 1;
+  }
+}
+
+.title{
+  position: relative;
+  @include center;
+  height: 30rem;
+  width: 30rem;
+  z-index: 2;
+  border: .1rem solid #aaa;
+  box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.5);
+
+  &::before {
+    position: absolute;
+    content: "DAY 35 - LIQUID LOADER";
+    color: #fff;
+    top: -3rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    z-index: 20;
+    text-shadow: 0.1rem 0.1rem 0.3rem #000;
   }
 }
 
@@ -80,7 +101,6 @@ body {
     border-style: dashed;
     border-color: transparent transparent red rgb(126, 1, 21);
     animation: rotate 3s cubic-bezier(0, 0.15, 1, 0.85) infinite;
-
   }
 }
 
