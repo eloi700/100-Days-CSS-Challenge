@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root,
+html {
+  font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  height: 40rem;
+  width: 40rem;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 56, 0.3),
+      rgba(179, 179, 177, 0.3)
+    ),
+    url("https://source.unsplash.com/1L71sPT5XKc");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  &::before{
+      content: 'DAY 85 - FIREFLIES IN THE FOREST';
+      font-size: 1.2rem;
+      color: #fff;
+      position: absolute;
+      top: 2rem;
+      left: 10rem;
+      text-shadow: 0 0 .5rem #000;
+
+  }
+}
+
+.fly {
+  position: absolute;
+
+  @for $i from 1 through 50 {
+    &-#{$i} {
+      top: random(100) * 1%;
+      left: random(100) * 1%;
+      animation: flying
+        (random(50) + 20) +
+        s
+        ease-in-out
+        (random(100) / -10) +
+        s
+        infinite
+        alternate;
+    }
+  }
+}
+
+.dot {
+  width: 0.3rem;
+  height: 0.4rem;
+  border-radius: 30%;
+  background: rgb(255, 215, 0);
+  box-shadow: 0 0 1.5rem .3rem rgba(255, 255, 255, 0.5);
+
+  @for $i from 1 through 30 {
+    &-#{$i} {
+      transform-origin: (random(25)-8) + px (random(30)-8) + px;
+      animation: rotating
+        (random(30) + 15) +
+        s
+        ease-in-out
+        (random(100) /-15) +
+        s
+        infinite;
+    }
+  }
+}
+
+@keyframes rotating {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flying {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(20px, 50px);
+  }
+  20% {
+    transform: translate(-30px, 10px);
+  }
+  30% {
+    transform: translate(10px, 60px);
+  }
+  40% {
+    transform: translate(50px, 00px);
+  }
+  50% {
+    transform: translate(-10px, -40px);
+  }
+  60% {
+    transform: translate(-40px, 20px);
+  }
+  70% {
+    transform: translate(30px, -30px);
+  }
+  80% {
+    transform: translate(0px, -60px);
+  }
+  90% {
+    transform: translate(40px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
