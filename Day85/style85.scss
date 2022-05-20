@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$noOfDots: 200;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: rgb(220, 20, 60);
+  overflow: hidden;
+  box-shadow: 0 0 0.3rem #000;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 85 - IT'S SOMETHING";
+    color: #fff;
+    top: 2rem;
+    z-index: 2;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+}
+
+.wave {
+  position: absolute;
+  height: 0.2rem;
+  width: 40rem;
+
+.dot {
+  float: left;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 0.1rem;
+  background: #fff;
+}
+
+@for $i from 1 through $noOfDots {
+  .dot-#{$i} {
+    animation: move-#{$i} 3s ease-in-out infinite;
+  }
+}
+}
+
+@for $i from 1 through $noOfDots {
+  @keyframes move-#{$i} {
+    $offset: 10rem;
+    @if $i < 100 {
+      $offset: 0px + ($i * $i / 70);
+    }
+    @else {
+      $offset: 0px + ((200 - $i) * (200 - $i) / 70);
+    }
+    0%,
+    100% {
+      transform: translateY($offset * -1);
+    }
+    50% {
+      transform: translateY($offset);
+    }
+  }
+}
