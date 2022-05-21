@@ -1,0 +1,114 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root,
+html {
+  font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$bg: orangered;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+
+  &::before {
+    content: "DAY 86 - NEWTON'S CRADLE";
+    font-size: 1.2rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem #000;
+  }
+}
+
+.cradle {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  top: 140px;
+  left: 100px;
+  padding-top: 100px;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 6px;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    background: #bdc3c7;
+  }
+
+  .ball {
+    position: relative;
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    transform-origin: 50% -100px;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 100px;
+      width: 1px;
+      top: -100px;
+      left: 19px;
+      background: #bdc3c7;
+    }
+  }
+
+  .ball-1 {
+    animation: ball-1 0.8s ease-out infinite alternate;
+  }
+
+  .ball-5 {
+    animation: ball-5 0.8s ease-out 0.8s infinite alternate;
+  }
+}
+
+@keyframes ball-1 {
+  0%,
+  50% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes ball-5 {
+  0%,
+  50% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-30deg);
+  }
+}
