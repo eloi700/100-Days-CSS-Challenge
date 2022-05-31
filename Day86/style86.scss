@@ -45,42 +45,43 @@ body {
 
 .cradle {
   position: absolute;
-  width: 200px;
-  height: 40px;
-  top: 140px;
-  left: 100px;
-  padding-top: 100px;
+  width: 20rem;
+  height: 4rem;
+  padding-top: 10rem;
 
   &:before {
     content: "";
     display: block;
     position: absolute;
-    width: 200px;
-    height: 6px;
-    top: 0;
-    left: 0;
-    border-radius: 3px;
-    background: #bdc3c7;
+    width: 22rem;
+    height: 1.2rem;
+    top: -1rem;
+    left: -1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 .3rem #000;
+    background: linear-gradient(to bottom, #bdc3c7, #fff, rgba(0, 0, 0, 0.5));
   }
 
   .ball {
     position: relative;
     float: left;
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     background: #fff;
     border-radius: 50%;
-    transform-origin: 50% -100px;
+    transform-origin: 50% -10rem;
+    box-shadow: .1rem 0 .3rem rgba(0, 0, 0, 0.8);
+    background: linear-gradient(45deg, #bdc3c7, #fff, rgba(0, 0, 0, 0.5));
 
     &:before {
       content: "";
       display: block;
       position: absolute;
-      height: 100px;
-      width: 1px;
-      top: -100px;
-      left: 19px;
-      background: #bdc3c7;
+      height: 10rem;
+      width: .1rem;
+      top: -10rem;
+      left: 2rem;
+      background: linear-gradient(to bottom, #bdc3c7, #fff, rgba(0, 0, 0, 0.5));
     }
   }
 
