@@ -1,0 +1,242 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root,
+html {
+  font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$bg: #bc0e0e;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+
+  &::before {
+    content: "DAY 87 - LOVELY RUBY";
+    font-size: 1.2rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 .5rem #000;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 0.2rem solid $bg;
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.ruby {
+  position: absolute;
+  width: 19.3rem;
+  height: 12.6rem;
+  z-index: 10;
+  overflow: hidden;
+
+  .bottom-left {
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: 0;
+    border-style: solid;
+    border-width: 8.5rem 0px 0 9.6rem;
+    border-color: #890505 transparent transparent transparent;
+  }
+
+  .bottom-right {
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    right: 0;
+    bottom: 0;
+    border-style: solid;
+    border-width: 8.5rem 9.6rem 0 0px;
+    border-color: #c81718 transparent transparent transparent;
+  }
+
+  .bottom-middle {
+    position: absolute;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    left: 5.4rem;
+    bottom: 0;
+    border-style: solid;
+    border-width: 84px 42px 0 42px;
+    border-color: #a51012 transparent transparent transparent;
+  }
+
+  .top-left-left {
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    border-style: solid;
+    border-width: 0 2.2rem 4.2rem 3.2rem;
+    border-color: transparent transparent #9e0707 transparent;
+  }
+
+  .top-left {
+    position: absolute;
+    z-index: 1;
+    width: 6.4rem;
+    height: 4.2rem;
+    top: 0;
+    left: 3.2rem;
+    background: #dc2323;
+  }
+
+  .top-middle {
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 5.4rem;
+    border-style: solid;
+    border-width: 0 4.2rem 4.2rem 4.2rem;
+    border-color: transparent transparent #bc0e0e transparent;
+  }
+
+  .top-right {
+    position: absolute;
+    z-index: 1;
+    width: 6.4rem;
+    height: 4.2rem;
+    top: 0;
+    right: 3.2rem;
+    background: #f58181;
+    overflow: hidden;
+
+    .flash {
+      position: absolute;
+      width: 0.4rem;
+      height: 8rem;
+      top: -4rem;
+      left: 3rem;
+      background: #ffdfdf;
+      transform: rotate(-44deg) translateX(-30px);
+      animation: flash 3s linear infinite both;
+      box-shadow: 0 0 5px 0 #ffdfdf;
+    }
+  }
+
+  .top-right-right {
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 3.2rem 4.2rem 2.2rem;
+    border-color: transparent transparent #b90b0c transparent;
+  }
+}
+
+@keyframes flash {
+  0% {
+    transform: rotate(-44deg) translateX(-30px);
+  }
+  10%,
+  100% {
+    transform: rotate(-44deg) translateX(30px);
+  }
+}
+
+// ---- SHINE EFFECT
+#starshine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .shine {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #000;
+//   background-repeat: no-repeat;
+//   background-position:center;
+//   background-size: 100% 100%;
+//     overflow: hidden;
+//     z-index: 2;
+//     color: tansparent;
+//     -moz-opacity: 0.0;
+//     opacity: 0.0;
+    animation: glitter 6s linear 0s infinite normal;
+  }
+
+  .shine.small {
+    width: 20px;
+    height: 20px;
+  }
+
+  .shine.medium {
+    width: 30px;
+    height: 30px;
+  }
+
+  .shine.large {
+    width: 50px;
+    height: 50px;
+  }
+
+  /*CSS3 keyframes for glittering effect*/
+  @-webkit-keyframes glitter {
+    0% {
+      -webkit-transform: scale(0.3) rotate(0deg);
+      opacity: 0;
+    }
+    25% {
+      -webkit-transform: scale(1) rotate(360deg);
+      opacity: 1;
+    }
+    50% {
+      -webkit-transform: scale(0.3) rotate(720deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: scale(0.3) rotate(0deg);
+      opacity: 0;
+    }
+  }
