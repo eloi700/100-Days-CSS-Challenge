@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root,
+html {
+  font-size: 62.5%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$bg: #000;
+$flame-height: 1rem;
+$wick-height: 1.1rem;
+$orange: #ff6a00;
+$orange-yellow: #ff9224;
+$yellow: #fbf348;
+$yellow-grey: #58523a;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+
+  &::before {
+    content: "DAY 88 - CANDLE LIGHT";
+    font-size: 1.2rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem #000;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    @include center;
+    height: 30rem;
+    width: 30rem;
+    background: radial-gradient(#fff, #000);
+    border: 0.2rem solid rgb(53, 53, 53);
+    box-shadow: -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3),
+      0.2rem -0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.candle {
+  width: 8rem;
+  height: 13rem;
+  position: relative;
+  top: 10rem;
+  z-index: 20;
+  animation: blink 0.1s infinite;
+}
+
+.wick {
+  position: absolute;
+  width: 0.3rem;
+  height: $wick-height;
+  background: #23161a;
+  top: -9.8rem;
+  left: 50%;
+  box-shadow: 0 0 2px 0px black;
+  animation: move 0.8s infinite forwards;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: .2rem;
+    left: 50%;
+    height: 3rem;
+    border-radius: 80%;
+    box-shadow: 0 -1.5rem 1.1rem 1rem #eee, 0 -1.5rem 1rem .5rem rgba(255, 215, 0, 0.7), 0 -.5rem 1.5rem 1rem rgba(255, 106, 0, 0.7), 0 6px 3px 4px black;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    box-shadow: 0 5px 2px 3px $yellow, 0 20px 2px 14px $yellow,
+      0 -6px 4px 5px rgba(98, 33, 27, 0.8), 0 0px 1px 4px rgba(255, 106, 0, 0.7),
+      0 0px 3px 4px $orange, 0 5px 3px 4px $orange-yellow;
+  }
+}
+
+.wax {
+  position: relative;
+  bottom: 8rem;
+  width: 100%;
+  height: 100%;
+  background: $orange-yellow;
+  background: linear-gradient(
+    top,
+    $orange-yellow 0px,
+    $orange-yellow 20px,
+    $yellow-grey 50px
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9224', endColorstr='#58523a',GradientType=0 );
+  border-radius: 0.5rem;
+  box-shadow: inset 0 7px 12px -2px $yellow,
+    inset 0 9px 57px -3px rgba(255, 0, 0, 0.4), inset 0 -5px 8px 2px black,
+    0 0 3px 0px $orange;
+}
+
+@keyframes move {
+  0% {
+    transform: skewX(3deg) skewY(4deg);
+  }
+  50% {
+    transform: skewX(-3deg) skewY(-0deg);
+  }
+  100% {
+    transform: skewX(3deg) skewY(8deg);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.95;
+  }
+}
