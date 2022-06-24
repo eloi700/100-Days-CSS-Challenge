@@ -17,11 +17,11 @@
   justify-content: center;
   align-items: center;
 }
-$bg: #000;
+$bg: rgb(118, 158, 165);
 $s-color: #c5c5c5;
-$m-color: rgb(118, 158, 165);
-$numberOfDots: 10;
-$radius: 200;
+$m-color: #fff;
+$bg-stripes-1: rgb(128, 90, 34);
+$bg-stripes-2: rgb(214, 179, 127);
 
 body {
   @include center;
@@ -40,12 +40,11 @@ body {
     position: absolute;
     text-align: center;
     content: "DAY 89 - ANIMATED PATTERN";
-    background: rgba(148, 148, 148, 0.5);
     width: 100%;
     padding: 1rem 0;
     letter-spacing: 0.2rem;
     color: #fff;
-    top: 2rem;
+    top: 1.5rem;
     z-index: 2;
     font-size: 1.5rem;
     white-space: nowrap;
@@ -53,40 +52,63 @@ body {
   }
 }
 
-.horizontal {
+@mixin h-v-setup {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 12.5%;
+  left: 12.5%;
+  height: 30rem;
+  width: 30rem;
+  overflow: hidden;
+}
 
-  .stripe {
+.horizontal {
+  @include h-v-setup;
+  background: $bg;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+
+  @mixin stripes-set-h {
     position: relative;
     float: left;
-    width: 4rem;
+    width: 3rem;
     height: 1rem;
-    margin: 1.5rem 0;
-    border-radius: 50%;
-    border: 0.1rem solid rgb(250, 128, 114);
+    margin: 1rem 0;
+    border-radius: 0.5rem 0;
+  }
+
+  .stripe:nth-child(odd) {
+    @include stripes-set-h;
+    background: $bg-stripes-1;
+    animation: rotate-h 4s ease-in-out infinite;
+  }
+
+  .stripe:nth-child(even) {
+    @include stripes-set-h;
+    background: $bg-stripes-2;
     animation: rotate-h 4s ease-in-out infinite;
   }
 }
 
 .vertical {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  @include h-v-setup;
 
-  .stripe {
+  @mixin stripes-set-v {
     position: relative;
     float: left;
     width: 1rem;
-    height: 4rem;
-    margin: 0 1.5rem;
-    border-radius: 50%;
-    background: linear-gradient(to top, $s-color, rgb(250, 128, 114));
+    height: 3rem;
+    margin: 0 1rem;
+    border-radius: 0 0.5rem;
+  }
+
+  .stripe:nth-child(even) {
+    @include stripes-set-v;
+    background: $bg-stripes-1;
+    animation: rotate-v 4s ease-in-out infinite;
+  }
+
+  .stripe:nth-child(odd) {
+    @include stripes-set-v;
+    background: $bg-stripes-2;
     animation: rotate-v 4s ease-in-out infinite;
   }
 }
@@ -96,10 +118,10 @@ body {
     transform: rotate(0);
   }
   20% {
-    transform: rotate(45deg);
+    transform: rotate(90deg);
   }
   40% {
-    transform: rotate(45deg) rotate(360deg);
+    transform: rotate(45deg) translateX(-2rem);
   }
   60% {
     transform: rotate(45deg) scaleY(2) scaleX(0.5);
@@ -120,7 +142,7 @@ body {
     transform: rotate(45deg);
   }
   40% {
-    transform: rotate(45deg) rotate(180deg);
+    transform: rotate(45deg) translateX(1rem);
   }
   60% {
     transform: rotate(45deg) scaleX(2) scaleY(0.5);
