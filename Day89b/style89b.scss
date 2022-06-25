@@ -1,0 +1,134 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+$bg: #000;
+$s-color: #c5c5c5;
+$m-color: rgb(118, 158, 165);
+$numberOfDots: 10;
+$radius: 200;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 89 - ANIMATED PATTERN";
+    background: rgba(148, 148, 148, 0.5);
+    width: 100%;
+    padding: 1rem 0;
+    letter-spacing: 0.2rem;
+    color: #fff;
+    top: 2rem;
+    z-index: 2;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+}
+
+.horizontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .stripe {
+    position: relative;
+    float: left;
+    width: 4rem;
+    height: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 50%;
+    border: 0.1rem solid rgb(250, 128, 114);
+    animation: rotate-h 4s ease-in-out infinite;
+  }
+}
+
+.vertical {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .stripe {
+    position: relative;
+    float: left;
+    width: 1rem;
+    height: 4rem;
+    margin: 0 1.5rem;
+    border-radius: 50%;
+    background: linear-gradient(to top, $s-color, rgb(250, 128, 114));
+    animation: rotate-v 4s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate-h {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(45deg);
+  }
+  40% {
+    transform: rotate(45deg) rotate(360deg);
+  }
+  60% {
+    transform: rotate(45deg) scaleY(2) scaleX(0.5);
+  }
+  80% {
+    transform: rotate(45deg) scaleY(2) scaleX(0.5);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-v {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(45deg);
+  }
+  40% {
+    transform: rotate(45deg) rotate(180deg);
+  }
+  60% {
+    transform: rotate(45deg) scaleX(2) scaleY(0.5);
+  }
+  80% {
+    transform: rotate(90deg) scaleX(2) scaleY(0.5);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
