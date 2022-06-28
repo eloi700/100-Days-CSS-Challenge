@@ -1,0 +1,208 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+$bg: rgb(109, 47, 2);
+$size-h: 18rem;
+$size-w: 12rem;
+$colorN: rgba(158, 103, 63, 0.3);
+$colorF: rgb(109, 47, 2);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+  perspective: 500px;
+
+  &::before {
+    position: absolute;
+    text-align: center;
+    content: "DAY 91 - CUBE LOADER";
+    color: rgb(148, 148, 148);
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 30rem;
+    width: 30rem;
+    border: 0.1rem solid rgb(148, 148, 148);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    background: none;
+  }
+}
+
+.loader {
+  width: $size-w;
+  height: $size-h;
+  transform-style: preserve-3d;
+  transform: rotateX(-15deg) rotateY(45deg);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: rotateX(-25deg) rotateY(45deg) translateY(-15px);
+
+    .bottom {
+      box-shadow: -22px -22px 30px 0 rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .plane {
+    position: absolute;
+    width: $size-w;
+    height: $size-h;
+    background: $colorN;
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ($size-h/2);
+    background: $colorF;
+    box-shadow: -5px -5px 5px 0 rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .left {
+    transform: rotateY(-90deg) translateZ($size-w/2);
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $colorF;
+      transform-origin: 50% 100%;
+      animation: fill 4s ease-in-out infinite alternate;
+    }
+  }
+
+  .right {
+    transform: rotateY(90deg) translateZ($size-w/2);
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: $colorF;
+      transform-origin: 50% 100%;
+      animation: fill 4s ease-in-out infinite alternate;
+    }
+  }
+
+  .back {
+    transform: rotateY(180deg) translateZ($size-w/2);
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $colorF;
+      transform-origin: 50% 100%;
+      animation: fill 4s ease-in-out infinite alternate;
+    }
+  }
+
+  .front {
+    transform: rotateY(0deg) translateZ($size-w/2);
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $colorF;
+      transform-origin: 50% 100%;
+      animation: fill 4s ease-in-out infinite alternate;
+    }
+  }
+
+  .top {
+    transform: rotateX(90deg) translateZ($size-h/2);
+    opacity: 0.5;
+  }
+
+  .fill-top {
+    background: $colorF;
+    animation: fill-top 4s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fill {
+  0%,
+  25% {
+    transform: scaleY(0);
+  }
+  75%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes color-bottom {
+  0% {
+    background: $colorN;
+  }
+  25%,
+  100% {
+    background: $colorF;
+  }
+}
+
+@keyframes color-top {
+  0%,
+  25% {
+    background: $colorN;
+  }
+  75%,
+  100% {
+    background: $colorF;
+  }
+}
+
+@keyframes fill-top {
+  0%,
+  25% {
+    transform: rotateX(90deg) translateZ($size-h / -2);
+  }
+  75%,
+  100% {
+    transform: rotateX(90deg) translateZ(($size-h/2)-1);
+  }
+}
