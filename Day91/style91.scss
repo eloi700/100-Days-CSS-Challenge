@@ -18,10 +18,9 @@
   align-items: center;
 }
 $bg: rgb(109, 47, 2);
-$size-h: 18rem;
-$size-w: 12rem;
-$colorN: rgba(158, 103, 63, 0.3);
-$colorF: rgb(109, 47, 2);
+$size: 15rem;
+$colorF: #ddb8a6;
+$colorN: rgba(212, 160, 154, 0.2);
 
 body {
   @include center;
@@ -41,7 +40,7 @@ body {
     position: absolute;
     text-align: center;
     content: "DAY 91 - CUBE LOADER";
-    color: rgb(148, 148, 148);
+    color: $colorF;
     top: 2rem;
     font-size: 1.5rem;
     white-space: nowrap;
@@ -53,156 +52,164 @@ body {
     content: "";
     height: 30rem;
     width: 30rem;
-    border: 0.1rem solid rgb(148, 148, 148);
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    border: 0.1rem solid $colorF;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
     background: none;
   }
 }
 
 .loader {
-  width: $size-w;
-  height: $size-h;
-  transform-style: preserve-3d;
-  transform: rotateX(-15deg) rotateY(45deg);
-  transition: all 0.5s ease-in-out;
-  cursor: pointer;
+	width: $size;
+	height: $size;
+	transform-style: preserve-3d;
+	transform: rotateX(-25deg) rotateY(45deg);
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+  z-index: 20;
 
-  &:hover {
-    transform: rotateX(-25deg) rotateY(45deg) translateY(-15px);
+	&:hover {
+		transform: rotateX(-25deg) rotateY(45deg) translateY(-15px);
 
-    .bottom {
-      box-shadow: -22px -22px 30px 0 rgba(0, 0, 0, 0.4);
-    }
-  }
+		.bottom {
+			box-shadow: -22px -22px 30px 0 rgba(0,0,0,.4);
+		}
 
-  .plane {
-    position: absolute;
-    width: $size-w;
-    height: $size-h;
-    background: $colorN;
-  }
+	}
 
-  .bottom {
-    transform: rotateX(-90deg) translateZ($size-h/2);
-    background: $colorF;
-    box-shadow: -5px -5px 5px 0 rgba(0, 0, 0, 0.5);
-    transition: all 0.5s ease-in-out;
-  }
+	.plane {
+		position: absolute;
+		width: $size;
+		height: $size;
+		top: 0;
+		left: 0;
+		background: $colorN;
+	}
 
-  .left {
-    transform: rotateY(-90deg) translateZ($size-w/2);
+	.bottom {
+		transform: rotateX(-90deg) translateZ($size/2);
+		background: $colorF;
+		box-shadow: -8px -8px 10px 0 rgba(0,0,0,.4);
+		transition: all .5s ease-in-out;
+	}
 
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: $colorF;
-      transform-origin: 50% 100%;
-      animation: fill 4s ease-in-out infinite alternate;
-    }
-  }
+	.left {
+		transform: rotateY(-90deg) translateZ($size/2);
 
-  .right {
-    transform: rotateY(90deg) translateZ($size-w/2);
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: $colorF;
+			transform-origin: 50% 100%;
+			animation: fill 4s ease-in-out infinite alternate;
+		}
 
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      background: $colorF;
-      transform-origin: 50% 100%;
-      animation: fill 4s ease-in-out infinite alternate;
-    }
-  }
+	}
 
-  .back {
-    transform: rotateY(180deg) translateZ($size-w/2);
+	.right {
+		transform: rotateY(90deg) translateZ($size/2);
 
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: $colorF;
-      transform-origin: 50% 100%;
-      animation: fill 4s ease-in-out infinite alternate;
-    }
-  }
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: $colorF;
+			transform-origin: 50% 100%;
+			animation: fill 4s ease-in-out infinite alternate;
+		}
 
-  .front {
-    transform: rotateY(0deg) translateZ($size-w/2);
+	}
 
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: $colorF;
-      transform-origin: 50% 100%;
-      animation: fill 4s ease-in-out infinite alternate;
-    }
-  }
+	.back {
+		transform: rotateY(180deg) translateZ($size/2);
 
-  .top {
-    transform: rotateX(90deg) translateZ($size-h/2);
-    opacity: 0.5;
-  }
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: $colorF;
+			transform-origin: 50% 100%;
+			animation: fill 4s ease-in-out infinite alternate;
+		}
 
-  .fill-top {
-    background: $colorF;
-    animation: fill-top 4s ease-in-out infinite alternate;
-  }
+	}
+
+	.front {
+		transform: rotateY(0deg) translateZ($size/2);
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: $colorF;
+			transform-origin: 50% 100%;
+			animation: fill 4s ease-in-out infinite alternate;
+		}
+
+	}
+
+	.top {
+		transform: rotateX(90deg) translateZ($size/2);
+		opacity: .5;
+	}
+
+	.fill-top {
+		background: $colorF;
+		animation:
+			fill-top 4s ease-in-out infinite alternate,
+	}
+
 }
 
+
 @keyframes fill {
-  0%,
-  25% {
-    transform: scaleY(0);
-  }
-  75%,
-  100% {
-    transform: scaleY(1);
-  }
+	0%,25% {
+		transform: scaleY(0);
+	}
+	75%, 100% {
+		transform: scaleY(1);
+	}
 }
 
 @keyframes color-bottom {
-  0% {
-    background: $colorN;
-  }
-  25%,
-  100% {
-    background: $colorF;
-  }
+	0% {
+		background: $colorN;
+	}
+	25%, 100% {
+		background: $colorF;
+	}
 }
 
 @keyframes color-top {
-  0%,
-  25% {
-    background: $colorN;
-  }
-  75%,
-  100% {
-    background: $colorF;
-  }
+	0%,25% {
+		background: $colorN;
+	}
+	75%, 100% {
+		background: $colorF;
+	}
 }
 
 @keyframes fill-top {
-  0%,
-  25% {
-    transform: rotateX(90deg) translateZ($size-h / -2);
-  }
-  75%,
-  100% {
-    transform: rotateX(90deg) translateZ(($size-h/2)-1);
-  }
+	0%,25% {
+		transform: rotateX(90deg) translateZ($size / -2);
+	}
+	75%, 100% {
+		transform: rotateX(90deg) translateZ(($size/2)-1);
+	}
 }
