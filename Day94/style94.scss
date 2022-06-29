@@ -1,0 +1,273 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg: linear-gradient(to bottom, rgb(135, 206, 235) 10%, rgb(2, 85, 2) 60%);
+$color-ground: #c2b280;
+$color-bark: rgb(139, 111, 18);
+$color-leaf: rgb(4, 158, 4);
+$color-stem-leaf: rgb(10, 141, 10);
+$color-banana: #ffe135;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+
+  &::before {
+    content: "DAY 94 - BANANA TREE";
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  }
+}
+
+.tree {
+  position: relative;
+  @include center;
+  height: 36rem;
+  width: 35rem;
+  top: 2rem;
+  animation: entrance 1s ease-in-out;
+}
+
+.bark {
+  position: relative;
+  height: 15rem;
+  width: 10rem;
+  left: -2.5rem;
+  top: 3rem;
+  border-radius: 80%;
+  border-width: 0 3rem 0 0;
+  background: none;
+  border-style: solid;
+  z-index: 5;
+  border-color: transparent $color-bark transparent transparent;
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 19rem;
+    width: 15rem;
+    left: 8rem;
+    top: -3rem;
+    border-radius: 80%;
+    border-width: 0 0 0 3rem;
+    background: none;
+    border-style: solid;
+    border-color: transparent transparent transparent $color-bark;
+  }
+}
+
+.ground {
+  position: absolute;
+  height: 8rem;
+  width: 27rem;
+  bottom: 3rem;
+  border-radius: 70%;
+  background: $color-ground;
+  z-index: 50;
+  animation: entrance 1s ease-in-out;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 5rem;
+    width: 12rem;
+    top: 0;
+    left: 17rem;
+    border-radius: 60%;
+    background-color: $color-ground;
+    transform: rotate(25deg);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 5rem;
+    width: 35rem;
+    top: 5rem;
+    left: -4rem;
+    border-radius: 50%;
+    background-color: $color-ground;
+  }
+}
+
+.leaf-1 {
+  position: absolute;
+  height: 10rem;
+  width: 5rem;
+  top: 3rem;
+  left: 15rem;
+  border-radius: 50% 50% 30% 30%;
+  border-width: 0 1rem 0 0;
+  background: $color-leaf;
+  border-style: solid;
+  border-color: transparent $color-leaf transparent transparent;
+  transform: scale(1.3) rotate(8deg);
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 3rem;
+    width: 0.5rem;
+    top: 9rem;
+    left: 2.2rem;
+    background: $color-leaf;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 12rem;
+    width: 0.08rem;
+    left: 2.5rem;
+    top: 0.5rem;
+    opacity: 0.8;
+    background: $color-stem-leaf;
+    box-shadow: 0 0 0.5rem rgb(102, 102, 102);
+  }
+}
+
+.leaf-2 {
+  @extend .leaf-1;
+  top: 10rem;
+  left: 21rem;
+  transform: rotate(120deg) scale(0.8);
+}
+
+.leaf-3 {
+  @extend .leaf-1;
+  top: 2rem;
+  left: 23rem;
+  transform: rotate(45deg) scale(1.2);
+}
+
+.leaf-4 {
+  @extend .leaf-1;
+  top: 5rem;
+  left: 5rem;
+  transform: rotate(-55deg) scale(1.4);
+}
+
+.leaf-5 {
+  @extend .leaf-1;
+  top: 14rem;
+  left: 8rem;
+  transform: rotate(-130deg) scale(1);
+}
+
+.banana-g1 {
+  position: relative;
+  height: 9rem;
+  width: 4rem;
+  left: 0;
+  top: -1.5rem;
+  transform: rotate(-30deg);
+}
+
+.stem {
+  position: absolute;
+  height: 6rem;
+  width: 0.3rem;
+  background: linear-gradient(
+    to bottom,
+    rgb(0, 128, 0) 30%,
+    rgb(183, 247, 183) 70%
+  );
+  border-radius: 1rem;
+  z-index: 55;
+}
+
+.banana-1 {
+  position: absolute;
+  height: 3rem;
+  width: 1rem;
+  left: -1.3rem;
+  top: 2rem;
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: $color-banana;
+  border-radius: 70%;
+  transform: rotate(45deg);
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 0.3rem;
+    width: 0.3rem;
+    bottom: -0.3rem;
+    left: -0.1rem;
+    background: #333;
+    border-radius: 50%;
+  }
+}
+
+.banana-2 {
+  @extend .banana-1;
+  transform: rotate(-45deg);
+  left: 1rem;
+  top: 3rem;
+}
+
+.banana-3 {
+  @extend .banana-1;
+  transform: rotate(45deg);
+  top: 3.3rem;
+}
+
+.banana-4 {
+  @extend .banana-1;
+  transform: rotate(-45deg);
+  left: 1rem;
+  top: 3.8rem;
+}
+
+.banana-5 {
+  @extend .banana-1;
+  transform: rotate(25deg);
+  left: -1rem;
+  top: 4.3rem;
+}
+
+.banana-6 {
+  @extend .banana-1;
+  transform: rotate(-15deg);
+  left: 0.3rem;
+  top: 4.8rem;
+}
+
+@keyframes entrance {
+	0% {
+		transform: translateY(60rem) scaleY(0);
+	}
+	100% {
+		transform: translateY(0) scaleY(1);
+	}
+}
