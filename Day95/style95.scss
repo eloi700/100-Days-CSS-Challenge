@@ -1,0 +1,192 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg: rgb(245, 56, 93);
+$pink: #f7949a;
+$pinkLight: #ffb7bc;
+$pinkDark: #ce666d;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+
+  &::before {
+    content: "DAY 95 - PIG";
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    height: 30rem;
+    width: 30rem;
+    background: $pinkLight;
+    border: .1rem solid $bg;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.5);
+  }
+}
+
+.pig {
+  position: relative;
+  z-index: 10;
+
+  .head {
+    position: relative;
+    width: 18rem;
+    height: 18rem;
+    background: $pink;
+    border-radius: 50%;
+    top: .75rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+  }
+
+  .ear {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: -1;
+    width: 6rem;
+    height: 6rem;
+    top: -1.5rem;
+    background: $pinkLight;
+    border: .7rem solid $pink;
+
+    &-l {
+      border-radius: 1.5rem 0 0 0;
+      left: 1rem;
+      transform: rotate(-12deg) skewY(-27deg);
+    }
+
+    &-r {
+        border-radius: 0 15px 0 0;
+        right: 10px;
+        transform: rotate(12deg) skewY(-27deg);
+    }
+  }
+
+  .eye {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    top: 4.5rem;
+    background: #fff;
+    border-radius: 50%;
+    animation: eyes 15s ease-in-out infinite;
+
+    &:before {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 2.2rem;
+      height: 2.2rem;
+      background: #333;
+      border-radius: 50%;
+      top: 2rem;
+      left: 2rem;
+      animation: pupills 15s ease-in-out infinite;
+    }
+
+    &-l {
+      left: 3.8rem;
+    }
+
+    &-r {
+      right: 2.2rem;
+    }
+  }
+
+  .nose {
+    position: absolute;
+    height: 5rem;
+    width: 7rem;
+    top: 10rem;
+    left: 6rem;
+    background: $pinkLight;
+    transform: rotate(6deg);
+    border-radius: 12rem / 8rem;
+    border-bottom: .5rem solid $pinkDark;
+  }
+
+  .nostril {
+    position: absolute;
+    width: 1.8rem;
+    height: 1.8rem;
+    top: 1.5rem;
+    background: $pinkDark;
+    border-radius: 50%;
+    border-bottom: .5rem solid $pink;
+
+    &-l {
+      left: 1.2rem;
+    }
+
+    &-r {
+      right:.8rem;
+    }
+  }
+}
+
+@keyframes eyes {
+  0%,
+  23%,
+  25%,
+  65%,
+  67%,
+  89%,
+  91%,
+  100% {
+    transform: scaleY(1);
+  }
+  24%,
+  66%,
+  90% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes pupills {
+  0%,
+  23%,
+  25%,
+  65%,
+  67%,
+  89%,
+  91%,
+  100% {
+    transform: scaleY(1);
+  }
+  24%,
+  66%,
+  90% {
+    transform: scaleY(2);
+  }
+}

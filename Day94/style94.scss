@@ -168,7 +168,7 @@ body {
 .leaf-2 {
   @extend .leaf-1;
   top: 12.5rem;
-  left: 18.5rem;
+  left: 17rem;
   transform: rotate(120deg) scale(0.6);
 }
 
@@ -205,12 +205,12 @@ body {
 
 .stem {
   position: absolute;
-  height: 4rem;
+  height: 3rem;
   width: 0.3rem;
-  top: 1rem;
+  top: 2rem;
   background: linear-gradient(
     to bottom,
-    rgb(0, 128, 0) 30%,
+    $color-leaf 30%,
     rgb(183, 247, 183) 70%
   );
   border-radius: 1rem;
