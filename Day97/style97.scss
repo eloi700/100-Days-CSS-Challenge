@@ -1,0 +1,237 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+$bg: rgb(0, 0, 255);
+$pri-color: #000;
+$sec-color: #fff;
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%bg-bdr-style {
+  background: $sec-color;
+  border-width: 0.1rem;
+  border-style: solid;
+}
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+
+  &::before {
+    content: "DAY 97 - BRIAN & VINNY";
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  }
+}
+
+.brian {
+  position: relative;
+  height: 35rem;
+  width: 15rem;
+  top: 2rem;
+  left: -10rem;
+}
+
+.head-container {
+  position: relative;
+  height: 11rem;
+  width: 14rem;
+}
+
+.head {
+  position: absolute;
+  height: 12rem;
+  width: 9rem;
+  top: 0;
+  left: 2rem;
+  background: $sec-color;
+  border: 0.1rem solid $pri-color;
+  border-radius: 5rem 4rem 1rem 1rem;
+}
+
+.ear-l {
+  position: relative;
+  height: 4rem;
+  width: 2.5rem;
+  top: 1rem;
+  left: 0.5rem;
+  @extend %bg-bdr-style;
+  border-radius: 3rem 3rem 0 0;
+  border-color: $pri-color transparent transparent $pri-color;
+  transform: rotate(15deg);
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 3rem;
+    width: 3.2rem;
+    top: 2.8rem;
+    left: 0.15rem;
+    @extend %bg-bdr-style;
+    border-color: transparent $pri-color $pri-color $pri-color;
+    border-radius: 0 0 1.3rem 1.3rem;
+    transform: rotate(-15deg);
+  }
+}
+
+.ear-r {
+  position: absolute;
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  top: 1.3rem;
+  left: 9rem;
+  @extend %bg-bdr-style;
+  border-color: $pri-color $pri-color transparent transparent;
+  border-radius: 1rem 0.5rem 0 0;
+  transform: rotate(-15deg);
+}
+
+.mouth {
+  position: relative;
+  height: 6rem;
+  width: 7.5rem;
+  top: -1.2rem;
+  left: 7.5rem;
+  @extend %bg-bdr-style;
+  border-color: $pri-color $pri-color $pri-color transparent;
+  border-radius: 0 50% 50% 2.5rem;
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 4rem;
+    width: 3rem;
+    top: 2rem;
+    left: 0;
+    @extend %bg-bdr-style;
+    border-color: transparent transparent transparent $pri-color;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 2.5rem;
+    width: 4rem;
+    top: 4rem;
+    left: -0.7rem;
+    @extend %bg-bdr-style;
+    border-color: transparent transparent $pri-color $pri-color;
+    border-radius: 0 0 2rem 1rem;
+    transform: rotate(15deg);
+  }
+}
+
+.nose {
+  position: absolute;
+  height: 4rem;
+  width: 3rem;
+  background: $pri-color;
+  border-radius: 50%;
+  top: 3.8rem;
+  left: 12rem;
+}
+
+.eyes {
+  position: relative;
+  height: 1.7rem;
+  width: 2rem;
+  border-radius: 50% 50% 0.5rem 0.5rem;
+  @extend %bg-bdr-style;
+  top: -8.7rem;
+  left: 8.5rem;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 2.3rem;
+    width: 2.3rem;
+    border-radius: 50%;
+    @extend %bg-bdr-style;
+    top: 0;
+    left: -2.3rem;
+  }
+}
+
+.pupil-1 {
+  position: absolute;
+  height: 0.5rem;
+  width: 0.5rem;
+  top: 0.5rem;
+  left: 0.2rem;
+  background: $pri-color;
+  border-radius: 50%;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 0.1rem;
+    width: 1.8rem;
+    left: 0.2rem;
+    left: -0.2rem;
+    background: $pri-color;
+  }
+}
+
+.pupil-2 {
+  @extend .pupil-1;
+  left: -2rem;
+
+  &::before {
+    width: 2rem;
+  }
+}
+
+.neck{
+    position: relative;
+    height: 2rem;
+    width: 4.5rem;
+    @extend %bg-bdr-style;
+    background: none;
+    border-color: transparent $pri-color $pri-color transparent;
+    border-radius: 50%;
+    top: -3rem;
+    left: 6rem;
+}
+
+.belt{
+    position: absolute;
+    height: 1rem;
+    width: 11rem;
+    border-width: 1rem;
+    border-style: solid;
+    border-radius: 50%;
+    background-color: none;
+    top: 1rem;
+    left: -5rem;
+    border-color: transparent transparent red transparent;
+}
