@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@300&display=swap');
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg: rgb(0, 99, 99);
+$square-color: rgb(1, 160, 160);
+$duration: 1.6s;
+$easing: cubic-bezier(0.72, 0.03, 0.28, 0.97);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+
+  &::before {
+    content: "DAY 96 - JUMPING SQUARE";
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  }
+
+  &::after {
+    content: 'A HELPING HAND CAN BE A RAY OF SUNSHINE IN CLOUDY WORLD';
+    position: absolute;
+    height: 30rem;
+    width: 30rem;
+    text-align: center;
+    border-style: solid;
+    border-width: 4rem;
+    font-size: 2rem;
+    font-family: 'Red Hat Text', sans-serif;
+    padding: 1.2rem 1.5rem 0 1.5rem;
+    color: #fff;
+    word-spacing: .2rem;
+    background:
+    repeating-radial-gradient(
+      circle at 50% 100%,
+      rgb(202, 202, 202),
+      rgb(155, 154, 154) 5rem
+    );
+    border-width: 6rem;
+    border-color: rgb(85, 85, 85) $square-color rgb(85, 85, 85) $square-color;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+}
+
+.down {
+  position: relative;
+  z-index: 10;
+  animation: down $duration ease-in infinite both;
+}
+
+.up {
+  animation: up $duration ease-in-out infinite both;
+}
+
+.squeeze {
+  transform-origin: 50% 100%;
+  animation: squeeze $duration $easing infinite both;
+}
+
+.rotate-in {
+  animation: rotate-in $duration ease-out infinite both;
+}
+
+.rotate-out {
+  animation: rotate-out $duration ease-in infinite both;
+}
+
+.square {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  border-radius: .5rem;
+  background: $square-color;
+  box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.3);
+}
+
+.shadow {
+  position: absolute;
+  z-index: -1;
+  bottom: -4.5rem;
+  left: -.4rem;
+  right: -.4rem;
+  height: .3rem;
+  border-radius: 50%;
+  background: rgba(143, 143, 143, 0.3);
+  box-shadow: 0 0 0px .8rem rgba(143, 143, 143, 0.3);
+  animation: shadow $duration ease-in-out infinite both;
+}
+
+@keyframes down {
+  0% {
+    transform: translateY(-9rem);
+  }
+  20%,
+  100% {
+    transform: translateY(4.5rem);
+  }
+}
+
+@keyframes up {
+  0%,
+  75% {
+    transform: translateY(4.5rem);
+  }
+  100% {
+    transform: translateY(-9rem);
+  }
+}
+
+@keyframes squeeze {
+  0%,
+  4% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.8, 0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotate(-135deg);
+  }
+  20%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-out {
+  0%,
+  80% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes shadow {
+  0%,
+  100% {
+    transform: scaleX(0.5);
+  }
+  45%,
+  50% {
+    transform: scaleX(1.8);
+  }
+}
