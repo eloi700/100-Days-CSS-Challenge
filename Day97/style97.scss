@@ -331,34 +331,34 @@ body {
 
 .leg-l {
   position: absolute;
-  height: 7rem;
+  height: 6rem;
   width: 3rem;
   @extend %bg-bdr-style;
   border-radius: 50%;
-  transform: rotate(8deg);
+  transform: rotate(5deg);
   top: 2.5rem;
-  left: 2.3rem;
+  left: 2.6rem;
   border-color: transparent $pri-color transparent transparent;
 }
 
 .foot-l {
   position: absolute;
-  height: 3rem;
-  width: 6rem;
+  height: 2.8rem;
+  width: 5.5rem;
   border-radius: 0 50% 50% 30%;
   transform: rotate(5deg);
-  top: 4.8rem;
-  left: -2rem;
+  top: 5rem;
+  left: -1.9rem;
   @extend %bg-bdr-style;
   border-color: $pri-color $pri-color transparent transparent;
 
   &::before {
     position: absolute;
     content: "";
-    height: 1.5rem;
-    width: 4.1rem;
+    height: 1.3rem;
+    width: 3.8rem;
     top: -.8rem;
-    left: 1rem;
+    left: 0;
     background: $sec-color;
     transform: rotate(-3deg);
   }
@@ -366,25 +366,71 @@ body {
 
 .foot-l-finger {
   position: absolute;
-  height: 1.8rem;
+  height: 1.6rem;
   width: 1.5rem;
-  border-radius: 0 0.8rem 0.5rem 0;
+  border-radius: 0 0.8rem 0rem 0;
   @extend %bg-bdr-style;
-  transform: rotate(28deg);
-  left: 3.4rem;
+  transform: rotate(10deg);
+  left: 3rem;
   top: .8rem;
   border-color: $pri-color $pri-color transparent transparent;
 
   &::after {
-    position: absolute;
     content: "";
-    height: 1.8rem;
-    width: 1.8rem;
+    @extend .foot-l-finger;
     border-radius: 0 0.8rem 0.5rem 0;
-    @extend %bg-bdr-style;
-    transform: rotate(-8deg);
-    left: -2rem;
-    top: .8rem;
-    border-color: $pri-color $pri-color transparent transparent;
+    transform: rotate(8deg);
+    left: -1.5rem;
+    top: .5rem;
   }
 }
+
+.leg-r{
+  position: relative;
+  height: 8rem;
+  width: 2rem;
+  border: .1rem solid red;
+  left: 10rem;
+}
+.foot-r{
+  @extend .foot-l;
+  border-radius: 50% 30% 50% 30%;
+  transform: rotate(6deg);
+  top: 8.5rem;
+  left: -4rem;
+  height: 2rem;
+  width: 5.2rem;
+  border-color: $pri-color $pri-color $pri-color transparent;
+
+  &::before{
+    width: 3rem;
+    top: -.3rem;
+    left: .2rem;
+  }
+}
+
+.foot-r-finger{
+  position: absolute;
+  height: .8rem;
+  width: 1.3rem;
+  @extend %bg-bdr-style;
+  border-radius: .5rem;
+  transform: rotate(8deg);
+  left: 3.5rem;
+  top: .8rem;
+  border-color: $pri-color $pri-color transparent transparent;
+
+    &::before{
+      position: absolute;
+      content: '';
+      height: 1rem;
+      width: 1.3rem;
+      @extend %bg-bdr-style;
+      left: -1.7rem;
+      top: .1rem;
+      border-radius: 0 .5rem 0 0;
+      transform: rotate(3deg);
+      border-color: $pri-color $pri-color transparent transparent;
+    }
+}
+
