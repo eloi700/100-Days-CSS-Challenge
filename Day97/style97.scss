@@ -313,9 +313,35 @@ body {
   position: relative;
   height: 10rem;
   width: 13rem;
-  top: 0.3rem;
+  top: 0.5rem;
   background: $sec-color;
   border-radius: 3rem 3rem 1rem 1rem;
+}
+
+// brian's arms
+.arm-r {
+  position: relative;
+  height: 9rem;
+  width: 5rem;
+  border-radius: 50%;
+  @extend %bg-bdr-style;
+  left: 9.5rem;
+  top: .8rem;
+  transform: rotate(-10deg);
+  border-color: transparent $pri-color transparent transparent;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 10rem;
+    width: 6rem;
+    left: -3rem;
+    top: -1.5rem;
+    transform: rotate(12deg);
+    border-radius: 50% 50% 3rem 0;
+    @extend %bg-bdr-style;
+    border-color: transparent $pri-color transparent transparent;
+  }
 }
 
 //brian's legs & foot
@@ -348,8 +374,9 @@ body {
   border-radius: 0 50% 50% 30%;
   transform: rotate(5deg);
   top: 5rem;
-  left: -1.9rem;
+  left: -1.7rem;
   @extend %bg-bdr-style;
+  box-shadow: 0 0.1rem 0 $sec-color;
   border-color: $pri-color $pri-color transparent transparent;
 
   &::before {
@@ -357,14 +384,14 @@ body {
     content: "";
     height: 1.3rem;
     width: 3.8rem;
-    top: -.8rem;
-    left: 0;
+    top: -0.8rem;
+    left: -0.1rem;
     background: $sec-color;
     transform: rotate(-3deg);
   }
 }
 
-.foot-l-finger {
+.foot-l-toes {
   position: absolute;
   height: 1.6rem;
   width: 1.5rem;
@@ -372,65 +399,68 @@ body {
   @extend %bg-bdr-style;
   transform: rotate(10deg);
   left: 3rem;
-  top: .8rem;
+  top: 0.8rem;
   border-color: $pri-color $pri-color transparent transparent;
 
   &::after {
     content: "";
-    @extend .foot-l-finger;
+    @extend .foot-l-toes;
     border-radius: 0 0.8rem 0.5rem 0;
     transform: rotate(8deg);
     left: -1.5rem;
-    top: .5rem;
+    top: 0.5rem;
   }
 }
 
-.leg-r{
+.leg-r {
   position: relative;
   height: 8rem;
   width: 2rem;
-  border: .1rem solid red;
-  left: 10rem;
+  left: 9rem;
+  top: 1rem;
+  border-radius: 0 1rem 50% 0;
+  @extend %bg-bdr-style;
+  box-shadow: 0 3rem 0 $bg;
+  border-color: transparent transparent $pri-color transparent;
 }
-.foot-r{
+.foot-r {
   @extend .foot-l;
   border-radius: 50% 30% 50% 30%;
   transform: rotate(6deg);
-  top: 8.5rem;
-  left: -4rem;
+  top: 7.5rem;
+  left: -3rem;
   height: 2rem;
   width: 5.2rem;
   border-color: $pri-color $pri-color $pri-color transparent;
 
-  &::before{
+  &::before {
     width: 3rem;
-    top: -.3rem;
-    left: .2rem;
+    top: -0.3rem;
+    left: 0.2rem;
   }
 }
 
-.foot-r-finger{
+.foot-r-toes {
   position: absolute;
-  height: .8rem;
+  height: 0.8rem;
   width: 1.3rem;
   @extend %bg-bdr-style;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   transform: rotate(8deg);
   left: 3.5rem;
-  top: .8rem;
+  top: 0.8rem;
   border-color: $pri-color $pri-color transparent transparent;
 
-    &::before{
-      position: absolute;
-      content: '';
-      height: 1rem;
-      width: 1.3rem;
-      @extend %bg-bdr-style;
-      left: -1.7rem;
-      top: .1rem;
-      border-radius: 0 .5rem 0 0;
-      transform: rotate(3deg);
-      border-color: $pri-color $pri-color transparent transparent;
-    }
+  &::before {
+    position: absolute;
+    content: "";
+    height: 1rem;
+    width: 1.3rem;
+    @extend %bg-bdr-style;
+    left: -1.7rem;
+    top: 0.1rem;
+    border-radius: 0 0.5rem 0 0;
+    transform: rotate(3deg);
+    border-color: $pri-color $pri-color transparent transparent;
+  }
 }
-
