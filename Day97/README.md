@@ -1,3 +1,3 @@
-## Brian & Vinny
+## Brian Griffin
 
-Do you know Brian & Vinny (Family Guy)? Better watch it :) - Cartoon Network
+Brian Griffin is a fictional character from the American animated television series (Cartoon Network) - Family Guy.
