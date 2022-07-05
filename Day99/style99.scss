@@ -1,0 +1,168 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+$bg: rgb(255, 69, 0);
+$bg-m: rgb(253, 107, 54);
+$duration: 0.6s;
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg;
+  overflow: hidden;
+
+  &::before {
+    content: "DAY 99 - CIRCLE-SQUARE";
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    top: 2rem;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  }
+}
+
+#cb {
+  display: none;
+}
+
+#cb:checked {
+  & ~ .bg {
+    transform: scale(1);
+  }
+
+  & ~ .ring {
+    opacity: 0;
+    transform: scale(1);
+    transition: transform $duration ease-out,
+      opacity ($duration / 2) ease-out ($duration / 2);
+  }
+
+  & ~ .stripes {
+    opacity: 0;
+    transform: scale(1);
+    transition: transform $duration ease-out,
+      opacity ($duration / 2) ease-out ($duration / 2);
+  }
+
+  & ~ .icon {
+    border-radius: 0;
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: -4px -8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.label {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.bg {
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  top: -10rem;
+  left: -10rem;
+  background: $bg-m;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: all $duration ease-in-out;
+}
+
+.icon {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 185px;
+  left: 185px;
+  background: #fff;
+  clip-path: polygon(
+    0% 15%,
+    15% 15%,
+    15% 0%,
+    85% 0%,
+    85% 15%,
+    100% 15%,
+    100% 85%,
+    85% 85%,
+    85% 100%,
+    15% 100%,
+    15% 85%,
+    0% 85%
+  );
+  transition: all $duration ease-in-out;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ring {
+  box-sizing: border-box;
+  position: absolute;
+  width: 12rem;
+  height: 12rem;
+  border: .3rem solid #fff;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform $duration ease-in, opacity ($duration / 2) ease-in;
+}
+
+.stripes {
+  position: absolute;
+  @include center;
+  width: 25rem;
+  height: 25rem;
+  transform: scale(0);
+  transition: transform $duration ease-in, opacity ($duration / 2) ease-in;
+}
+
+.stripe {
+  position: absolute;
+  height: 2.6rem;
+  width: 0.3rem;
+  background: #fff;
+
+  @for $i from 1 through 18 {
+    $degree: $i * 20deg;
+    &-#{$i} {
+      transform: rotate($degree) translateY(-12rem);
+    }
+  }
+}
+
+@keyframes background {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
