@@ -1,0 +1,321 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$bg-color1: linear-gradient(135deg, #16001f 10%, #2a83a7 100%);
+$bg-color2: linear-gradient(135deg, #2a83a7 10%, #16001f  100%);
+
+body {
+  @include center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  @include center;
+  height: 40rem;
+  width: 40rem;
+  background: $bg-color1;
+  border-radius: 0.5rem;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 28rem;
+    width: 28rem;
+    border-radius: 50%;
+    box-shadow: inset -0.2rem 0.5rem 0.5rem rgba(252, 250, 250, 0.3),
+      inset 0.2rem -0.2rem 0.5rem rgba(252, 250, 250, 0.3);
+  }
+
+  &::after {
+    position: absolute;
+    text-align: center;
+    content: "DAY 100 - THE END";
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    color: #fff;
+    top: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    z-index: 5;
+    text-shadow: 0.1rem 0.1rem 0.3rem rgb(0, 0, 0);
+  }
+}
+
+@mixin animation() {
+  animation: flickr 6s ease-in-out ((random(400) / 100) * 1s) infinite alternate
+    both;
+}
+
+.word {
+  position: absolute;
+  height: 10rem;
+  width: 30rem;
+  left: .5rem;
+
+  .light {
+    position: absolute;
+    background: #1a1e24;
+    box-shadow: 0px 0px 6px 0px #1a1e24;
+    border-radius: 3px;
+  }
+
+  .ee {
+    position: absolute;
+    width: 6rem;
+    height: 8rem;
+    top: 0;
+    left: 8rem;
+
+    .left {
+      top: 0;
+      left: 0;
+      height: 8rem;
+      width: 0.8rem;
+      @include animation();
+    }
+
+    .top {
+      top: 0;
+      right: 0;
+      height: 0.8rem;
+      width: 6rem;
+      @include animation();
+    }
+
+    .middle {
+      top: 3rem;
+      left: 0.7rem;
+      height: 0.8rem;
+      width: 4.5rem;
+      @include animation();
+    }
+
+    .bottom {
+      bottom: 0;
+      right: 0;
+      height: 0.8rem;
+      width: 6rem;
+      @include animation();
+    }
+  }
+
+  .nn {
+    position: absolute;
+    @extend .ee;
+    left: 16rem;
+
+    .left {
+      top: 0;
+      left: 0;
+      height: 8rem;
+      width: .8rem;
+      @include animation();
+    }
+
+    .middle {
+      top: 0;
+      left: .9rem;
+      height: .8rem;
+      width: 10rem;
+      transform-origin: 0rem -.3rem;
+      transform: rotate(55deg);
+      @include animation();
+    }
+
+    .right {
+      top: 0;
+      right: -.3rem;
+      height: 8.5rem;
+      width: .8rem;
+      @include animation();
+    }
+  }
+
+  .dd {
+    position: absolute;
+    @extend .ee;
+    left: 25rem;
+
+    .left {
+      top: 0;
+      left: 0;
+      height: 8rem;
+      width: .8rem;
+      @include animation();
+    }
+
+    .right {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: -1rem;
+      height: 12rem;
+      width: 7rem;
+
+      $delay: (random(400) / 100) * 1s;
+
+      .circleBox .circle {
+        animation: flickr-circle 6s ease-in-out $delay infinite alternate both;
+      }
+      .dot {
+        animation: flickr-dots 6s ease-in-out $delay infinite alternate both;
+      }
+
+      .circleBox {
+        position: absolute;
+        top: -1rem;
+        right: -.5rem;
+        bottom: -1rem;
+        width: 7rem;
+        overflow: hidden;
+
+        .circle {
+          box-sizing: border-box;
+          position: absolute;
+          width: 12rem;
+          height: 12rem;
+          top: 1.7rem;
+          right: 1rem;
+          border-style: solid;
+          border-width: .8rem;
+          border-color: #1a1e24 #1a1e24 transparent transparent;
+          border-radius: 50% 50% 80% 0;
+          box-shadow: 0px 0px 10px 0px #1a1e24, inset 0px 0px 10px 0px #f1f4f5;
+          transform: rotate(45deg);
+        }
+      }
+
+      .topDotBox {
+        position: absolute;
+        top: -1rem;
+        right: 6rem;
+        width: 2.6rem;
+        height: 2.6rem;
+        overflow: hidden;
+      }
+
+      .bottomDotBox {
+        position: absolute;
+        @extend .topDotBox;
+        bottom: -1rem;
+      }
+
+      .dot {
+        top: 1rem;
+        right: -1.2rem;
+        width: 1.5rem;
+        height: .8rem;
+      }
+    }
+
+    .rightSVG {
+      position: absolute;
+      top: 0;
+      right: 0;
+      fill: none;
+      stroke: #1a1e24;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 88 176 176;
+      filter: drop-shadow(0px 0px 6px #1a1e24);
+      animation: flickr-svg 6s ease-in-out ( (random(400) / 100) * 1s ) infinite alternate;
+    }
+  }
+}
+
+@keyframes flickr {
+  35%,
+  37%,
+  39%,
+  41%,
+  100% {
+    background: #f1f4f5;
+    box-shadow: 0px 0px 10px 0px #f1f4f5;
+  }
+  0%,
+  34%,
+  36%,
+  36%,
+  38%,
+  40% {
+    background: #1a1e24;
+    box-shadow: 0px 0px 6px 0px #1a1e24;
+  }
+}
+
+@keyframes flickr-circle {
+  35%,
+  37%,
+  39%,
+  41%,
+  100% {
+    border-color: #f1f4f5 #f1f4f5 transparent transparent;
+    box-shadow: 0px 0px 10px 0px #f1f4f5, inset 0px 0px 10px 0px #f1f4f5;
+  }
+  0%,
+  34%,
+  36%,
+  36%,
+  38%,
+  40% {
+    border-color: #1a1e24 #1a1e24 transparent transparent;
+    box-shadow: 0px 0px 6px 0px #1a1e24, inset 0px 0px 6px 0px #1a1e24;
+  }
+}
+
+@keyframes flickr-dots {
+  35%,
+  37%,
+  39%,
+  41%,
+  100% {
+    background: #f1f4f5;
+    box-shadow: 0px 0px 9px 1px #f1f4f5;
+  }
+  0%,
+  34%,
+  36%,
+  36%,
+  38%,
+  40% {
+    background: #1a1e24;
+    box-shadow: 0px 0px 5px 1px #1a1e24;
+  }
+}
+
+@keyframes flickr-svg {
+  35%,
+  37%,
+  39%,
+  41%,
+  100% {
+    stroke: #f1f4f5;
+    filter: drop-shadow(0px 0px 5px #f1f4f5);
+  }
+  0%,
+  34%,
+  36%,
+  36%,
+  38%,
+  40% {
+    stroke: #1a1e24;
+    filter: drop-shadow(0px 0px 3px #1a1e24);
+  }
+}
